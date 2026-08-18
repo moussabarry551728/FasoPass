@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FasoPass - Billetterie</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #f5f5f5;
+      color: #222;
+    }
+
+    header {
+      background: linear-gradient(135deg, #00843d, #f0c300, #d21034);
+      color: white;
+      padding: 25px 18px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 32px;
+      margin-bottom: 8px;
+    }
+
+    header p {
+      font-size: 16px;
+    }
+
+    nav {
+      background: white;
+      padding: 12px;
+      text-align: center;
+      box-shadow: 0 2px 8px #ccc;
+    }
+
+    nav button {
+      border: none;
+      background: #00843d;
+      color: white;
+      padding: 10px 15px;
+      margin: 4px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .hero {
+      padding: 35px 20px;
+      text-align: center;
+      background: white;
+    }
+
+    .hero h2 {
+      color: #00843d;
+      font-size: 27px;
+      margin-bottom: 12px;
+    }
+
+    .hero p {
+      margin-bottom: 20px;
+      line-height: 1.5;
+    }
+
+    .btn {
+      display: inline-block;
+      background: #d21034;
+      color: white;
+      text-decoration: none;
+      padding: 13px 22px;
+      border-radius: 10px;
+      border: none;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .events {
+      padding: 25px 15px;
+      max-width: 900px;
+      margin: auto;
+    }
+
+    .events h2 {
+      text-align: center;
+      color: #00843d;
+      margin-bottom: 20px;
+    }
+
+    .card {
+      background: white;
+      margin-bottom: 18px;
+      padding: 20px;
+      border-radius: 14px;
+      box-shadow: 0 3px 10px #ddd;
+    }
+
+    .card h3 {
+      color: #d21034;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      margin: 7px 0;
+    }
+
+    .price {
+      font-weight: bold;
+      color: #00843d;
+      font-size: 18px;
+    }
+
+    .card button {
+      margin-top: 12px;
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      background: #00843d;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .contact {
+      background: #222;
+      color: white;
+      padding: 30px 20px;
+      text-align: center;
+    }
+
+    footer {
+      background: #111;
+      color: white;
+      text-align: center;
+      padding: 15px;
+      font-size: 14px;
+    }
+
+    #message {
+      display: none;
+      margin: 15px auto;
+      max-width: 500px;
+      padding: 15px;
+      background: #e8f5e9;
+      color: #00843d;
+      border-radius: 10px;
+      text-align: center;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>🇧🇫 FasoPass</h1>
+    <p>La billetterie digitale du Burkina Faso</p>
+  </header>
+
+  <nav>
+    <button onclick="accueil()">Accueil</button>
+    <button onclick="evenements()">Événements</button>
+    <button onclick="contact()">Contact</button>
+  </nav>
+
+  <section class="hero" id="accueil">
+    <h2>Bienvenue sur FasoPass</h2>
+    <p>
+      Découvrez les événements près de chez vous et réservez
+      facilement vos billets en ligne.
+    </p>
+
+    <button class="btn" onclick="evenements()">
+      Voir les événements
+    </button>
+  </section>
+
+  <div id="message">
+    Votre réservation a été sélectionnée. Nous allons bientôt ajouter le paiement.
+  </div>
+
+  <section class="events" id="evenements">
+    <h2>🎫 Événements disponibles</h2>
+
+    <div class="card">
+      <h3>Concert Faso Music</h3>
+      <p>📅 Date : 30 août 2026</p>
+      <p>📍 Lieu : Ouagadougou</p>
+      <p class="price">5 000 FCFA</p>
+      <button onclick="reserver('Concert Faso Music')">
+        Réserver mon billet
+      </button>
+    </div>
+
+    <div class="card">
+      <h3>Festival de la Jeunesse</h3>
+      <p>📅 Date : 5 septembre 2026</p>
+      <p>📍 Lieu : Ouagadougou</p>
+      <p class="price">2 500 FCFA</p>
+      <button onclick="reserver('Festival de la Jeunesse')">
+        Réserver mon billet
+      </button>
+    </div>
+
+    <div class="card">
+      <h3>Grande Nuit Culturelle</h3>
+      <p>📅 Date : 12 septembre 2026</p>
+      <p>📍 Lieu : Bobo-Dioulasso</p>
+      <p class="price">3 000 FCFA</p>
+      <button onclick="reserver('Grande Nuit Culturelle')">
+        Réserver mon billet
+      </button>
+    </div>
+
+  </section>
+
+  <section class="contact" id="contact">
+    <h2>📞 Contact</h2>
+    <p style="margin-top:10px;">
+      FasoPass — Votre accès simple aux événements du Burkina Faso.
+    </p>
+  </section>
+
+  <footer>
+    © 2026 FasoPass — Tous droits réservés
+  </footer>
+
+  <script>
+    function accueil() {
+      document.getElementById("accueil").scrollIntoView({
+        behavior: "smooth"
+      });
+    }
+
+    function evenements() {
+      document.getElementById("evenements").scrollIntoView({
+        behavior: "smooth"
+      });
+    }
+
+    function contact() {
+      document.getElementById("contact").scrollIntoView({
+        behavior: "smooth"
+      });
+    }
+
+    function reserver(nom) {
+      document.getElementById("message").innerText =
+        "✅ Vous avez sélectionné : " + nom +
+        ". Le système de paiement sera ajouté prochainement.";
+
+      document.getElementById("message").style.display = "block";
+
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth"
+      });
+    }
+  </script>
+
+</body>
+</html>
