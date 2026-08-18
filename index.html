@@ -34,124 +34,84 @@
       font-size: 16px;
     }
 
-    nav {
-      background: white;
-      padding: 12px;
-      text-align: center;
-      box-shadow: 0 2px 8px #ccc;
-    }
-
-    nav button {
-      border: none;
-      background: #00843d;
-      color: white;
-      padding: 10px 15px;
-      margin: 4px;
-      border-radius: 8px;
-      cursor: pointer;
-    }
-
-    .hero {
-      padding: 35px 20px;
-      text-align: center;
-      background: white;
-    }
-
-    .hero h2 {
-      color: #00843d;
-      font-size: 27px;
-      margin-bottom: 12px;
-    }
-
-    .hero p {
-      margin-bottom: 20px;
-      line-height: 1.5;
-    }
-
-    .btn {
-      display: inline-block;
-      background: #d21034;
-      color: white;
-      text-decoration: none;
-      padding: 13px 22px;
-      border-radius: 10px;
-      border: none;
-      font-size: 16px;
-      cursor: pointer;
-    }
-
-    .events {
-      padding: 25px 15px;
+    .container {
       max-width: 900px;
       margin: auto;
-    }
-
-    .events h2 {
-      text-align: center;
-      color: #00843d;
-      margin-bottom: 20px;
-    }
-
-    .card {
-      background: white;
-      margin-bottom: 18px;
       padding: 20px;
-      border-radius: 14px;
-      box-shadow: 0 3px 10px #ddd;
     }
 
-    .card h3 {
-      color: #d21034;
+    .search {
+      background: white;
+      padding: 18px;
+      border-radius: 15px;
+      margin-top: -5px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    .search input {
+      width: 100%;
+      padding: 14px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      font-size: 16px;
+    }
+
+    h2 {
+      margin: 25px 0 15px;
+    }
+
+    .event {
+      background: white;
+      border-radius: 15px;
+      padding: 20px;
+      margin-bottom: 15px;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+    }
+
+    .event h3 {
+      color: #00843d;
       margin-bottom: 10px;
+      font-size: 21px;
     }
 
-    .card p {
+    .event p {
       margin: 7px 0;
     }
 
     .price {
+      font-size: 20px;
       font-weight: bold;
-      color: #00843d;
-      font-size: 18px;
+      margin: 12px 0;
+      color: #d21034;
     }
 
-    .card button {
-      margin-top: 12px;
+    button {
       width: 100%;
-      padding: 12px;
+      padding: 14px;
       border: none;
-      border-radius: 8px;
+      border-radius: 10px;
       background: #00843d;
       color: white;
-      font-size: 16px;
+      font-size: 17px;
+      font-weight: bold;
       cursor: pointer;
     }
 
-    .contact {
-      background: #222;
-      color: white;
-      padding: 30px 20px;
-      text-align: center;
+    button:hover {
+      background: #006b31;
     }
 
     footer {
-      background: #111;
-      color: white;
+      margin-top: 30px;
+      padding: 25px;
       text-align: center;
-      padding: 15px;
-      font-size: 14px;
+      background: #222;
+      color: white;
     }
 
-    #message {
-      display: none;
-      margin: 15px auto;
-      max-width: 500px;
-      padding: 15px;
-      background: #e8f5e9;
-      color: #00843d;
-      border-radius: 10px;
-      text-align: center;
-      font-weight: bold;
+    .logo {
+      font-size: 42px;
+      margin-bottom: 8px;
     }
   </style>
 </head>
@@ -159,107 +119,93 @@
 <body>
 
   <header>
-    <h1>🇧🇫 FasoPass</h1>
-    <p>La billetterie digitale du Burkina Faso</p>
+    <div class="logo">🎟️</div>
+    <h1>FasoPass</h1>
+    <p>Votre billetterie en ligne au Burkina Faso</p>
   </header>
 
-  <nav>
-    <button onclick="accueil()">Accueil</button>
-    <button onclick="evenements()">Événements</button>
-    <button onclick="contact()">Contact</button>
-  </nav>
+  <div class="container">
 
-  <section class="hero" id="accueil">
-    <h2>Bienvenue sur FasoPass</h2>
-    <p>
-      Découvrez les événements près de chez vous et réservez
-      facilement vos billets en ligne.
-    </p>
+    <div class="search">
+      <input
+        type="text"
+        id="search"
+        placeholder="Rechercher un événement..."
+        onkeyup="rechercher()"
+      >
+    </div>
 
-    <button class="btn" onclick="evenements()">
-      Voir les événements
-    </button>
-  </section>
+    <h2>🎉 Événements disponibles</h2>
 
-  <div id="message">
-    Votre réservation a été sélectionnée. Nous allons bientôt ajouter le paiement.
+    <div id="events">
+
+      <div class="event">
+        <h3>Concert Live Ouagadougou</h3>
+        <p>📍 Ouagadougou</p>
+        <p>📅 30 Août 2026</p>
+        <p>🕗 20h00</p>
+        <div class="price">2 500 FCFA</div>
+        <button onclick="acheter('Concert Live Ouagadougou')">
+          Acheter mon billet
+        </button>
+      </div>
+
+      <div class="event">
+        <h3>Festival de la Jeunesse</h3>
+        <p>📍 Ouagadougou</p>
+        <p>📅 5 Septembre 2026</p>
+        <p>🕗 18h00</p>
+        <div class="price">1 500 FCFA</div>
+        <button onclick="acheter('Festival de la Jeunesse')">
+          Acheter mon billet
+        </button>
+      </div>
+
+      <div class="event">
+        <h3>Grande Nuit Culturelle</h3>
+        <p>📍 Bobo-Dioulasso</p>
+        <p>📅 12 Septembre 2026</p>
+        <p>🕗 19h00</p>
+        <div class="price">3 000 FCFA</div>
+        <button onclick="acheter('Grande Nuit Culturelle')">
+          Acheter mon billet
+        </button>
+      </div>
+
+    </div>
+
   </div>
 
-  <section class="events" id="evenements">
-    <h2>🎫 Événements disponibles</h2>
-
-    <div class="card">
-      <h3>Concert Faso Music</h3>
-      <p>📅 Date : 30 août 2026</p>
-      <p>📍 Lieu : Ouagadougou</p>
-      <p class="price">5 000 FCFA</p>
-      <button onclick="reserver('Concert Faso Music')">
-        Réserver mon billet
-      </button>
-    </div>
-
-    <div class="card">
-      <h3>Festival de la Jeunesse</h3>
-      <p>📅 Date : 5 septembre 2026</p>
-      <p>📍 Lieu : Ouagadougou</p>
-      <p class="price">2 500 FCFA</p>
-      <button onclick="reserver('Festival de la Jeunesse')">
-        Réserver mon billet
-      </button>
-    </div>
-
-    <div class="card">
-      <h3>Grande Nuit Culturelle</h3>
-      <p>📅 Date : 12 septembre 2026</p>
-      <p>📍 Lieu : Bobo-Dioulasso</p>
-      <p class="price">3 000 FCFA</p>
-      <button onclick="reserver('Grande Nuit Culturelle')">
-        Réserver mon billet
-      </button>
-    </div>
-
-  </section>
-
-  <section class="contact" id="contact">
-    <h2>📞 Contact</h2>
-    <p style="margin-top:10px;">
-      FasoPass — Votre accès simple aux événements du Burkina Faso.
-    </p>
-  </section>
-
   <footer>
-    © 2026 FasoPass — Tous droits réservés
+    <p>© 2026 FasoPass</p>
+    <p>Billetterie simple, rapide et accessible.</p>
   </footer>
 
   <script>
-    function accueil() {
-      document.getElementById("accueil").scrollIntoView({
-        behavior: "smooth"
-      });
+    function acheter(evenement) {
+      alert(
+        "🎟️ Vous avez choisi : " +
+        evenement +
+        "\n\nLe système de paiement sera bientôt disponible."
+      );
     }
 
-    function evenements() {
-      document.getElementById("evenements").scrollIntoView({
-        behavior: "smooth"
-      });
-    }
+    function rechercher() {
+      let recherche = document
+        .getElementById("search")
+        .value
+        .toLowerCase();
 
-    function contact() {
-      document.getElementById("contact").scrollIntoView({
-        behavior: "smooth"
-      });
-    }
+      let evenements = document.querySelectorAll(".event");
 
-    function reserver(nom) {
-      document.getElementById("message").innerText =
-        "✅ Vous avez sélectionné : " + nom +
-        ". Le système de paiement sera ajouté prochainement.";
+      evenements.forEach(function(event) {
+        let texte = event.innerText.toLowerCase();
 
-      document.getElementById("message").style.display = "block";
-
-      window.scrollTo({
-        top: 0,
-        behavior: "smooth"
+        if (texte.includes(recherche)) {
+          event.style.display = "block";
+        } else {
+          event.style.display = "none";
+        }
       });
     }
   </script>
