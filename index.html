@@ -26,12 +26,12 @@ header{
 }
 
 header h1{
-  font-size:34px;
+  font-size:36px;
   margin-bottom:10px;
 }
 
 header p{
-  font-size:17px;
+  font-size:18px;
 }
 
 .container{
@@ -42,68 +42,133 @@ header p{
 
 .card{
   background:white;
-  padding:22px;
-  border-radius:15px;
-  box-shadow:0 3px 12px rgba(0,0,0,.12);
+  border-radius:25px;
+  padding:28px;
+  box-shadow:0 5px 20px rgba(0,0,0,.12);
+  margin-bottom:25px;
 }
 
 h2{
-  margin-bottom:20px;
   color:#00843d;
+  margin-bottom:25px;
+  font-size:30px;
 }
 
 label{
   display:block;
-  margin-top:14px;
-  margin-bottom:6px;
+  font-size:18px;
   font-weight:bold;
+  margin:18px 0 8px;
 }
 
 input,select{
   width:100%;
-  padding:13px;
-  border:1px solid #ccc;
-  border-radius:8px;
-  font-size:16px;
+  padding:17px;
+  border:2px solid #ddd;
+  border-radius:15px;
+  font-size:18px;
+  background:#fafafa;
 }
 
 button{
   width:100%;
-  padding:14px;
-  margin-top:20px;
+  padding:17px;
   border:none;
-  border-radius:8px;
+  border-radius:15px;
   background:#00843d;
   color:white;
-  font-size:17px;
+  font-size:20px;
   font-weight:bold;
+  margin-top:22px;
+  cursor:pointer;
 }
 
 button:hover{
-  background:#006b31;
+  opacity:.9;
 }
 
-.result{
+.ticket{
   display:none;
-  margin-top:25px;
-  padding:20px;
-  border-radius:12px;
-  background:#eef8f2;
-  border:2px solid #00843d;
+  background:#effaf3;
+  border:3px solid #00843d;
+}
+
+.ticket h2{
+  color:#00843d;
+}
+
+.ticket p{
+  font-size:18px;
+  margin:10px 0;
 }
 
 .code{
-  font-size:24px;
+  text-align:center;
+  font-size:30px;
   font-weight:bold;
   color:#d21034;
+  margin:20px 0;
+  letter-spacing:2px;
+}
+
+.payment{
+  display:none;
+}
+
+.payment h2{
+  color:#00843d;
+}
+
+.payment-info{
+  background:#fff8dc;
+  border-left:5px solid #f0c300;
+  padding:15px;
+  border-radius:10px;
+  margin-bottom:20px;
+  font-size:16px;
+}
+
+.method{
+  border:2px solid #ddd;
+  border-radius:15px;
+  padding:18px;
+  margin:12px 0;
+  cursor:pointer;
+  font-size:18px;
+  font-weight:bold;
+  background:white;
+}
+
+.method.selected{
+  border:3px solid #00843d;
+  background:#effaf3;
+}
+
+.payment-number{
+  display:none;
+}
+
+.success{
+  display:none;
   text-align:center;
-  margin:15px 0;
+  background:#effaf3;
+  border:3px solid #00843d;
+}
+
+.success h2{
+  color:#00843d;
+}
+
+.success-icon{
+  font-size:60px;
+  margin-bottom:15px;
 }
 
 footer{
   text-align:center;
-  padding:25px;
   color:#666;
+  padding:30px 15px;
+  font-size:16px;
 }
 </style>
 </head>
@@ -117,8 +182,8 @@ footer{
 
 <div class="container">
 
+  <!-- RESERVATION -->
   <div class="card">
-
     <h2>🎫 Réserver un billet</h2>
 
     <label>Ville de départ</label>
@@ -128,43 +193,87 @@ footer{
     <input id="arrival" type="text" placeholder="Exemple : Ouagadougou">
 
     <label>Date du voyage</label>
-    <input id="date" type="date">
+    <input id="travelDate" type="date">
 
     <label>Nombre de passagers</label>
-    <select id="passengers">
+    <select id="passengerCount">
       <option value="1">1 passager</option>
       <option value="2">2 passagers</option>
       <option value="3">3 passagers</option>
       <option value="4">4 passagers</option>
       <option value="5">5 passagers</option>
+      <option value="6">6 passagers</option>
+      <option value="7">7 passagers</option>
+      <option value="8">8 passagers</option>
+      <option value="9">9 passagers</option>
+      <option value="10">10 passagers</option>
     </select>
 
-    <button onclick="createTicket()">
-      🎫 Créer mon billet
-    </button>
+    <button onclick="createTicket()">🎫 Créer mon billet</button>
+  </div>
 
-    <div class="result" id="result">
+  <!-- BILLET -->
+  <div class="card ticket" id="result">
+    <h2>✅ Billet créé</h2>
 
-      <h2>✅ Billet créé</h2>
+    <p><strong>Trajet :</strong></p>
+    <p id="ticketRoute"></p>
 
-      <p><strong>Trajet :</strong></p>
-      <p id="route"></p>
+    <p><strong>Date :</strong></p>
+    <p id="ticketDate"></p>
 
-      <p><strong>Date :</strong></p>
-      <p id="travelDate"></p>
+    <p><strong>Passagers :</strong></p>
+    <p id="ticketPassengers"></p>
 
-      <p><strong>Passagers :</strong></p>
-      <p id="passengerCount"></p>
+    <p><strong>Code du billet :</strong></p>
+    <div class="code" id="ticketCode"></div>
 
-      <p><strong>Code du billet :</strong></p>
-      <div class="code" id="ticketCode"></div>
+    <button onclick="showPayment()">💳 Continuer vers le paiement</button>
+  </div>
 
-      <button onclick="payment()">
-        💳 Continuer vers le paiement
-      </button>
+  <!-- PAIEMENT -->
+  <div class="card payment" id="paymentSection">
+    <h2>💳 Paiement du billet</h2>
 
+    <div class="payment-info">
+      <strong>FasoPass</strong><br>
+      Sélectionnez votre moyen de paiement pour continuer.
     </div>
 
+    <div class="method" onclick="selectMethod(this,'Orange Money')">
+      🟠 Orange Money
+    </div>
+
+    <div class="method" onclick="selectMethod(this,'Moov Money')">
+      🟢 Moov Money
+    </div>
+
+    <div class="method" onclick="selectMethod(this,'Carte bancaire')">
+      💳 Carte bancaire
+    </div>
+
+    <div class="payment-number" id="paymentNumber">
+      <label>Numéro de téléphone</label>
+      <input id="phone" type="tel" placeholder="Exemple : 70 00 00 00">
+
+      <button onclick="confirmPayment()">🔐 Confirmer le paiement</button>
+    </div>
+  </div>
+
+  <!-- SUCCÈS -->
+  <div class="card success" id="successSection">
+    <div class="success-icon">✅</div>
+    <h2>Paiement enregistré</h2>
+
+    <p id="successText"></p>
+
+    <p style="margin-top:20px;">
+      Votre billet FasoPass est prêt.
+    </p>
+
+    <button onclick="window.scrollTo({top:0,behavior:'smooth'})">
+      🏠 Retour
+    </button>
   </div>
 
 </div>
@@ -175,6 +284,9 @@ footer{
 
 <script>
 
+let selectedMethod = "";
+let generatedCode = "";
+
 function createTicket(){
 
   const departure =
@@ -184,42 +296,101 @@ function createTicket(){
     document.getElementById("arrival").value.trim();
 
   const date =
-    document.getElementById("date").value;
+    document.getElementById("travelDate").value;
 
   const passengers =
-    document.getElementById("passengers").value;
+    document.getElementById("passengerCount").value;
 
-  if(departure === "" || arrival === "" || date === ""){
-    alert("Veuillez remplir tous les champs.");
+  if(!departure || !arrival || !date){
+    alert("Veuillez remplir toutes les informations du voyage.");
     return;
   }
 
-  const code =
+  generatedCode =
     "FP-" +
     Math.random().toString(36)
     .substring(2,8)
     .toUpperCase();
 
-  document.getElementById("route").textContent =
+  document.getElementById("ticketRoute").textContent =
     departure + " → " + arrival;
 
-  document.getElementById("travelDate").textContent =
+  document.getElementById("ticketDate").textContent =
     date;
 
-  document.getElementById("passengerCount").textContent =
+  document.getElementById("ticketPassengers").textContent =
     passengers;
 
   document.getElementById("ticketCode").textContent =
-    code;
+    generatedCode;
 
-  document.getElementById("result").style.display =
+  document.getElementById("result").style.display = "block";
+
+  document.getElementById("paymentSection").style.display = "none";
+
+  document.getElementById("successSection").style.display = "none";
+
+  document.getElementById("result").scrollIntoView({
+    behavior:"smooth"
+  });
+}
+
+function showPayment(){
+
+  document.getElementById("paymentSection").style.display =
+    "block";
+
+  document.getElementById("paymentSection").scrollIntoView({
+    behavior:"smooth"
+  });
+}
+
+function selectMethod(element,method){
+
+  const methods =
+    document.querySelectorAll(".method");
+
+  methods.forEach(function(item){
+    item.classList.remove("selected");
+  });
+
+  element.classList.add("selected");
+
+  selectedMethod = method;
+
+  document.getElementById("paymentNumber").style.display =
     "block";
 }
 
-function payment(){
-  alert(
-    "Le système de paiement sera ajouté dans une prochaine étape."
-  );
+function confirmPayment(){
+
+  const phone =
+    document.getElementById("phone").value.trim();
+
+  if(!selectedMethod){
+    alert("Veuillez choisir un moyen de paiement.");
+    return;
+  }
+
+  if(!phone){
+    alert("Veuillez entrer votre numéro de téléphone.");
+    return;
+  }
+
+  document.getElementById("successText").textContent =
+    "Moyen de paiement : " +
+    selectedMethod +
+    " | Numéro : " +
+    phone +
+    " | Code du billet : " +
+    generatedCode;
+
+  document.getElementById("successSection").style.display =
+    "block";
+
+  document.getElementById("successSection").scrollIntoView({
+    behavior:"smooth"
+  });
 }
 
 </script>
