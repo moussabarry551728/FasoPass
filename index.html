@@ -21,171 +21,131 @@ body{
 header{
   background:linear-gradient(135deg,#00843d,#f0c300,#d21034);
   color:white;
-  padding:25px 18px;
+  padding:30px 18px;
   text-align:center;
 }
 
 header h1{
-  font-size:34px;
-  margin-bottom:8px;
+  font-size:36px;
+  margin-bottom:10px;
 }
 
 header p{
-  font-size:16px;
-  margin-bottom:15px;
+  font-size:20px;
+  margin-bottom:25px;
 }
 
 .language{
-  padding:10px;
-  border-radius:8px;
-  border:none;
-  font-size:15px;
+  width:100%;
+  max-width:620px;
+  padding:15px;
+  border:0;
+  border-radius:15px;
+  font-size:18px;
 }
 
 .container{
-  max-width:900px;
+  max-width:680px;
   margin:auto;
   padding:20px;
 }
 
-.hero{
+.card{
   background:white;
-  border-radius:15px;
-  padding:25px;
-  margin-bottom:20px;
-  box-shadow:0 3px 12px rgba(0,0,0,.08);
+  margin:20px 0;
+  padding:30px;
+  border-radius:28px;
+  box-shadow:0 8px 25px rgba(0,0,0,.08);
 }
 
-.hero h2{
+h2{
   color:#00843d;
-  margin-bottom:10px;
+  margin-bottom:20px;
+  font-size:30px;
 }
 
-.hero p{
-  line-height:1.6;
+h3{
+  color:#00843d;
+  font-size:28px;
+  margin-bottom:15px;
 }
 
-.buttons{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:12px;
-  margin-top:20px;
+p{
+  font-size:19px;
+  line-height:1.7;
+  margin-bottom:20px;
 }
 
 button{
-  border:none;
-  border-radius:10px;
-  padding:14px;
-  font-size:16px;
+  border:0;
+  border-radius:18px;
+  padding:18px 25px;
+  font-size:20px;
   font-weight:bold;
   cursor:pointer;
+  width:100%;
+  margin-top:10px;
 }
 
-.primary{
+.green{
   background:#00843d;
   color:white;
 }
 
-.secondary{
+.yellow{
   background:#f0c300;
   color:#222;
 }
 
-.cards{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
-  gap:18px;
-  margin-top:20px;
-}
-
-.card{
+input,select{
+  width:100%;
+  padding:17px;
+  margin:8px 0 18px;
+  border:2px solid #ddd;
+  border-radius:14px;
+  font-size:18px;
   background:white;
-  padding:20px;
-  border-radius:15px;
-  box-shadow:0 3px 12px rgba(0,0,0,.08);
-}
-
-.card h3{
-  color:#00843d;
-  margin-bottom:10px;
-}
-
-.card p{
-  line-height:1.5;
-  margin-bottom:15px;
-}
-
-.form{
-  background:white;
-  padding:22px;
-  border-radius:15px;
-  margin-top:25px;
-  box-shadow:0 3px 12px rgba(0,0,0,.08);
-}
-
-.form h2{
-  margin-bottom:18px;
-  color:#00843d;
 }
 
 label{
   display:block;
   font-weight:bold;
-  margin:12px 0 6px;
-}
-
-input,select{
-  width:100%;
-  padding:13px;
-  border:1px solid #ccc;
-  border-radius:8px;
-  font-size:16px;
+  font-size:18px;
+  margin-top:8px;
 }
 
 .ticket{
   display:none;
-  background:#fff;
-  border:2px dashed #00843d;
-  border-radius:15px;
-  padding:22px;
-  margin-top:20px;
+  border:3px dashed #00843d;
+  background:#f8fff9;
+  margin-top:25px;
+  padding:25px;
+  border-radius:20px;
 }
 
-.ticket h2{
-  color:#00843d;
-  margin-bottom:12px;
+.ticket h3{
+  text-align:center;
 }
 
 .ticket p{
   margin:8px 0;
+  font-size:17px;
 }
 
 footer{
   background:#222;
   color:white;
   text-align:center;
-  padding:25px;
+  padding:35px 20px;
   margin-top:30px;
-  line-height:1.7;
 }
 
-.success{
-  background:#e8f7ed;
-  color:#08752f;
-  padding:12px;
-  border-radius:8px;
-  margin-top:15px;
+footer p{
+  margin:8px;
+}
+
+.hidden{
   display:none;
-}
-
-@media(max-width:600px){
-  .buttons{
-    grid-template-columns:1fr;
-  }
-
-  header h1{
-    font-size:28px;
-  }
 }
 </style>
 </head>
@@ -194,139 +154,183 @@ footer{
 
 <header>
   <h1>FasoPass</h1>
-  <p id="subtitle">Votre plateforme de billetterie au Burkina Faso</p>
+  <p id="subtitle">
+    Votre plateforme de billetterie au Burkina Faso
+  </p>
 
-  <select class="language" id="language" onchange="changeLanguage()">
+  <select id="language" class="language" onchange="changeLanguage()">
     <option value="fr">🇫🇷 Français</option>
     <option value="en">🇬🇧 English</option>
     <option value="es">🇪🇸 Español</option>
     <option value="ar">🇸🇦 العربية</option>
-    <option value="zh">🇨🇳 中文</option>
   </select>
 </header>
 
 <div class="container">
 
-  <section class="hero">
+  <!-- ACCUEIL -->
+  <section class="card">
     <h2 id="welcome">Bienvenue sur FasoPass</h2>
 
-    <p id="description">
-      Créez, gérez et achetez facilement des billets pour les événements,
-      concerts, conférences et transports.
+    <p id="welcomeText">
+      Créez, gérez et achetez facilement des billets pour les
+      événements, concerts, conférences et transports.
     </p>
 
-    <div class="buttons">
-      <button class="primary" onclick="showEventForm()" id="eventBtn">
-        🎫 Créer un événement
-      </button>
-
-      <button class="secondary" onclick="showTransportForm()" id="transportBtn">
-        🚌 Billet de transport
-      </button>
-    </div>
-  </section>
-
-  <section>
-    <div class="cards">
-
-      <div class="card">
-        <h3 id="eventTitle">🎉 Événements</h3>
-        <p id="eventText">
-          Concerts, spectacles, conférences, cérémonies et autres événements.
-        </p>
-        <button class="primary" onclick="showEventForm()" id="buyEvent">
-          Acheter un billet
-        </button>
-      </div>
-
-      <div class="card">
-        <h3 id="transportTitle">🚌 Transport</h3>
-        <p id="transportText">
-          Réservez vos billets de transport facilement et rapidement.
-        </p>
-        <button class="secondary" onclick="showTransportForm()" id="buyTransport">
-          Réserver
-        </button>
-      </div>
-
-      <div class="card">
-        <h3 id="organizerTitle">👤 Organisateurs</h3>
-        <p id="organizerText">
-          Une solution simple pour créer vos événements et vendre vos billets.
-        </p>
-        <button class="primary" onclick="showEventForm()" id="organizerBtn">
-          Commencer
-        </button>
-      </div>
-
-    </div>
-  </section>
-
-  <section class="form" id="eventForm">
-
-    <h2 id="formTitle">Créer un événement</h2>
-
-    <label id="nameLabel">Nom de l'événement</label>
-    <input type="text" id="eventName" placeholder="Exemple : Grand concert de Bobo">
-
-    <label id="cityLabel">Ville</label>
-    <input type="text" id="city" value="Bobo-Dioulasso">
-
-    <label id="dateLabel">Date</label>
-    <input type="date" id="date">
-
-    <label id="priceLabel">Prix du billet</label>
-    <input type="number" id="price" placeholder="Exemple : 2000">
-
-    <label id="quantityLabel">Nombre de billets</label>
-    <input type="number" id="quantity" value="100">
-
-    <button class="primary" onclick="createTicket()" style="margin-top:18px;width:100%;" id="createBtn">
-      Générer le billet
+    <button class="green" onclick="showSection('event')">
+      🎟️ <span id="createEvent">Créer un événement</span>
     </button>
 
-    <div class="success" id="success">
-      Billet créé avec succès !
-    </div>
+    <button class="yellow" onclick="showSection('transport')">
+      🚌 <span id="transportTicket">Billet de transport</span>
+    </button>
+  </section>
+
+  <!-- EVENEMENTS -->
+  <section class="card">
+    <h3>🎉 <span id="eventsTitle">Événements</span></h3>
+
+    <p id="eventsText">
+      Concerts, spectacles, conférences, cérémonies et autres événements.
+    </p>
+
+    <button class="green" onclick="showSection('buy')">
+      <span id="buyTicket">Acheter un billet</span>
+    </button>
+  </section>
+
+  <!-- TRANSPORT -->
+  <section class="card">
+    <h3>🚌 <span id="transportTitle">Transport</span></h3>
+
+    <p id="transportText">
+      Réservez vos billets de transport facilement et rapidement.
+    </p>
+
+    <button class="yellow" onclick="showSection('transport')">
+      <span id="reserve">Réserver</span>
+    </button>
+  </section>
+
+  <!-- ORGANISATEURS -->
+  <section class="card">
+    <h3>👤 <span id="organizers">Organisateurs</span></h3>
+
+    <p id="organizersText">
+      Une solution simple pour créer vos événements et vendre vos billets.
+    </p>
+
+    <button class="green" onclick="showSection('event')">
+      <span id="start">Commencer</span>
+    </button>
+  </section>
+
+  <!-- CREATION EVENEMENT -->
+  <section class="card" id="event">
+    <h2 id="createTitle">Créer un événement</h2>
+
+    <label id="eventNameLabel">Nom de l'événement</label>
+    <input id="eventName" type="text"
+      placeholder="Exemple : Grand concert de Bobo">
+
+    <label id="cityLabel">Ville</label>
+    <input id="city" type="text" value="Bobo-Dioulasso">
+
+    <label id="dateLabel">Date</label>
+    <input id="date" type="date">
+
+    <label id="priceLabel">Prix du billet</label>
+    <input id="price" type="number"
+      placeholder="Exemple : 2000">
+
+    <label id="quantityLabel">Nombre de billets</label>
+    <input id="quantity" type="number" value="100">
+
+    <button class="green" onclick="generateTicket()">
+      🎟️ <span id="generate">Générer le billet</span>
+    </button>
 
     <div class="ticket" id="ticket">
-      <h2>🎫 FasoPass</h2>
+      <h3>🎟️ FasoPass</h3>
 
       <p><strong id="ticketEvent">Événement :</strong>
-        <span id="ticketName"></span>
-      </p>
+        <span id="resultEvent"></span></p>
 
       <p><strong id="ticketCity">Ville :</strong>
-        <span id="ticketCityValue"></span>
-      </p>
+        <span id="resultCity"></span></p>
 
       <p><strong id="ticketDate">Date :</strong>
-        <span id="ticketDateValue"></span>
-      </p>
+        <span id="resultDate"></span></p>
 
       <p><strong id="ticketPrice">Prix :</strong>
-        <span id="ticketPriceValue"></span> FCFA
-      </p>
+        <span id="resultPrice"></span> FCFA</p>
 
-      <p><strong id="ticketNumber">Billets disponibles :</strong>
-        <span id="ticketQuantity"></span>
-      </p>
+      <p><strong id="ticketQuantity">Billets disponibles :</strong>
+        <span id="resultQuantity"></span></p>
 
-      <p style="margin-top:15px;font-weight:bold;">
-        ✓ FasoPass
-      </p>
+      <p><strong>Code :</strong>
+        <span id="ticketCode"></span></p>
     </div>
+  </section>
 
+  <!-- TRANSPORT FORMULAIRE -->
+  <section class="card hidden" id="transport">
+    <h2 id="transportFormTitle">🎫 Billet de transport</h2>
+
+    <label id="departureLabel">Départ</label>
+    <input id="departure" type="text"
+      placeholder="Exemple : Bobo-Dioulasso">
+
+    <label id="arrivalLabel">Destination</label>
+    <input id="arrival" type="text"
+      placeholder="Exemple : Ouagadougou">
+
+    <label id="travelDateLabel">Date du voyage</label>
+    <input id="travelDate" type="date">
+
+    <label id="passengerLabel">Nom du passager</label>
+    <input id="passenger" type="text"
+      placeholder="Nom complet">
+
+    <button class="yellow" onclick="reserveTransport()">
+      🚌 <span id="reserveButton">Réserver le transport</span>
+    </button>
+
+    <div class="ticket" id="transportResult">
+      <h3>🚌 FasoPass</h3>
+      <p><strong id="routeText">Trajet :</strong>
+        <span id="resultRoute"></span></p>
+      <p><strong id="travelText">Date :</strong>
+        <span id="resultTravelDate"></span></p>
+      <p><strong id="passengerText">Passager :</strong>
+        <span id="resultPassenger"></span></p>
+      <p><strong>Code :</strong>
+        <span id="transportCode"></span></p>
+    </div>
+  </section>
+
+  <!-- ACHAT -->
+  <section class="card hidden" id="buy">
+    <h2 id="buyTitle">🎟️ Acheter un billet</h2>
+
+    <p id="buyText">
+      Les billets disponibles pourront être achetés directement
+      depuis FasoPass.
+    </p>
+
+    <button class="green" onclick="alertMessage()">
+      💳 <span id="payment">Continuer</span>
+    </button>
   </section>
 
 </div>
 
 <footer>
-  <strong>FasoPass</strong><br>
-  <span id="footerText">
+  <h2>FasoPass</h2>
+  <p id="footerText">
     Une plateforme pensée au Burkina Faso pour le monde.
-  </span><br>
-  © 2026 FasoPass - Moussa Barry
+  </p>
+  <p>© 2026 FasoPass - Moussa Barry</p>
 </footer>
 
 <script>
@@ -336,151 +340,169 @@ const translations = {
 fr:{
 subtitle:"Votre plateforme de billetterie au Burkina Faso",
 welcome:"Bienvenue sur FasoPass",
-description:"Créez, gérez et achetez facilement des billets pour les événements, concerts, conférences et transports.",
-eventBtn:"🎫 Créer un événement",
-transportBtn:"🚌 Billet de transport",
-eventTitle:"🎉 Événements",
-eventText:"Concerts, spectacles, conférences, cérémonies et autres événements.",
-buyEvent:"Acheter un billet",
-transportTitle:"🚌 Transport",
+welcomeText:"Créez, gérez et achetez facilement des billets pour les événements, concerts, conférences et transports.",
+createEvent:"Créer un événement",
+transportTicket:"Billet de transport",
+eventsTitle:"Événements",
+eventsText:"Concerts, spectacles, conférences, cérémonies et autres événements.",
+buyTicket:"Acheter un billet",
+transportTitle:"Transport",
 transportText:"Réservez vos billets de transport facilement et rapidement.",
-buyTransport:"Réserver",
-organizerTitle:"👤 Organisateurs",
-organizerText:"Une solution simple pour créer vos événements et vendre vos billets.",
-organizerBtn:"Commencer",
-formTitle:"Créer un événement",
-nameLabel:"Nom de l'événement",
+reserve:"Réserver",
+organizers:"Organisateurs",
+organizersText:"Une solution simple pour créer vos événements et vendre vos billets.",
+start:"Commencer",
+createTitle:"Créer un événement",
+eventNameLabel:"Nom de l'événement",
 cityLabel:"Ville",
 dateLabel:"Date",
 priceLabel:"Prix du billet",
 quantityLabel:"Nombre de billets",
-createBtn:"Générer le billet",
+generate:"Générer le billet",
+transportFormTitle:"🎫 Billet de transport",
+departureLabel:"Départ",
+arrivalLabel:"Destination",
+travelDateLabel:"Date du voyage",
+passengerLabel:"Nom du passager",
+reserveButton:"Réserver le transport",
+buyTitle:"🎟️ Acheter un billet",
+buyText:"Les billets disponibles pourront être achetés directement depuis FasoPass.",
+payment:"Continuer",
 footerText:"Une plateforme pensée au Burkina Faso pour le monde.",
 ticketEvent:"Événement :",
 ticketCity:"Ville :",
 ticketDate:"Date :",
 ticketPrice:"Prix :",
-ticketNumber:"Billets disponibles :"
+ticketQuantity:"Billets disponibles :",
+routeText:"Trajet :",
+travelText:"Date :",
+passengerText:"Passager :"
 },
 
 en:{
 subtitle:"Your ticketing platform in Burkina Faso",
 welcome:"Welcome to FasoPass",
-description:"Create, manage and buy tickets for events, concerts, conferences and transportation.",
-eventBtn:"🎫 Create an event",
-transportBtn:"🚌 Transport ticket",
-eventTitle:"🎉 Events",
-eventText:"Concerts, shows, conferences, ceremonies and other events.",
-buyEvent:"Buy a ticket",
-transportTitle:"🚌 Transport",
-transportText:"Book your transportation tickets easily and quickly.",
-buyTransport:"Book now",
-organizerTitle:"👤 Organizers",
-organizerText:"A simple solution to create events and sell tickets.",
-organizerBtn:"Get started",
-formTitle:"Create an event",
-nameLabel:"Event name",
+welcomeText:"Easily create, manage and buy tickets for events, concerts, conferences and transportation.",
+createEvent:"Create an event",
+transportTicket:"Transport ticket",
+eventsTitle:"Events",
+eventsText:"Concerts, shows, conferences, ceremonies and other events.",
+buyTicket:"Buy a ticket",
+transportTitle:"Transport",
+transportText:"Book your transport tickets easily and quickly.",
+reserve:"Book",
+organizers:"Organizers",
+organizersText:"A simple solution to create your events and sell your tickets.",
+start:"Get started",
+createTitle:"Create an event",
+eventNameLabel:"Event name",
 cityLabel:"City",
 dateLabel:"Date",
 priceLabel:"Ticket price",
 quantityLabel:"Number of tickets",
-createBtn:"Generate ticket",
-footerText:"A platform created in Burkina Faso for the world.",
+generate:"Generate ticket",
+transportFormTitle:"🎫 Transport ticket",
+departureLabel:"Departure",
+arrivalLabel:"Destination",
+travelDateLabel:"Travel date",
+passengerLabel:"Passenger name",
+reserveButton:"Book transport",
+buyTitle:"🎟️ Buy a ticket",
+buyText:"Available tickets can be purchased directly through FasoPass.",
+payment:"Continue",
+footerText:"A platform designed in Burkina Faso for the world.",
 ticketEvent:"Event:",
 ticketCity:"City:",
 ticketDate:"Date:",
 ticketPrice:"Price:",
-ticketNumber:"Tickets available:"
+ticketQuantity:"Available tickets:",
+routeText:"Route:",
+travelText:"Date:",
+passengerText:"Passenger:"
 },
 
 es:{
 subtitle:"Tu plataforma de venta de entradas en Burkina Faso",
 welcome:"Bienvenido a FasoPass",
-description:"Crea, administra y compra entradas para eventos, conciertos, conferencias y transporte.",
-eventBtn:"🎫 Crear un evento",
-transportBtn:"🚌 Billete de transporte",
-eventTitle:"🎉 Eventos",
-eventText:"Conciertos, espectáculos, conferencias, ceremonias y otros eventos.",
-buyEvent:"Comprar entrada",
-transportTitle:"🚌 Transporte",
+welcomeText:"Crea, gestiona y compra fácilmente entradas para eventos, conciertos, conferencias y transporte.",
+createEvent:"Crear un evento",
+transportTicket:"Billete de transporte",
+eventsTitle:"Eventos",
+eventsText:"Conciertos, espectáculos, conferencias, ceremonias y otros eventos.",
+buyTicket:"Comprar un billete",
+transportTitle:"Transporte",
 transportText:"Reserva tus billetes de transporte de forma fácil y rápida.",
-buyTransport:"Reservar",
-organizerTitle:"👤 Organizadores",
-organizerText:"Una solución sencilla para crear eventos y vender entradas.",
-organizerBtn:"Comenzar",
-formTitle:"Crear un evento",
-nameLabel:"Nombre del evento",
+reserve:"Reservar",
+organizers:"Organizadores",
+organizersText:"Una solución sencilla para crear eventos y vender entradas.",
+start:"Comenzar",
+createTitle:"Crear un evento",
+eventNameLabel:"Nombre del evento",
 cityLabel:"Ciudad",
 dateLabel:"Fecha",
-priceLabel:"Precio de la entrada",
-quantityLabel:"Número de entradas",
-createBtn:"Generar entrada",
+priceLabel:"Precio del billete",
+quantityLabel:"Número de billetes",
+generate:"Generar billete",
+transportFormTitle:"🎫 Billete de transporte",
+departureLabel:"Salida",
+arrivalLabel:"Destino",
+travelDateLabel:"Fecha del viaje",
+passengerLabel:"Nombre del pasajero",
+reserveButton:"Reservar transporte",
+buyTitle:"🎟️ Comprar un billete",
+buyText:"Los billetes disponibles podrán comprarse directamente desde FasoPass.",
+payment:"Continuar",
 footerText:"Una plataforma creada en Burkina Faso para el mundo.",
 ticketEvent:"Evento:",
 ticketCity:"Ciudad:",
 ticketDate:"Fecha:",
 ticketPrice:"Precio:",
-ticketNumber:"Entradas disponibles:"
+ticketQuantity:"Billetes disponibles:",
+routeText:"Ruta:",
+travelText:"Fecha:",
+passengerText:"Pasajero:"
 },
 
 ar:{
 subtitle:"منصة التذاكر الخاصة بك في بوركينا فاسو",
 welcome:"مرحباً بكم في FasoPass",
-description:"أنشئ وأدر واشترِ التذاكر بسهولة للفعاليات والحفلات والمؤتمرات ووسائل النقل.",
-eventBtn:"🎫 إنشاء فعالية",
-transportBtn:"🚌 تذكرة نقل",
-eventTitle:"🎉 الفعاليات",
-eventText:"الحفلات والعروض والمؤتمرات والمراسم والفعاليات الأخرى.",
-buyEvent:"شراء تذكرة",
-transportTitle:"🚌 النقل",
+welcomeText:"أنشئ وأدر واشترِ التذاكر بسهولة للفعاليات والحفلات والمؤتمرات ووسائل النقل.",
+createEvent:"إنشاء فعالية",
+transportTicket:"تذكرة نقل",
+eventsTitle:"الفعاليات",
+eventsText:"حفلات وعروض ومؤتمرات ومراسم وفعاليات أخرى.",
+buyTicket:"شراء تذكرة",
+transportTitle:"النقل",
 transportText:"احجز تذاكر النقل بسهولة وسرعة.",
-buyTransport:"احجز الآن",
-organizerTitle:"👤 المنظمون",
-organizerText:"حل بسيط لإنشاء الفعاليات وبيع التذاكر.",
-organizerBtn:"ابدأ",
-formTitle:"إنشاء فعالية",
-nameLabel:"اسم الفعالية",
+reserve:"احجز",
+organizers:"المنظمون",
+organizersText:"حل بسيط لإنشاء فعالياتك وبيع تذاكرك.",
+start:"ابدأ",
+createTitle:"إنشاء فعالية",
+eventNameLabel:"اسم الفعالية",
 cityLabel:"المدينة",
 dateLabel:"التاريخ",
 priceLabel:"سعر التذكرة",
 quantityLabel:"عدد التذاكر",
-createBtn:"إنشاء التذكرة",
-footerText:"منصة صُنعت في بوركينا فاسو للعالم.",
+generate:"إنشاء التذكرة",
+transportFormTitle:"🎫 تذكرة النقل",
+departureLabel:"المغادرة",
+arrivalLabel:"الوجهة",
+travelDateLabel:"تاريخ السفر",
+passengerLabel:"اسم المسافر",
+reserveButton:"حجز النقل",
+buyTitle:"🎟️ شراء تذكرة",
+buyText:"يمكن شراء التذاكر المتاحة مباشرة من FasoPass.",
+payment:"متابعة",
+footerText:"منصة صُممت في بوركينا فاسو للعالم.",
 ticketEvent:"الفعالية:",
 ticketCity:"المدينة:",
 ticketDate:"التاريخ:",
 ticketPrice:"السعر:",
-ticketNumber:"التذاكر المتاحة:"
-},
-
-zh:{
-subtitle:"您在布基纳法索的票务平台",
-welcome:"欢迎来到 FasoPass",
-description:"轻松创建、管理和购买活动、音乐会、会议及交通票。",
-eventBtn:"🎫 创建活动",
-transportBtn:"🚌 交通票",
-eventTitle:"🎉 活动",
-eventText:"音乐会、演出、会议、典礼以及其他活动。",
-buyEvent:"购买门票",
-transportTitle:"🚌 交通",
-transportText:"轻松快速地预订交通票。",
-buyTransport:"立即预订",
-organizerTitle:"👤 活动组织者",
-organizerText:"简单的活动创建和售票解决方案。",
-organizerBtn:"开始",
-formTitle:"创建活动",
-nameLabel:"活动名称",
-cityLabel:"城市",
-dateLabel:"日期",
-priceLabel:"票价",
-quantityLabel:"门票数量",
-createBtn:"生成门票",
-footerText:"一个在布基纳法索为世界打造的平台。",
-ticketEvent:"活动：",
-ticketCity:"城市：",
-ticketDate:"日期：",
-ticketPrice:"价格：",
-ticketNumber:"可用门票："
+ticketQuantity:"التذاكر المتاحة:",
+routeText:"المسار:",
+travelText:"التاريخ:",
+passengerText:"المسافر:"
 }
 
 };
@@ -500,62 +522,80 @@ function changeLanguage(){
 
   for(const key in t){
     const element=document.getElementById(key);
-
     if(element){
       element.textContent=t[key];
     }
   }
 }
 
-function showEventForm(){
+function showSection(section){
 
-  document.getElementById("eventForm").style.display="block";
+  document.getElementById("event").classList.add("hidden");
+  document.getElementById("transport").classList.add("hidden");
+  document.getElementById("buy").classList.add("hidden");
 
-  window.scrollTo({
-    top:document.getElementById("eventForm").offsetTop,
-    behavior:"smooth"
-  });
+  const selected=document.getElementById(section);
+
+  if(selected){
+    selected.classList.remove("hidden");
+    selected.scrollIntoView({
+      behavior:"smooth",
+      block:"start"
+    });
+  }
 }
 
-function showTransportForm(){
+function generateTicket(){
 
-  document.getElementById("eventForm").style.display="block";
-
-  document.getElementById("formTitle").textContent=
-  "🚌 Billet de transport";
-
-  window.scrollTo({
-    top:document.getElementById("eventForm").offsetTop,
-    behavior:"smooth"
-  });
-}
-
-function createTicket(){
-
-  const name=document.getElementById("eventName").value;
+  const event=document.getElementById("eventName").value;
   const city=document.getElementById("city").value;
   const date=document.getElementById("date").value;
   const price=document.getElementById("price").value;
   const quantity=document.getElementById("quantity").value;
 
-  if(!name || !city || !date || !price || !quantity){
-
+  if(!event || !city || !date || !price || !quantity){
     alert("Veuillez remplir tous les champs.");
     return;
   }
 
-  document.getElementById("ticketName").textContent=name;
-  document.getElementById("ticketCityValue").textContent=city;
-  document.getElementById("ticketDateValue").textContent=date;
-  document.getElementById("ticketPriceValue").textContent=price;
-  document.getElementById("ticketQuantity").textContent=quantity;
+  document.getElementById("resultEvent").textContent=event;
+  document.getElementById("resultCity").textContent=city;
+  document.getElementById("resultDate").textContent=date;
+  document.getElementById("resultPrice").textContent=price;
+  document.getElementById("resultQuantity").textContent=quantity;
 
-  document.getElementById("success").style.display="block";
+  document.getElementById("ticketCode").textContent=
+    "FP-" + Math.random().toString(36).substring(2,10).toUpperCase();
+
   document.getElementById("ticket").style.display="block";
+}
 
-  document.getElementById("ticket").scrollIntoView({
-    behavior:"smooth"
-  });
+function reserveTransport(){
+
+  const departure=document.getElementById("departure").value;
+  const arrival=document.getElementById("arrival").value;
+  const date=document.getElementById("travelDate").value;
+  const passenger=document.getElementById("passenger").value;
+
+  if(!departure || !arrival || !date || !passenger){
+    alert("Veuillez remplir tous les champs.");
+    return;
+  }
+
+  document.getElementById("resultRoute").textContent=
+    departure + " → " + arrival;
+
+  document.getElementById("resultTravelDate").textContent=date;
+  document.getElementById("resultPassenger").textContent=passenger;
+
+  document.getElementById("transportCode").textContent=
+    "TR-" + Math.random().toString(36).substring(2,10).toUpperCase();
+
+  document.getElementById("transportResult").style.display="block";
+}
+
+function alertMessage(){
+  alert("Le système de paiement sera ajouté dans une prochaine étape.");
 }
 
 </script>
