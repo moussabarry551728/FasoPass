@@ -21,7 +21,7 @@ body{
 header{
   background:linear-gradient(135deg,#00843d,#f0c300,#d21034);
   color:white;
-  padding:24px 18px;
+  padding:25px 18px;
   text-align:center;
 }
 
@@ -32,52 +32,51 @@ header h1{
 
 header p{
   font-size:16px;
+  margin-bottom:15px;
+}
+
+.language{
+  padding:10px;
+  border-radius:8px;
+  border:none;
+  font-size:15px;
 }
 
 .container{
   max-width:900px;
   margin:auto;
-  padding:18px;
+  padding:20px;
 }
 
-.card{
+.hero{
   background:white;
-  border-radius:16px;
-  padding:20px;
-  margin-bottom:18px;
+  border-radius:15px;
+  padding:25px;
+  margin-bottom:20px;
   box-shadow:0 3px 12px rgba(0,0,0,.08);
 }
 
-h2{
-  margin-bottom:15px;
+.hero h2{
   color:#00843d;
+  margin-bottom:10px;
 }
 
-label{
-  display:block;
-  margin-top:12px;
-  margin-bottom:6px;
-  font-weight:bold;
+.hero p{
+  line-height:1.6;
 }
 
-input,select,textarea{
-  width:100%;
-  padding:13px;
-  border:1px solid #ddd;
-  border-radius:10px;
-  font-size:15px;
-}
-
-textarea{
-  min-height:90px;
-  resize:vertical;
+.buttons{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+  margin-top:20px;
 }
 
 button{
   border:none;
   border-radius:10px;
-  padding:13px 18px;
-  font-size:15px;
+  padding:14px;
+  font-size:16px;
   font-weight:bold;
   cursor:pointer;
 }
@@ -85,8 +84,6 @@ button{
 .primary{
   background:#00843d;
   color:white;
-  width:100%;
-  margin-top:18px;
 }
 
 .secondary{
@@ -94,81 +91,101 @@ button{
   color:#222;
 }
 
-.language-box{
-  display:flex;
-  gap:10px;
-  align-items:center;
+.cards{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+  gap:18px;
+  margin-top:20px;
 }
 
-.language-box select{
-  flex:1;
+.card{
+  background:white;
+  padding:20px;
+  border-radius:15px;
+  box-shadow:0 3px 12px rgba(0,0,0,.08);
 }
 
-.event{
-  border:1px solid #e1e1e1;
-  border-radius:14px;
-  padding:16px;
-  margin-top:12px;
-}
-
-.event h3{
+.card h3{
   color:#00843d;
-  margin-bottom:8px;
+  margin-bottom:10px;
 }
 
-.event-info{
-  line-height:1.7;
-  margin:8px 0;
-}
-
-.price{
-  font-size:20px;
-  font-weight:bold;
-  color:#d21034;
-}
-
-.search{
+.card p{
+  line-height:1.5;
   margin-bottom:15px;
+}
+
+.form{
+  background:white;
+  padding:22px;
+  border-radius:15px;
+  margin-top:25px;
+  box-shadow:0 3px 12px rgba(0,0,0,.08);
+}
+
+.form h2{
+  margin-bottom:18px;
+  color:#00843d;
+}
+
+label{
+  display:block;
+  font-weight:bold;
+  margin:12px 0 6px;
+}
+
+input,select{
+  width:100%;
+  padding:13px;
+  border:1px solid #ccc;
+  border-radius:8px;
+  font-size:16px;
 }
 
 .ticket{
   display:none;
   background:#fff;
   border:2px dashed #00843d;
-  border-radius:16px;
-  padding:20px;
-  margin-top:18px;
+  border-radius:15px;
+  padding:22px;
+  margin-top:20px;
 }
 
-.ticket h3{
+.ticket h2{
   color:#00843d;
+  margin-bottom:12px;
+}
+
+.ticket p{
+  margin:8px 0;
 }
 
 footer{
+  background:#222;
+  color:white;
   text-align:center;
   padding:25px;
-  color:#666;
-  font-size:14px;
+  margin-top:30px;
+  line-height:1.7;
 }
 
-.badge{
-  display:inline-block;
-  padding:5px 9px;
-  border-radius:20px;
-  background:#e8f5ed;
-  color:#00843d;
-  font-size:12px;
-  font-weight:bold;
-  margin-bottom:8px;
-}
-
-.notice{
-  background:#fff8dc;
-  border-left:5px solid #f0c300;
+.success{
+  background:#e8f7ed;
+  color:#08752f;
   padding:12px;
-  margin-top:12px;
   border-radius:8px;
-  line-height:1.5;
+  margin-top:15px;
+  display:none;
+}
+
+@media(max-width:600px){
+  .buttons{
+    grid-template-columns:1fr;
+  }
+
+  header h1{
+    font-size:28px;
+  }
 }
 </style>
 </head>
@@ -176,533 +193,369 @@ footer{
 <body>
 
 <header>
-  <h1>🎟️ FasoPass</h1>
-  <p id="subtitle">
-    Plateforme de création d’événements et de billetterie
-  </p>
+  <h1>FasoPass</h1>
+  <p id="subtitle">Votre plateforme de billetterie au Burkina Faso</p>
+
+  <select class="language" id="language" onchange="changeLanguage()">
+    <option value="fr">🇫🇷 Français</option>
+    <option value="en">🇬🇧 English</option>
+    <option value="es">🇪🇸 Español</option>
+    <option value="ar">🇸🇦 العربية</option>
+    <option value="zh">🇨🇳 中文</option>
+  </select>
 </header>
 
 <div class="container">
 
-  <!-- LANGUE -->
-  <div class="card">
-    <h2 id="languageTitle">🌍 Langue</h2>
+  <section class="hero">
+    <h2 id="welcome">Bienvenue sur FasoPass</h2>
 
-    <div class="language-box">
-      <select id="language" onchange="changerLangue()">
-        <option value="fr">🇫🇷 Français</option>
-        <option value="en">🇬🇧 English</option>
-        <option value="es">🇪🇸 Español</option>
-        <option value="ar">🇸🇦 العربية</option>
-        <option value="zh-CN">🇨🇳 简体中文</option>
-        <option value="zh-TW">🇨🇳 繁體中文</option>
-        <option value="ru">🇷🇺 Русский</option>
-        <option value="hi">🇮🇳 हिन्दी</option>
-        <option value="bn">বাংলা</option>
-        <option value="ta">தமிழ்</option>
-        <option value="si">සිංහල</option>
-        <option value="th">ไทย</option>
-        <option value="lo">ລາວ</option>
-        <option value="my">မြန်မာ</option>
-        <option value="km">ខ្មែរ</option>
-        <option value="kk">Қазақ тілі</option>
-        <option value="mk">Македонски</option>
-        <option value="uk">Українська</option>
-        <option value="ka">ქართული</option>
-        <option value="he">עברית</option>
-        <option value="ur">اردو</option>
-        <option value="fa">فارسی</option>
-        <option value="ku">کوردی ناوەندی</option>
-        <option value="am">አማርኛ</option>
-        <option value="om">Oromoo</option>
-        <option value="pl">Polski</option>
-        <option value="pt">Português</option>
-        <option value="ro">Română</option>
-        <option value="sq">Shqip</option>
-        <option value="sl">Slovenščina</option>
-        <option value="so">Soomaali</option>
-        <option value="sr">Srpski</option>
-        <option value="vi">Tiếng Việt</option>
-        <option value="tr">Türkçe</option>
-        <option value="bg">Български</option>
-        <option value="az">Azərbaycan</option>
-        <option value="bs">Bosanski</option>
-        <option value="fil">Filipino</option>
-        <option value="ha">Hausa</option>
-        <option value="id">Indonesia</option>
-        <option value="sw">Kiswahili</option>
-        <option value="hu">Magyar</option>
-        <option value="ms">Melayu</option>
-        <option value="uz">O‘zbek</option>
-      </select>
-    </div>
-  </div>
+    <p id="description">
+      Créez, gérez et achetez facilement des billets pour les événements,
+      concerts, conférences et transports.
+    </p>
 
-  <!-- RECHERCHE -->
-  <div class="card">
-    <h2 id="searchTitle">🔎 Rechercher un événement</h2>
+    <div class="buttons">
+      <button class="primary" onclick="showEventForm()" id="eventBtn">
+        🎫 Créer un événement
+      </button>
 
-    <input
-      id="search"
-      class="search"
-      type="text"
-      onkeyup="rechercher()"
-      placeholder="Rechercher un événement..."
-    >
-
-    <div class="event">
-      <span class="badge">BOBO-DIOULASSO</span>
-      <h3>🎵 Grand Concert FasoPass</h3>
-
-      <div class="event-info">
-        📅 15 septembre 2026<br>
-        🕐 20:00<br>
-        📍 Bobo-Dioulasso, Burkina Faso
-      </div>
-
-      <div class="price">5 000 FCFA</div>
-
-      <button class="primary" onclick="acheterTicket('Grand Concert FasoPass','5000')">
-        🎟️ Acheter un billet
+      <button class="secondary" onclick="showTransportForm()" id="transportBtn">
+        🚌 Billet de transport
       </button>
     </div>
+  </section>
 
-    <div class="event">
-      <span class="badge">BURKINA FASO</span>
-      <h3>⚽ Tournoi FasoPass</h3>
+  <section>
+    <div class="cards">
 
-      <div class="event-info">
-        📅 25 septembre 2026<br>
-        🕐 15:00<br>
-        📍 Stade de Bobo-Dioulasso
+      <div class="card">
+        <h3 id="eventTitle">🎉 Événements</h3>
+        <p id="eventText">
+          Concerts, spectacles, conférences, cérémonies et autres événements.
+        </p>
+        <button class="primary" onclick="showEventForm()" id="buyEvent">
+          Acheter un billet
+        </button>
       </div>
 
-      <div class="price">2 000 FCFA</div>
-
-      <button class="primary" onclick="acheterTicket('Tournoi FasoPass','2000')">
-        🎟️ Acheter un billet
-      </button>
-    </div>
-
-    <div class="event">
-      <span class="badge">CULTURE</span>
-      <h3>🎭 Festival culturel du Burkina</h3>
-
-      <div class="event-info">
-        📅 10 octobre 2026<br>
-        🕐 18:00<br>
-        📍 Bobo-Dioulasso
+      <div class="card">
+        <h3 id="transportTitle">🚌 Transport</h3>
+        <p id="transportText">
+          Réservez vos billets de transport facilement et rapidement.
+        </p>
+        <button class="secondary" onclick="showTransportForm()" id="buyTransport">
+          Réserver
+        </button>
       </div>
 
-      <div class="price">3 000 FCFA</div>
+      <div class="card">
+        <h3 id="organizerTitle">👤 Organisateurs</h3>
+        <p id="organizerText">
+          Une solution simple pour créer vos événements et vendre vos billets.
+        </p>
+        <button class="primary" onclick="showEventForm()" id="organizerBtn">
+          Commencer
+        </button>
+      </div>
 
-      <button class="primary" onclick="acheterTicket('Festival culturel du Burkina','3000')">
-        🎟️ Acheter un billet
-      </button>
     </div>
-  </div>
+  </section>
 
-  <!-- CREATION -->
-  <div class="card">
-    <h2 id="createTitle">➕ Créer un événement</h2>
+  <section class="form" id="eventForm">
+
+    <h2 id="formTitle">Créer un événement</h2>
 
     <label id="nameLabel">Nom de l'événement</label>
-    <input id="eventName" type="text" placeholder="Exemple : Grand concert">
+    <input type="text" id="eventName" placeholder="Exemple : Grand concert de Bobo">
+
+    <label id="cityLabel">Ville</label>
+    <input type="text" id="city" value="Bobo-Dioulasso">
 
     <label id="dateLabel">Date</label>
-    <input id="eventDate" type="date">
+    <input type="date" id="date">
 
-    <label id="timeLabel">Heure</label>
-    <input id="eventTime" type="time">
+    <label id="priceLabel">Prix du billet</label>
+    <input type="number" id="price" placeholder="Exemple : 2000">
 
-    <label id="placeLabel">Lieu</label>
-    <input id="eventPlace" type="text" placeholder="Exemple : Bobo-Dioulasso">
+    <label id="quantityLabel">Nombre de billets</label>
+    <input type="number" id="quantity" value="100">
 
-    <label id="priceLabel">Prix du billet (FCFA)</label>
-    <input id="eventPrice" type="number" placeholder="5000">
-
-    <label id="descriptionLabel">Description</label>
-    <textarea id="eventDescription"
-      placeholder="Présentez votre événement..."></textarea>
-
-    <button class="primary" onclick="creerEvenement()">
-      ➕ Créer l'événement
+    <button class="primary" onclick="createTicket()" style="margin-top:18px;width:100%;" id="createBtn">
+      Générer le billet
     </button>
 
-    <div id="creationResult"></div>
-  </div>
-
-  <!-- BILLET -->
-  <div class="ticket" id="ticket">
-    <h3>🎟️ FasoPass</h3>
-    <br>
-
-    <p><strong>Événement :</strong> <span id="ticketEvent"></span></p>
-    <p><strong>Prix :</strong> <span id="ticketPrice"></span> FCFA</p>
-    <p><strong>Code :</strong> <span id="ticketCode"></span></p>
-
-    <div class="notice">
-      Ce billet est une démonstration de la plateforme FasoPass.
-      Les paiements réels seront ajoutés lors de la prochaine étape.
+    <div class="success" id="success">
+      Billet créé avec succès !
     </div>
-  </div>
+
+    <div class="ticket" id="ticket">
+      <h2>🎫 FasoPass</h2>
+
+      <p><strong id="ticketEvent">Événement :</strong>
+        <span id="ticketName"></span>
+      </p>
+
+      <p><strong id="ticketCity">Ville :</strong>
+        <span id="ticketCityValue"></span>
+      </p>
+
+      <p><strong id="ticketDate">Date :</strong>
+        <span id="ticketDateValue"></span>
+      </p>
+
+      <p><strong id="ticketPrice">Prix :</strong>
+        <span id="ticketPriceValue"></span> FCFA
+      </p>
+
+      <p><strong id="ticketNumber">Billets disponibles :</strong>
+        <span id="ticketQuantity"></span>
+      </p>
+
+      <p style="margin-top:15px;font-weight:bold;">
+        ✓ FasoPass
+      </p>
+    </div>
+
+  </section>
 
 </div>
 
 <footer>
-  <p>© 2026 FasoPass</p>
-  <p>Plateforme de billetterie et d'événements</p>
-  <p>Créé par Moussa Barry</p>
+  <strong>FasoPass</strong><br>
+  <span id="footerText">
+    Une plateforme pensée au Burkina Faso pour le monde.
+  </span><br>
+  © 2026 FasoPass - Moussa Barry
 </footer>
 
 <script>
 
-const textes = {
+const translations = {
 
 fr:{
-subtitle:"Plateforme de création d’événements et de billetterie",
-language:"🌍 Langue",
-search:"🔎 Rechercher un événement",
-placeholder:"Rechercher un événement...",
-create:"➕ Créer un événement",
-name:"Nom de l'événement",
-date:"Date",
-time:"Heure",
-place:"Lieu",
-price:"Prix du billet (FCFA)",
-description:"Description",
-createButton:"➕ Créer l'événement"
+subtitle:"Votre plateforme de billetterie au Burkina Faso",
+welcome:"Bienvenue sur FasoPass",
+description:"Créez, gérez et achetez facilement des billets pour les événements, concerts, conférences et transports.",
+eventBtn:"🎫 Créer un événement",
+transportBtn:"🚌 Billet de transport",
+eventTitle:"🎉 Événements",
+eventText:"Concerts, spectacles, conférences, cérémonies et autres événements.",
+buyEvent:"Acheter un billet",
+transportTitle:"🚌 Transport",
+transportText:"Réservez vos billets de transport facilement et rapidement.",
+buyTransport:"Réserver",
+organizerTitle:"👤 Organisateurs",
+organizerText:"Une solution simple pour créer vos événements et vendre vos billets.",
+organizerBtn:"Commencer",
+formTitle:"Créer un événement",
+nameLabel:"Nom de l'événement",
+cityLabel:"Ville",
+dateLabel:"Date",
+priceLabel:"Prix du billet",
+quantityLabel:"Nombre de billets",
+createBtn:"Générer le billet",
+footerText:"Une plateforme pensée au Burkina Faso pour le monde.",
+ticketEvent:"Événement :",
+ticketCity:"Ville :",
+ticketDate:"Date :",
+ticketPrice:"Prix :",
+ticketNumber:"Billets disponibles :"
 },
 
 en:{
-subtitle:"Event creation and ticketing platform",
-language:"🌍 Language",
-search:"🔎 Search for an event",
-placeholder:"Search for an event...",
-create:"➕ Create an event",
-name:"Event name",
-date:"Date",
-time:"Time",
-place:"Location",
-price:"Ticket price (FCFA)",
-description:"Description",
-createButton:"➕ Create event"
+subtitle:"Your ticketing platform in Burkina Faso",
+welcome:"Welcome to FasoPass",
+description:"Create, manage and buy tickets for events, concerts, conferences and transportation.",
+eventBtn:"🎫 Create an event",
+transportBtn:"🚌 Transport ticket",
+eventTitle:"🎉 Events",
+eventText:"Concerts, shows, conferences, ceremonies and other events.",
+buyEvent:"Buy a ticket",
+transportTitle:"🚌 Transport",
+transportText:"Book your transportation tickets easily and quickly.",
+buyTransport:"Book now",
+organizerTitle:"👤 Organizers",
+organizerText:"A simple solution to create events and sell tickets.",
+organizerBtn:"Get started",
+formTitle:"Create an event",
+nameLabel:"Event name",
+cityLabel:"City",
+dateLabel:"Date",
+priceLabel:"Ticket price",
+quantityLabel:"Number of tickets",
+createBtn:"Generate ticket",
+footerText:"A platform created in Burkina Faso for the world.",
+ticketEvent:"Event:",
+ticketCity:"City:",
+ticketDate:"Date:",
+ticketPrice:"Price:",
+ticketNumber:"Tickets available:"
 },
 
 es:{
-subtitle:"Plataforma de creación de eventos y venta de entradas",
-language:"🌍 Idioma",
-search:"🔎 Buscar un evento",
-placeholder:"Buscar un evento...",
-create:"➕ Crear un evento",
-name:"Nombre del evento",
-date:"Fecha",
-time:"Hora",
-place:"Lugar",
-price:"Precio del billete (FCFA)",
-description:"Descripción",
-createButton:"➕ Crear evento"
+subtitle:"Tu plataforma de venta de entradas en Burkina Faso",
+welcome:"Bienvenido a FasoPass",
+description:"Crea, administra y compra entradas para eventos, conciertos, conferencias y transporte.",
+eventBtn:"🎫 Crear un evento",
+transportBtn:"🚌 Billete de transporte",
+eventTitle:"🎉 Eventos",
+eventText:"Conciertos, espectáculos, conferencias, ceremonias y otros eventos.",
+buyEvent:"Comprar entrada",
+transportTitle:"🚌 Transporte",
+transportText:"Reserva tus billetes de transporte de forma fácil y rápida.",
+buyTransport:"Reservar",
+organizerTitle:"👤 Organizadores",
+organizerText:"Una solución sencilla para crear eventos y vender entradas.",
+organizerBtn:"Comenzar",
+formTitle:"Crear un evento",
+nameLabel:"Nombre del evento",
+cityLabel:"Ciudad",
+dateLabel:"Fecha",
+priceLabel:"Precio de la entrada",
+quantityLabel:"Número de entradas",
+createBtn:"Generar entrada",
+footerText:"Una plataforma creada en Burkina Faso para el mundo.",
+ticketEvent:"Evento:",
+ticketCity:"Ciudad:",
+ticketDate:"Fecha:",
+ticketPrice:"Precio:",
+ticketNumber:"Entradas disponibles:"
 },
 
 ar:{
-subtitle:"منصة إنشاء الفعاليات وبيع التذاكر",
-language:"🌍 اللغة",
-search:"🔎 البحث عن فعالية",
-placeholder:"ابحث عن فعالية...",
-create:"➕ إنشاء فعالية",
-name:"اسم الفعالية",
-date:"التاريخ",
-time:"الوقت",
-place:"المكان",
-price:"سعر التذكرة (FCFA)",
-description:"الوصف",
-createButton:"➕ إنشاء الفعالية"
+subtitle:"منصة التذاكر الخاصة بك في بوركينا فاسو",
+welcome:"مرحباً بكم في FasoPass",
+description:"أنشئ وأدر واشترِ التذاكر بسهولة للفعاليات والحفلات والمؤتمرات ووسائل النقل.",
+eventBtn:"🎫 إنشاء فعالية",
+transportBtn:"🚌 تذكرة نقل",
+eventTitle:"🎉 الفعاليات",
+eventText:"الحفلات والعروض والمؤتمرات والمراسم والفعاليات الأخرى.",
+buyEvent:"شراء تذكرة",
+transportTitle:"🚌 النقل",
+transportText:"احجز تذاكر النقل بسهولة وسرعة.",
+buyTransport:"احجز الآن",
+organizerTitle:"👤 المنظمون",
+organizerText:"حل بسيط لإنشاء الفعاليات وبيع التذاكر.",
+organizerBtn:"ابدأ",
+formTitle:"إنشاء فعالية",
+nameLabel:"اسم الفعالية",
+cityLabel:"المدينة",
+dateLabel:"التاريخ",
+priceLabel:"سعر التذكرة",
+quantityLabel:"عدد التذاكر",
+createBtn:"إنشاء التذكرة",
+footerText:"منصة صُنعت في بوركينا فاسو للعالم.",
+ticketEvent:"الفعالية:",
+ticketCity:"المدينة:",
+ticketDate:"التاريخ:",
+ticketPrice:"السعر:",
+ticketNumber:"التذاكر المتاحة:"
 },
 
-"zh-CN":{
-subtitle:"活动创建和票务平台",
-language:"🌍 语言",
-search:"🔎 搜索活动",
-placeholder:"搜索活动...",
-create:"➕ 创建活动",
-name:"活动名称",
-date:"日期",
-time:"时间",
-place:"地点",
-price:"票价（FCFA）",
-description:"描述",
-createButton:"➕ 创建活动"
-},
-
-ru:{
-subtitle:"Платформа для создания мероприятий и продажи билетов",
-language:"🌍 Язык",
-search:"🔎 Поиск мероприятия",
-placeholder:"Поиск мероприятия...",
-create:"➕ Создать мероприятие",
-name:"Название мероприятия",
-date:"Дата",
-time:"Время",
-place:"Место",
-price:"Цена билета (FCFA)",
-description:"Описание",
-createButton:"➕ Создать мероприятие"
-},
-
-hi:{
-subtitle:"कार्यक्रम और टिकट बिक्री मंच",
-language:"🌍 भाषा",
-search:"🔎 कार्यक्रम खोजें",
-placeholder:"कार्यक्रम खोजें...",
-create:"➕ कार्यक्रम बनाएं",
-name:"कार्यक्रम का नाम",
-date:"तारीख",
-time:"समय",
-place:"स्थान",
-price:"टिकट की कीमत (FCFA)",
-description:"विवरण",
-createButton:"➕ कार्यक्रम बनाएं"
-},
-
-pt:{
-subtitle:"Plataforma de criação de eventos e bilhetes",
-language:"🌍 Idioma",
-search:"🔎 Procurar um evento",
-placeholder:"Procurar um evento...",
-create:"➕ Criar um evento",
-name:"Nome do evento",
-date:"Data",
-time:"Hora",
-place:"Local",
-price:"Preço do bilhete (FCFA)",
-description:"Descrição",
-createButton:"➕ Criar evento"
-},
-
-tr:{
-subtitle:"Etkinlik oluşturma ve bilet platformu",
-language:"🌍 Dil",
-search:"🔎 Etkinlik ara",
-placeholder:"Etkinlik ara...",
-create:"➕ Etkinlik oluştur",
-name:"Etkinlik adı",
-date:"Tarih",
-time:"Saat",
-place:"Konum",
-price:"Bilet fiyatı (FCFA)",
-description:"Açıklama",
-createButton:"➕ Etkinlik oluştur"
-},
-
-sw:{
-subtitle:"Jukwaa la kuunda matukio na kuuza tiketi",
-language:"🌍 Lugha",
-search:"🔎 Tafuta tukio",
-placeholder:"Tafuta tukio...",
-create:"➕ Unda tukio",
-name:"Jina la tukio",
-date:"Tarehe",
-time:"Muda",
-place:"Mahali",
-price:"Bei ya tiketi (FCFA)",
-description:"Maelezo",
-createButton:"➕ Unda tukio"
-},
-
-ha:{
-subtitle:"Dandalin ƙirƙirar abubuwan taro da tikiti",
-language:"🌍 Harshe",
-search:"🔎 Neman taro",
-placeholder:"Nemo taro...",
-create:"➕ Ƙirƙiri taro",
-name:"Sunan taro",
-date:"Kwanan wata",
-time:"Lokaci",
-place:"Wuri",
-price:"Farashin tikiti (FCFA)",
-description:"Bayani",
-createButton:"➕ Ƙirƙiri taro"
-},
-
-id:{
-subtitle:"Platform pembuatan acara dan tiket",
-language:"🌍 Bahasa",
-search:"🔎 Cari acara",
-placeholder:"Cari acara...",
-create:"➕ Buat acara",
-name:"Nama acara",
-date:"Tanggal",
-time:"Waktu",
-place:"Lokasi",
-price:"Harga tiket (FCFA)",
-description:"Deskripsi",
-createButton:"➕ Buat acara"
-},
-
-vi:{
-subtitle:"Nền tảng tạo sự kiện và bán vé",
-language:"🌍 Ngôn ngữ",
-search:"🔎 Tìm kiếm sự kiện",
-placeholder:"Tìm kiếm sự kiện...",
-create:"➕ Tạo sự kiện",
-name:"Tên sự kiện",
-date:"Ngày",
-time:"Thời gian",
-place:"Địa điểm",
-price:"Giá vé (FCFA)",
-description:"Mô tả",
-createButton:"➕ Tạo sự kiện"
-},
-
-de:{
-subtitle:"Plattform für Veranstaltungen und Tickets",
-language:"🌍 Sprache",
-search:"🔎 Veranstaltung suchen",
-placeholder:"Veranstaltung suchen...",
-create:"➕ Veranstaltung erstellen",
-name:"Veranstaltungsname",
-date:"Datum",
-time:"Uhrzeit",
-place:"Ort",
-price:"Ticketpreis (FCFA)",
-description:"Beschreibung",
-createButton:"➕ Veranstaltung erstellen"
+zh:{
+subtitle:"您在布基纳法索的票务平台",
+welcome:"欢迎来到 FasoPass",
+description:"轻松创建、管理和购买活动、音乐会、会议及交通票。",
+eventBtn:"🎫 创建活动",
+transportBtn:"🚌 交通票",
+eventTitle:"🎉 活动",
+eventText:"音乐会、演出、会议、典礼以及其他活动。",
+buyEvent:"购买门票",
+transportTitle:"🚌 交通",
+transportText:"轻松快速地预订交通票。",
+buyTransport:"立即预订",
+organizerTitle:"👤 活动组织者",
+organizerText:"简单的活动创建和售票解决方案。",
+organizerBtn:"开始",
+formTitle:"创建活动",
+nameLabel:"活动名称",
+cityLabel:"城市",
+dateLabel:"日期",
+priceLabel:"票价",
+quantityLabel:"门票数量",
+createBtn:"生成门票",
+footerText:"一个在布基纳法索为世界打造的平台。",
+ticketEvent:"活动：",
+ticketCity:"城市：",
+ticketDate:"日期：",
+ticketPrice:"价格：",
+ticketNumber:"可用门票："
 }
 
 };
 
-function changerLangue(){
+function changeLanguage(){
 
-let langue=document.getElementById("language").value;
-let t=textes[langue] || textes.fr;
+  const lang=document.getElementById("language").value;
+  const t=translations[lang];
 
-document.getElementById("subtitle").innerText=t.subtitle;
-document.getElementById("languageTitle").innerText=t.language;
-document.getElementById("searchTitle").innerText=t.search;
-document.getElementById("search").placeholder=t.placeholder;
-document.getElementById("createTitle").innerText=t.create;
+  document.documentElement.lang=lang;
 
-document.getElementById("nameLabel").innerText=t.name;
-document.getElementById("dateLabel").innerText=t.date;
-document.getElementById("timeLabel").innerText=t.time;
-document.getElementById("placeLabel").innerText=t.place;
-document.getElementById("priceLabel").innerText=t.price;
-document.getElementById("descriptionLabel").innerText=t.description;
+  if(lang==="ar"){
+    document.body.dir="rtl";
+  }else{
+    document.body.dir="ltr";
+  }
 
-document.querySelector("#eventDescription").placeholder=t.description+"...";
+  for(const key in t){
+    const element=document.getElementById(key);
 
-document.querySelector("#createTitle")
-.parentElement.querySelector(".primary").innerText=t.createButton;
-
-if(langue==="ar"){
- document.body.dir="rtl";
-}else{
- document.body.dir="ltr";
+    if(element){
+      element.textContent=t[key];
+    }
+  }
 }
 
+function showEventForm(){
+
+  document.getElementById("eventForm").style.display="block";
+
+  window.scrollTo({
+    top:document.getElementById("eventForm").offsetTop,
+    behavior:"smooth"
+  });
 }
 
-function rechercher(){
+function showTransportForm(){
 
-let recherche=document
-.getElementById("search")
-.value
-.toLowerCase()
-.trim();
+  document.getElementById("eventForm").style.display="block";
 
-let evenements=document.querySelectorAll(".event");
+  document.getElementById("formTitle").textContent=
+  "🚌 Billet de transport";
 
-evenements.forEach(function(event){
-
-let texte=event.innerText.toLowerCase();
-
-if(texte.includes(recherche)){
- event.style.display="block";
-}else{
- event.style.display="none";
+  window.scrollTo({
+    top:document.getElementById("eventForm").offsetTop,
+    behavior:"smooth"
+  });
 }
 
-});
+function createTicket(){
 
-}
+  const name=document.getElementById("eventName").value;
+  const city=document.getElementById("city").value;
+  const date=document.getElementById("date").value;
+  const price=document.getElementById("price").value;
+  const quantity=document.getElementById("quantity").value;
 
-function acheterTicket(nom,prix){
+  if(!name || !city || !date || !price || !quantity){
 
-let code="FP-"+Math.floor(100000+Math.random()*900000);
+    alert("Veuillez remplir tous les champs.");
+    return;
+  }
 
-document.getElementById("ticketEvent").innerText=nom;
-document.getElementById("ticketPrice").innerText=prix;
-document.getElementById("ticketCode").innerText=code;
+  document.getElementById("ticketName").textContent=name;
+  document.getElementById("ticketCityValue").textContent=city;
+  document.getElementById("ticketDateValue").textContent=date;
+  document.getElementById("ticketPriceValue").textContent=price;
+  document.getElementById("ticketQuantity").textContent=quantity;
 
-document.getElementById("ticket").style.display="block";
+  document.getElementById("success").style.display="block";
+  document.getElementById("ticket").style.display="block";
 
-document
-.getElementById("ticket")
-.scrollIntoView({behavior:"smooth"});
-
-}
-
-function creerEvenement(){
-
-let nom=document.getElementById("eventName").value;
-let date=document.getElementById("eventDate").value;
-let heure=document.getElementById("eventTime").value;
-let lieu=document.getElementById("eventPlace").value;
-let prix=document.getElementById("eventPrice").value;
-let description=document.getElementById("eventDescription").value;
-
-if(!nom || !date || !heure || !lieu || !prix){
-
-alert("Veuillez remplir tous les champs obligatoires.");
-return;
-
-}
-
-let nouveau=document.createElement("div");
-
-nouveau.className="event";
-
-nouveau.innerHTML=`
-
-<span class="badge">${lieu}</span>
-
-<h3>🎟️ ${nom}</h3>
-
-<div class="event-info">
-📅 ${date}<br>
-🕐 ${heure}<br>
-📍 ${lieu}<br>
-${description}
-</div>
-
-<div class="price">${prix} FCFA</div>
-
-<button class="primary"
-onclick="acheterTicket('${nom.replace(/'/g,"\\'")}','${prix}')">
-🎟️ Acheter un billet
-</button>
-
-`;
-
-document
-.getElementById("search")
-.parentElement
-.appendChild(nouveau);
-
-document.getElementById("creationResult").innerHTML=
-`
-<div class="notice">
-✅ Événement créé avec succès !
-</div>
-`;
-
-document.getElementById("eventName").value="";
-document.getElementById("eventDate").value="";
-document.getElementById("eventTime").value="";
-document.getElementById("eventPlace").value="";
-document.getElementById("eventPrice").value="";
-document.getElementById("eventDescription").value="";
-
+  document.getElementById("ticket").scrollIntoView({
+    behavior:"smooth"
+  });
 }
 
 </script>
