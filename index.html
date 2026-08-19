@@ -2,396 +2,1320 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FasoPass - Billetterie</title>
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>FasoPass - Billetterie Burkina Faso</title>
 
 <style>
+
 *{
-  box-sizing:border-box;
-  margin:0;
-  padding:0;
-  font-family:Arial,sans-serif;
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+    font-family:Arial, sans-serif;
 }
 
 body{
-  background:#f4f6f8;
-  color:#222;
+    background:#f4f6f8;
+    color:#222;
 }
 
 header{
-  background:linear-gradient(135deg,#00843d,#f0c300,#d21034);
-  color:white;
-  text-align:center;
-  padding:30px 18px;
+    background:linear-gradient(135deg,#00843d,#f0c300,#d21034);
+    color:white;
+    text-align:center;
+    padding:30px 15px;
 }
 
 header h1{
-  font-size:36px;
-  margin-bottom:10px;
+    font-size:36px;
+    margin-bottom:10px;
 }
 
 header p{
-  font-size:18px;
+    font-size:18px;
+    line-height:1.5;
+}
+
+.flag{
+    font-size:40px;
 }
 
 .container{
-  max-width:600px;
-  margin:25px auto;
-  padding:0 15px;
+    width:94%;
+    max-width:650px;
+    margin:25px auto;
 }
 
 .card{
-  background:white;
-  border-radius:25px;
-  padding:28px;
-  box-shadow:0 5px 20px rgba(0,0,0,.12);
-  margin-bottom:25px;
+    background:white;
+    border-radius:20px;
+    padding:25px;
+    margin-bottom:20px;
+    box-shadow:0 5px 20px rgba(0,0,0,0.10);
 }
 
 h2{
-  color:#00843d;
-  margin-bottom:25px;
-  font-size:30px;
+    color:#00843d;
+    margin-bottom:22px;
+    font-size:28px;
+}
+
+h3{
+    margin-bottom:15px;
 }
 
 label{
-  display:block;
-  font-size:18px;
-  font-weight:bold;
-  margin:18px 0 8px;
+    display:block;
+    font-weight:bold;
+    margin:16px 0 8px;
+    font-size:17px;
 }
 
-input,select{
-  width:100%;
-  padding:17px;
-  border:2px solid #ddd;
-  border-radius:15px;
-  font-size:18px;
-  background:#fafafa;
+input,
+select{
+    width:100%;
+    padding:16px;
+    border:2px solid #ddd;
+    border-radius:12px;
+    font-size:17px;
+    background:white;
+}
+
+input:focus,
+select:focus{
+    outline:none;
+    border-color:#00843d;
 }
 
 button{
-  width:100%;
-  padding:17px;
-  border:none;
-  border-radius:15px;
-  background:#00843d;
-  color:white;
-  font-size:20px;
-  font-weight:bold;
-  margin-top:22px;
-  cursor:pointer;
+    width:100%;
+    border:none;
+    border-radius:12px;
+    padding:17px;
+    margin-top:20px;
+    font-size:18px;
+    font-weight:bold;
+    cursor:pointer;
 }
 
-button:hover{
-  opacity:.9;
+.primary{
+    background:#00843d;
+    color:white;
+}
+
+.primary:hover{
+    opacity:0.9;
+}
+
+.secondary{
+    background:#eee;
+    color:#222;
+}
+
+.danger{
+    background:#d21034;
+    color:white;
+}
+
+.hidden{
+    display:none !important;
 }
 
 .ticket{
-  display:none;
-  background:#effaf3;
-  border:3px solid #00843d;
+    border:3px solid #00843d;
+    background:#effaf4;
+    border-radius:18px;
+    padding:22px;
+    margin-top:25px;
 }
 
 .ticket h2{
-  color:#00843d;
+    color:#00843d;
+    margin-bottom:18px;
 }
 
-.ticket p{
-  font-size:18px;
-  margin:10px 0;
+.ticket-row{
+    margin:12px 0;
+    font-size:17px;
+}
+
+.ticket-row strong{
+    display:inline-block;
+    min-width:125px;
 }
 
 .code{
-  text-align:center;
-  font-size:30px;
-  font-weight:bold;
-  color:#d21034;
-  margin:20px 0;
-  letter-spacing:2px;
+    text-align:center;
+    background:white;
+    border-radius:12px;
+    padding:18px;
+    margin:20px 0;
+    border:2px dashed #d21034;
 }
 
-.payment{
-  display:none;
+.code span{
+    display:block;
+    color:#d21034;
+    font-size:30px;
+    font-weight:bold;
+    letter-spacing:2px;
+    margin-top:8px;
 }
 
-.payment h2{
-  color:#00843d;
+.price{
+    background:#fff7d6;
+    border-radius:12px;
+    padding:18px;
+    margin-top:15px;
+    font-size:20px;
+    font-weight:bold;
+    text-align:center;
 }
 
-.payment-info{
-  background:#fff8dc;
-  border-left:5px solid #f0c300;
-  padding:15px;
-  border-radius:10px;
-  margin-bottom:20px;
-  font-size:16px;
+.payment-method{
+    border:2px solid #ddd;
+    border-radius:14px;
+    padding:16px;
+    margin:10px 0;
+    cursor:pointer;
+    font-size:18px;
+    font-weight:bold;
+    background:white;
 }
 
-.method{
-  border:2px solid #ddd;
-  border-radius:15px;
-  padding:18px;
-  margin:12px 0;
-  cursor:pointer;
-  font-size:18px;
-  font-weight:bold;
-  background:white;
+.payment-method.selected{
+    border-color:#00843d;
+    background:#effaf4;
 }
 
-.method.selected{
-  border:3px solid #00843d;
-  background:#effaf3;
-}
-
-.payment-number{
-  display:none;
+.payment-method input{
+    width:auto;
+    margin-right:10px;
 }
 
 .success{
-  display:none;
-  text-align:center;
-  background:#effaf3;
-  border:3px solid #00843d;
-}
-
-.success h2{
-  color:#00843d;
+    border:3px solid #00843d;
+    background:#effaf4;
+    border-radius:18px;
+    padding:25px;
+    text-align:center;
 }
 
 .success-icon{
-  font-size:60px;
-  margin-bottom:15px;
+    font-size:55px;
+    margin-bottom:10px;
+}
+
+.success h2{
+    color:#00843d;
+}
+
+.info{
+    background:#eef5ff;
+    border-left:5px solid #1d63d6;
+    padding:15px;
+    border-radius:8px;
+    margin-top:15px;
+    line-height:1.5;
+}
+
+.warning{
+    background:#fff3cd;
+    border-left:5px solid #f0c300;
+    padding:15px;
+    border-radius:8px;
+    margin-top:15px;
+    line-height:1.5;
 }
 
 footer{
-  text-align:center;
-  color:#666;
-  padding:30px 15px;
-  font-size:16px;
+    text-align:center;
+    padding:30px 15px;
+    color:#666;
+    font-size:16px;
 }
+
+.small{
+    font-size:14px;
+    color:#666;
+    margin-top:8px;
+}
+
+@media(max-width:480px){
+
+    header h1{
+        font-size:30px;
+    }
+
+    header p{
+        font-size:16px;
+    }
+
+    .card{
+        padding:20px;
+    }
+
+    h2{
+        font-size:25px;
+    }
+
+    .code span{
+        font-size:25px;
+    }
+}
+
+@media print{
+
+    header,
+    #reservationCard,
+    #paymentCard,
+    footer,
+    .no-print{
+        display:none !important;
+    }
+
+    body{
+        background:white;
+    }
+
+    .container{
+        width:100%;
+        max-width:none;
+        margin:0;
+    }
+
+    .ticket{
+        display:block !important;
+        border:2px solid #000;
+        box-shadow:none;
+    }
+
+}
+
 </style>
 </head>
 
 <body>
 
 <header>
-  <h1>🇧🇫 FasoPass</h1>
-  <p>Votre plateforme simple de billetterie au Burkina Faso</p>
+
+    <div class="flag">🇧🇫</div>
+
+    <h1>FasoPass</h1>
+
+    <p>
+        Votre plateforme simple de billetterie
+        au Burkina Faso
+    </p>
+
 </header>
+
 
 <div class="container">
 
-  <!-- RESERVATION -->
-  <div class="card">
-    <h2>🎫 Réserver un billet</h2>
 
-    <label>Ville de départ</label>
-    <input id="departure" type="text" placeholder="Exemple : Bobo-Dioulasso">
+<!-- =========================
+     RESERVATION
+========================= -->
 
-    <label>Ville d'arrivée</label>
-    <input id="arrival" type="text" placeholder="Exemple : Ouagadougou">
+<section class="card" id="reservationCard">
 
-    <label>Date du voyage</label>
-    <input id="travelDate" type="date">
+    <h2>🎟️ Réserver un billet</h2>
 
-    <label>Nombre de passagers</label>
-    <select id="passengerCount">
-      <option value="1">1 passager</option>
-      <option value="2">2 passagers</option>
-      <option value="3">3 passagers</option>
-      <option value="4">4 passagers</option>
-      <option value="5">5 passagers</option>
-      <option value="6">6 passagers</option>
-      <option value="7">7 passagers</option>
-      <option value="8">8 passagers</option>
-      <option value="9">9 passagers</option>
-      <option value="10">10 passagers</option>
+    <label for="ticketType">
+        Type de billet
+    </label>
+
+    <select id="ticketType">
+
+        <option value="transport">
+            🚌 Transport
+        </option>
+
+        <option value="event">
+            🎫 Événement
+        </option>
+
     </select>
 
-    <button onclick="createTicket()">🎫 Créer mon billet</button>
-  </div>
 
-  <!-- BILLET -->
-  <div class="card ticket" id="result">
-    <h2>✅ Billet créé</h2>
+    <label for="departure">
+        Ville de départ
+    </label>
 
-    <p><strong>Trajet :</strong></p>
-    <p id="ticketRoute"></p>
+    <input
+        type="text"
+        id="departure"
+        placeholder="Exemple : Bobo-Dioulasso"
+    >
 
-    <p><strong>Date :</strong></p>
-    <p id="ticketDate"></p>
 
-    <p><strong>Passagers :</strong></p>
-    <p id="ticketPassengers"></p>
+    <label for="arrival">
+        Ville d'arrivée
+    </label>
 
-    <p><strong>Code du billet :</strong></p>
-    <div class="code" id="ticketCode"></div>
+    <input
+        type="text"
+        id="arrival"
+        placeholder="Exemple : Ouagadougou"
+    >
 
-    <button onclick="showPayment()">💳 Continuer vers le paiement</button>
-  </div>
 
-  <!-- PAIEMENT -->
-  <div class="card payment" id="paymentSection">
-    <h2>💳 Paiement du billet</h2>
+    <label for="travelDate">
+        Date du voyage
+    </label>
 
-    <div class="payment-info">
-      <strong>FasoPass</strong><br>
-      Sélectionnez votre moyen de paiement pour continuer.
-    </div>
+    <input
+        type="date"
+        id="travelDate"
+    >
 
-    <div class="method" onclick="selectMethod(this,'Orange Money')">
-      🟠 Orange Money
-    </div>
 
-    <div class="method" onclick="selectMethod(this,'Moov Money')">
-      🟢 Moov Money
-    </div>
+    <label for="passengers">
+        Nombre de passagers
+    </label>
 
-    <div class="method" onclick="selectMethod(this,'Carte bancaire')">
-      💳 Carte bancaire
-    </div>
+    <select id="passengers">
 
-    <div class="payment-number" id="paymentNumber">
-      <label>Numéro de téléphone</label>
-      <input id="phone" type="tel" placeholder="Exemple : 70 00 00 00">
+        <option value="1">1 passager</option>
+        <option value="2">2 passagers</option>
+        <option value="3">3 passagers</option>
+        <option value="4">4 passagers</option>
+        <option value="5">5 passagers</option>
+        <option value="6">6 passagers</option>
+        <option value="7">7 passagers</option>
+        <option value="8">8 passagers</option>
+        <option value="9">9 passagers</option>
+        <option value="10">10 passagers</option>
 
-      <button onclick="confirmPayment()">🔐 Confirmer le paiement</button>
-    </div>
-  </div>
+    </select>
 
-  <!-- SUCCÈS -->
-  <div class="card success" id="successSection">
-    <div class="success-icon">✅</div>
-    <h2>Paiement enregistré</h2>
 
-    <p id="successText"></p>
+    <label for="customerName">
+        Nom du client
+    </label>
 
-    <p style="margin-top:20px;">
-      Votre billet FasoPass est prêt.
-    </p>
+    <input
+        type="text"
+        id="customerName"
+        placeholder="Votre nom complet"
+    >
 
-    <button onclick="window.scrollTo({top:0,behavior:'smooth'})">
-      🏠 Retour
+
+    <button
+        class="primary"
+        onclick="createTicket()"
+    >
+        🎟️ Créer mon billet
     </button>
-  </div>
+
+</section>
+
+
+
+<!-- =========================
+     BILLET
+========================= -->
+
+<section
+    class="card hidden"
+    id="ticketCard"
+>
+
+    <div class="ticket">
+
+        <h2>✅ Billet créé</h2>
+
+
+        <div class="ticket-row">
+            <strong>Type :</strong>
+            <span id="ticketTypeResult"></span>
+        </div>
+
+
+        <div class="ticket-row">
+            <strong>Nom :</strong>
+            <span id="nameResult"></span>
+        </div>
+
+
+        <div class="ticket-row">
+            <strong>Trajet :</strong>
+            <span id="routeResult"></span>
+        </div>
+
+
+        <div class="ticket-row">
+            <strong>Date :</strong>
+            <span id="dateResult"></span>
+        </div>
+
+
+        <div class="ticket-row">
+            <strong>Passagers :</strong>
+            <span id="passengerResult"></span>
+        </div>
+
+
+        <div class="price">
+            Montant :
+            <span id="priceResult"></span>
+            FCFA
+        </div>
+
+
+        <div class="code">
+
+            <strong>
+                Code du billet
+            </strong>
+
+            <span id="ticketCode"></span>
+
+        </div>
+
+
+        <button
+            class="primary"
+            onclick="openPayment()"
+        >
+            💳 Continuer vers le paiement
+        </button>
+
+
+        <button
+            class="secondary no-print"
+            onclick="backToReservation()"
+        >
+            ← Modifier la réservation
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<!-- =========================
+     PAIEMENT
+========================= -->
+
+<section
+    class="card hidden"
+    id="paymentCard"
+>
+
+    <h2>💳 Paiement</h2>
+
+
+    <div class="price">
+
+        Total à payer :
+        <span id="paymentAmount"></span>
+        FCFA
+
+    </div>
+
+
+    <h3 style="margin-top:25px;">
+        Choisissez votre moyen de paiement
+    </h3>
+
+
+    <div
+        class="payment-method"
+        onclick="selectPayment('Orange Money')"
+    >
+
+        <input
+            type="radio"
+            name="payment"
+            id="orange"
+        >
+
+        🟠 Orange Money
+
+    </div>
+
+
+    <div
+        class="payment-method"
+        onclick="selectPayment('Moov Money')"
+    >
+
+        <input
+            type="radio"
+            name="payment"
+            id="moov"
+        >
+
+        🟢 Moov Money
+
+    </div>
+
+
+    <div
+        class="payment-method"
+        onclick="selectPayment('Telecel Money')"
+    >
+
+        <input
+            type="radio"
+            name="payment"
+            id="telecel"
+        >
+
+        🔵 Telecel Money
+
+    </div>
+
+
+    <div
+        class="payment-method"
+        onclick="selectPayment('Wave')"
+    >
+
+        <input
+            type="radio"
+            name="payment"
+            id="wave"
+        >
+
+        🔵 Wave
+
+    </div>
+
+
+    <label for="phone">
+        Numéro de téléphone
+    </label>
+
+    <input
+        type="tel"
+        id="phone"
+        placeholder="Exemple : 70000000"
+        inputmode="numeric"
+    >
+
+
+    <div class="warning">
+
+        ⚠️ Cette version prépare le paiement.
+        La connexion aux systèmes réels des opérateurs
+        sera ajoutée dans l'étape d'intégration des paiements.
+
+    </div>
+
+
+    <button
+        class="primary"
+        onclick="confirmPayment()"
+    >
+        ✅ Confirmer le paiement
+    </button>
+
+
+    <button
+        class="secondary"
+        onclick="backToTicket()"
+    >
+        ← Retour au billet
+    </button>
+
+</section>
+
+
+
+<!-- =========================
+     SUCCÈS
+========================= -->
+
+<section
+    class="card hidden"
+    id="successCard"
+>
+
+    <div class="success">
+
+        <div class="success-icon">
+            ✅
+        </div>
+
+        <h2>
+            Paiement confirmé
+        </h2>
+
+        <p style="font-size:18px;margin-top:10px;">
+            Votre billet FasoPass est prêt.
+        </p>
+
+
+        <div
+            class="ticket"
+            style="text-align:left;margin-top:25px;"
+        >
+
+            <h2>
+                🇧🇫 FasoPass
+            </h2>
+
+
+            <div class="ticket-row">
+                <strong>Client :</strong>
+                <span id="successName"></span>
+            </div>
+
+
+            <div class="ticket-row">
+                <strong>Trajet :</strong>
+                <span id="successRoute"></span>
+            </div>
+
+
+            <div class="ticket-row">
+                <strong>Date :</strong>
+                <span id="successDate"></span>
+            </div>
+
+
+            <div class="ticket-row">
+                <strong>Passagers :</strong>
+                <span id="successPassengers"></span>
+            </div>
+
+
+            <div class="ticket-row">
+                <strong>Paiement :</strong>
+                <span id="successMethod"></span>
+            </div>
+
+
+            <div class="ticket-row">
+                <strong>Téléphone :</strong>
+                <span id="successPhone"></span>
+            </div>
+
+
+            <div class="price">
+                <span id="successAmount"></span>
+                FCFA
+            </div>
+
+
+            <div class="code">
+
+                <strong>
+                    CODE DU BILLET
+                </strong>
+
+                <span id="successCode"></span>
+
+            </div>
+
+        </div>
+
+
+        <button
+            class="primary no-print"
+            onclick="window.print()"
+        >
+            🖨️ Imprimer / Enregistrer le billet
+        </button>
+
+
+        <button
+            class="secondary no-print"
+            onclick="newTicket()"
+        >
+            🎟️ Créer un nouveau billet
+        </button>
+
+    </div>
+
+</section>
 
 </div>
 
+
 <footer>
-  © 2026 FasoPass — Burkina Faso 🇧🇫
+
+    © 2026 FasoPass — Burkina Faso 🇧🇫
+
+    <div class="small">
+        Billetterie numérique pour le Burkina Faso
+    </div>
+
 </footer>
+
+
 
 <script>
 
-let selectedMethod = "";
+/* =====================================
+   VARIABLES
+===================================== */
+
 let generatedCode = "";
+let selectedMethod = "";
+let currentPrice = 0;
+
+
+/* =====================================
+   DATE MINIMUM
+===================================== */
+
+const today = new Date();
+
+const year = today.getFullYear();
+
+const month =
+    String(today.getMonth() + 1)
+    .padStart(2, "0");
+
+const day =
+    String(today.getDate())
+    .padStart(2, "0");
+
+const todayString =
+    year + "-" + month + "-" + day;
+
+document.getElementById("travelDate").min =
+    todayString;
+
+
+/* =====================================
+   GENERER CODE BILLET
+===================================== */
+
+function generateTicketCode(){
+
+    const characters =
+        "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+
+    let randomPart = "";
+
+    for(let i = 0; i < 6; i++){
+
+        randomPart +=
+            characters.charAt(
+                Math.floor(
+                    Math.random() * characters.length
+                )
+            );
+
+    }
+
+    return "FP-" + randomPart;
+
+}
+
+
+/* =====================================
+   CALCUL PRIX
+===================================== */
+
+function calculatePrice(type, passengers){
+
+    let pricePerPassenger;
+
+    if(type === "event"){
+
+        pricePerPassenger = 2500;
+
+    }else{
+
+        pricePerPassenger = 5000;
+
+    }
+
+    return pricePerPassenger * passengers;
+
+}
+
+
+/* =====================================
+   CREER BILLET
+===================================== */
 
 function createTicket(){
 
-  const departure =
-    document.getElementById("departure").value.trim();
+    const type =
+        document.getElementById("ticketType").value;
 
-  const arrival =
-    document.getElementById("arrival").value.trim();
+    const departure =
+        document.getElementById("departure").value.trim();
 
-  const date =
-    document.getElementById("travelDate").value;
+    const arrival =
+        document.getElementById("arrival").value.trim();
 
-  const passengers =
-    document.getElementById("passengerCount").value;
+    const date =
+        document.getElementById("travelDate").value;
 
-  if(!departure || !arrival || !date){
-    alert("Veuillez remplir toutes les informations du voyage.");
-    return;
-  }
+    const passengers =
+        document.getElementById("passengers").value;
 
-  generatedCode =
-    "FP-" +
-    Math.random().toString(36)
-    .substring(2,8)
-    .toUpperCase();
+    const name =
+        document.getElementById("customerName").value.trim();
 
-  document.getElementById("ticketRoute").textContent =
-    departure + " → " + arrival;
 
-  document.getElementById("ticketDate").textContent =
-    date;
+    if(!departure){
 
-  document.getElementById("ticketPassengers").textContent =
-    passengers;
+        alert(
+            "Veuillez entrer la ville de départ."
+        );
 
-  document.getElementById("ticketCode").textContent =
-    generatedCode;
+        return;
+    }
 
-  document.getElementById("result").style.display = "block";
 
-  document.getElementById("paymentSection").style.display = "none";
+    if(!arrival){
 
-  document.getElementById("successSection").style.display = "none";
+        alert(
+            "Veuillez entrer la ville d'arrivée."
+        );
 
-  document.getElementById("result").scrollIntoView({
-    behavior:"smooth"
-  });
+        return;
+    }
+
+
+    if(!date){
+
+        alert(
+            "Veuillez choisir la date."
+        );
+
+        return;
+    }
+
+
+    if(!name){
+
+        alert(
+            "Veuillez entrer votre nom."
+        );
+
+        return;
+    }
+
+
+    generatedCode =
+        generateTicketCode();
+
+
+    currentPrice =
+        calculatePrice(
+            type,
+            Number(passengers)
+        );
+
+
+    let typeText;
+
+    if(type === "event"){
+
+        typeText = "🎫 Événement";
+
+    }else{
+
+        typeText = "🚌 Transport";
+
+    }
+
+
+    document.getElementById(
+        "ticketTypeResult"
+    ).textContent = typeText;
+
+
+    document.getElementById(
+        "nameResult"
+    ).textContent = name;
+
+
+    document.getElementById(
+        "routeResult"
+    ).textContent =
+        departure + " → " + arrival;
+
+
+    document.getElementById(
+        "dateResult"
+    ).textContent = date;
+
+
+    document.getElementById(
+        "passengerResult"
+    ).textContent =
+        passengers;
+
+
+    document.getElementById(
+        "priceResult"
+    ).textContent =
+        currentPrice.toLocaleString("fr-FR");
+
+
+    document.getElementById(
+        "ticketCode"
+    ).textContent =
+        generatedCode;
+
+
+    document.getElementById(
+        "ticketCard"
+    ).classList.remove("hidden");
+
+
+    document.getElementById(
+        "ticketCard"
+    ).scrollIntoView({
+        behavior:"smooth"
+    });
+
 }
 
-function showPayment(){
 
-  document.getElementById("paymentSection").style.display =
-    "block";
+/* =====================================
+   OUVRIR PAIEMENT
+===================================== */
 
-  document.getElementById("paymentSection").scrollIntoView({
-    behavior:"smooth"
-  });
+function openPayment(){
+
+    document.getElementById(
+        "paymentAmount"
+    ).textContent =
+        currentPrice.toLocaleString("fr-FR");
+
+
+    document.getElementById(
+        "paymentCard"
+    ).classList.remove("hidden");
+
+
+    document.getElementById(
+        "paymentCard"
+    ).scrollIntoView({
+        behavior:"smooth"
+    });
+
 }
 
-function selectMethod(element,method){
 
-  const methods =
-    document.querySelectorAll(".method");
+/* =====================================
+   CHOISIR PAIEMENT
+===================================== */
 
-  methods.forEach(function(item){
-    item.classList.remove("selected");
-  });
+function selectPayment(method){
 
-  element.classList.add("selected");
+    selectedMethod = method;
 
-  selectedMethod = method;
 
-  document.getElementById("paymentNumber").style.display =
-    "block";
+    const boxes =
+        document.querySelectorAll(
+            ".payment-method"
+        );
+
+
+    boxes.forEach(function(box){
+
+        box.classList.remove("selected");
+
+    });
+
+
+    event.currentTarget.classList.add(
+        "selected"
+    );
+
+
+    if(method === "Orange Money"){
+
+        document.getElementById(
+            "orange"
+        ).checked = true;
+
+    }
+
+
+    if(method === "Moov Money"){
+
+        document.getElementById(
+            "moov"
+        ).checked = true;
+
+    }
+
+
+    if(method === "Telecel Money"){
+
+        document.getElementById(
+            "telecel"
+        ).checked = true;
+
+    }
+
+
+    if(method === "Wave"){
+
+        document.getElementById(
+            "wave"
+        ).checked = true;
+
+    }
+
 }
+
+
+/* =====================================
+   CONFIRMER PAIEMENT
+===================================== */
 
 function confirmPayment(){
 
-  const phone =
-    document.getElementById("phone").value.trim();
+    const phone =
+        document.getElementById(
+            "phone"
+        ).value.trim();
 
-  if(!selectedMethod){
-    alert("Veuillez choisir un moyen de paiement.");
-    return;
-  }
 
-  if(!phone){
-    alert("Veuillez entrer votre numéro de téléphone.");
-    return;
-  }
+    if(!selectedMethod){
 
-  document.getElementById("successText").textContent =
-    "Moyen de paiement : " +
-    selectedMethod +
-    " | Numéro : " +
-    phone +
-    " | Code du billet : " +
-    generatedCode;
+        alert(
+            "Veuillez choisir un moyen de paiement."
+        );
 
-  document.getElementById("successSection").style.display =
-    "block";
+        return;
+    }
 
-  document.getElementById("successSection").scrollIntoView({
-    behavior:"smooth"
-  });
+
+    if(!phone){
+
+        alert(
+            "Veuillez entrer votre numéro de téléphone."
+        );
+
+        return;
+    }
+
+
+    if(phone.length < 8){
+
+        alert(
+            "Veuillez entrer un numéro de téléphone valide."
+        );
+
+        return;
+    }
+
+
+    const name =
+        document.getElementById(
+            "customerName"
+        ).value.trim();
+
+
+    const departure =
+        document.getElementById(
+            "departure"
+        ).value.trim();
+
+
+    const arrival =
+        document.getElementById(
+            "arrival"
+        ).value.trim();
+
+
+    const date =
+        document.getElementById(
+            "travelDate"
+        ).value;
+
+
+    const passengers =
+        document.getElementById(
+            "passengers"
+        ).value;
+
+
+    document.getElementById(
+        "successName"
+    ).textContent = name;
+
+
+    document.getElementById(
+        "successRoute"
+    ).textContent =
+        departure + " → " + arrival;
+
+
+    document.getElementById(
+        "successDate"
+    ).textContent = date;
+
+
+    document.getElementById(
+        "successPassengers"
+    ).textContent =
+        passengers;
+
+
+    document.getElementById(
+        "successMethod"
+    ).textContent =
+        selectedMethod;
+
+
+    document.getElementById(
+        "successPhone"
+    ).textContent =
+        phone;
+
+
+    document.getElementById(
+        "successAmount"
+    ).textContent =
+        currentPrice.toLocaleString("fr-FR");
+
+
+    document.getElementById(
+        "successCode"
+    ).textContent =
+        generatedCode;
+
+
+    document.getElementById(
+        "successCard"
+    ).classList.remove("hidden");
+
+
+    document.getElementById(
+        "successCard"
+    ).scrollIntoView({
+        behavior:"smooth"
+    });
+
 }
+
+
+/* =====================================
+   RETOUR RESERVATION
+===================================== */
+
+function backToReservation(){
+
+    document.getElementById(
+        "ticketCard"
+    ).classList.add("hidden");
+
+
+    document.getElementById(
+        "reservationCard"
+    ).scrollIntoView({
+        behavior:"smooth"
+    });
+
+}
+
+
+/* =====================================
+   RETOUR BILLET
+===================================== */
+
+function backToTicket(){
+
+    document.getElementById(
+        "paymentCard"
+    ).classList.add("hidden");
+
+
+    document.getElementById(
+        "ticketCard"
+    ).scrollIntoView({
+        behavior:"smooth"
+    });
+
+}
+
+
+/* =====================================
+   NOUVEAU BILLET
+===================================== */
+
+function newTicket(){
+
+    document.getElementById(
+        "reservationCard"
+    ).classList.remove("hidden");
+
+
+    document.getElementById(
+        "ticketCard"
+    ).classList.add("hidden");
+
+
+    document.getElementById(
+        "paymentCard"
+    ).classList.add("hidden");
+
+
+    document.getElementById(
+        "successCard"
+    ).classList.add("hidden");
+
+
+    document.getElementById(
+        "departure"
+    ).value = "";
+
+
+    document.getElementById(
+        "arrival"
+    ).value = "";
+
+
+    document.getElementById(
+        "customerName"
+    ).value = "";
+
+
+    document.getElementById(
+        "phone"
+    ).value = "";
+
+
+    selectedMethod = "";
+
+    generatedCode = "";
+
+    currentPrice = 0;
+
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+
+/* =====================================
+   PREVENT DEFAULT FORM PROBLEM
+===================================== */
+
+window.addEventListener(
+    "load",
+    function(){
+
+        console.log(
+            "FasoPass chargé avec succès."
+        );
+
+    }
+);
 
 </script>
 
