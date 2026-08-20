@@ -3,301 +3,260 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>FasoPass - Billetterie Burkina Faso</title>
+<title>FasoPass - Bobo-Dioulasso</title>
 
 <style>
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial,sans-serif;
-}
-
-body{
-    background:#f4f6f8;
-    color:#222;
-}
-
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif;}
+body{background:#f4f6f8;color:#222;}
 header{
-    background:linear-gradient(135deg,#00843d,#f0c300,#d21034);
-    color:white;
-    text-align:center;
-    padding:35px 15px;
+background:linear-gradient(135deg,#00843d,#f0c300,#d21034);
+color:white;
+text-align:center;
+padding:35px 20px;
 }
-
-#btnAdmirateur{
-    margin-top:20px;
-    background:white;
-    color:#00843d;
-    border:none;
-    padding:12px 22px;
-    border-radius:30px;
-    font-weight:bold;
-    cursor:pointer;
-}
-
-.container{
-    width:94%;
-    max-width:650px;
-    margin:25px auto;
-}
-
+.container{width:94%;max-width:700px;margin:20px auto;}
 .card{
-    background:white;
-    border-radius:20px;
-    padding:22px;
-    margin-bottom:20px;
-    box-shadow:0 5px 18px rgba(0,0,0,.12);
+background:white;
+border-radius:18px;
+padding:20px;
+margin-bottom:20px;
+box-shadow:0 4px 12px rgba(0,0,0,.12);
 }
-
 .btn{
-    width:100%;
-    border:none;
-    border-radius:14px;
-    padding:16px;
-    font-size:18px;
-    font-weight:bold;
-    cursor:pointer;
-    margin-top:12px;
+width:100%;
+padding:15px;
+border:none;
+border-radius:12px;
+font-size:16px;
+font-weight:bold;
+margin-top:10px;
+cursor:pointer;
 }
-
 .green{background:#00843d;color:white;}
-.yellow{background:#f0c300;color:#222;}
+.yellow{background:#f0c300;color:black;}
 .red{background:#d21034;color:white;}
-
-.event{
-    border:1px solid #ddd;
-    border-radius:15px;
-    padding:18px;
-    margin-top:18px;
-}
-
-.price{
-    color:#d21034;
-    font-size:30px;
-    font-weight:bold;
-    margin:12px 0;
-}
-
-.admin-card{
-    display:none;
-    border:3px solid #00843d;
-}
-
 input,select{
-    width:100%;
-    padding:15px;
-    border-radius:12px;
-    border:1px solid #ccc;
-    margin:8px 0 15px;
-    font-size:17px;
+width:100%;
+padding:12px;
+margin-top:10px;
+border:1px solid #ccc;
+border-radius:10px;
 }
+.event{
+border:1px solid #ddd;
+border-radius:14px;
+padding:15px;
+margin-top:15px;
+}
+.price{
+font-size:28px;
+font-weight:bold;
+color:#d21034;
+margin:10px 0;
+}
+.hidden{display:none;}
 </style>
 </head>
 
 <body>
 
 <header>
-
-<div style="font-size:60px;">🎟️</div>
-
+<div style="font-size:55px;">🎟️</div>
 <h1>FasoPass</h1>
+<p>Bobo-Dioulasso • Billetterie officielle</p>
 
-<p>Votre plateforme de billetterie au Burkina Faso</p>
-
-<button onclick="ouvrirConnexion()" id="btnAdmirateur">
-❤️ Entrer comme Admirateur
+<button class="btn" style="background:white;color:#00843d;"
+onclick="ouvrirConnexion()">
+❤️ Entrer comme Administrateur
 </button>
-
 </header>
 
 <div class="container">
 
 <div class="card">
-
 <h2>Bienvenue</h2>
-
 <p>Créez, gérez et achetez des billets facilement.</p>
 
-<button class="btn green">Créer un événement</button>
+<button class="btn green" onclick="ouvrirFormulaire()">
+Créer un événement
+</button>
 
-<button class="btn yellow">Billet de transport</button>
+<button class="btn yellow">
+Billet de transport
+</button>
+</div>
 
+<div class="card hidden" id="formCard">
+<h2>Créer un événement</h2>
+
+<input id="nomEvent" placeholder="Nom de l'événement">
+<input id="lieuEvent" value="Bobo-Dioulasso">
+<input id="dateEvent" type="date">
+<input id="heureEvent" type="time">
+<input id="prixEvent" type="number" placeholder="Prix FCFA">
+
+<button class="btn green" onclick="creerEvenement()">
+Publier l'événement
+</button>
 </div>
 
 <div class="card">
-
 <h2>Événements disponibles</h2>
 
-<div class="event">
-
-<h3>Concert Live Ouagadougou</h3>
-
-<p>📍 Ouagadougou</p>
-
-<p>📅 30 Août 2026</p>
-
-<p>🕗 20h00</p>
-
-<div class="price">2 500 FCFA</div>
-
-<button class="btn green">
-Acheter mon billet
-</button>
-
-</div>
-
-<div class="event">
-
-<h3>Festival de la Jeunesse</h3>
-
-<p>📍 Ouagadougou</p>
-
-<p>📅 5 Septembre 2026</p>
-
-<p>🕖 18h00</p>
-
-<div class="price">1 500 FCFA</div>
-
-<button class="btn green">
-Acheter mon billet
-</button>
-
-</div>
-
-</div><div class="card admin-card" id="adminPanel">
-
-<h2>👑 Panneau Admirateur (Propriétaire)</h2>
-
-<p><strong>Nom :</strong> <span id="adminNom">Mouhamed Barry</span></p>
-
-<p>Vous êtes le propriétaire de FasoPass.</p>
-
-<ul style="margin:15px 0 15px 20px;">
-<li>✅ Gérer tous les paramètres</li>
-<li>✅ Nommer les créateurs</li>
-<li>✅ Approuver automatiquement les créateurs</li>
-<li>🔒 Votre rôle ne peut pas être supprimé</li>
-</ul>
-
-<button class="btn green" onclick="creerCreateur()">
-➕ Nommer un créateur
-</button>
-
-<button class="btn yellow" onclick="voirCreateurs()">
-👥 Voir les créateurs
-</button>
-
-</div>
-
-<div class="card">
-
+<div id="listeEvenements"></div>
+</div><div class="card">
 <h2>Réserver un billet de transport</h2>
 
 <label>Ville de départ</label>
-<input id="depart" placeholder="Bobo-Dioulasso">
+<input id="depart" value="Bobo-Dioulasso">
 
 <label>Ville d'arrivée</label>
-<input id="arrivee" placeholder="Ouagadougou">
+<input id="arrivee" value="Ouagadougou">
 
 <label>Date du voyage</label>
-<input type="date" id="dateVoyage">
+<input id="dateVoyage" type="date">
 
 <label>Nombre de passagers</label>
-<input type="number" id="passagers" value="1" min="1">
+<input id="passagers" type="number" value="1" min="1">
 
 <button class="btn yellow" onclick="reserverTransport()">
 Continuer
 </button>
+</div>
 
+<div class="card hidden" id="ownerCard">
+<h2>👑 Tableau de bord Administrateur</h2>
+
+<p><strong>Nom :</strong> Mouhamed Barry</p>
+<p><strong>Ville :</strong> Bobo-Dioulasso</p>
+
+<button class="btn green" onclick="voirEvenements()">
+Voir mes événements
+</button>
+
+<button class="btn red" onclick="deconnexion()">
+Déconnexion
+</button>
 </div>
 
 </div>
 
 <script>
 
-const PROPRIETAIRE="Mouhamed Barry";
+const OWNER="Mouhamed Barry";
 
-let currentUser=null;
+let evenements=JSON.parse(localStorage.getItem("evenements")||"[]");
+
+function ouvrirFormulaire(){
+document.getElementById("formCard").classList.remove("hidden");
+}
 
 function ouvrirConnexion(){
 
-const nom=prompt("Entrez votre nom d'admirateur :");
+const nom=prompt("Entrez votre nom d'administrateur :");
 
 if(!nom)return;
 
-const user={
-nom:nom,
-role:"admirateur",
-status:"active",
-owner:nom===PROPRIETAIRE
-};
+localStorage.setItem("utilisateur",nom);
 
-localStorage.setItem("currentUser",JSON.stringify(user));
+if(nom===OWNER){
+document.getElementById("ownerCard").classList.remove("hidden");
+alert("Bienvenue Propriétaire Mouhamed Barry !");
+}else{
+alert("Bienvenue "+nom);
+}
 
-currentUser=user;
+}
+
+function deconnexion(){
+localStorage.removeItem("utilisateur");
+location.reload();
+}function creerEvenement(){
+
+const nom=document.getElementById("nomEvent").value;
+const lieu=document.getElementById("lieuEvent").value;
+const date=document.getElementById("dateEvent").value;
+const heure=document.getElementById("heureEvent").value;
+const prix=document.getElementById("prixEvent").value;
+
+if(!nom||!lieu||!date||!heure||!prix){
+alert("Remplissez tous les champs.");
+return;
+}
+
+evenements.push({
+nom,
+lieu,
+date,
+heure,
+prix
+});
+
+localStorage.setItem("evenements",JSON.stringify(evenements));
+
+document.getElementById("nomEvent").value="";
+document.getElementById("dateEvent").value="";
+document.getElementById("heureEvent").value="";
+document.getElementById("prixEvent").value="";
+
+document.getElementById("formCard").classList.add("hidden");
 
 mettreAJourInterface();
 
-alert("Bienvenue "+nom+" !");
+alert("Événement publié avec succès !");
 }
 
 function mettreAJourInterface(){
 
-const data=localStorage.getItem("currentUser");
+const liste=document.getElementById("listeEvenements");
 
-if(!data)return;
+liste.innerHTML="";
 
-currentUser=JSON.parse(data);
+if(evenements.length===0){
 
-if(currentUser.owner){
+liste.innerHTML=`
+<div class="event">
+<h3>Concert Live Bobo-Dioulasso</h3>
+<p>📍 Bobo-Dioulasso</p>
+<p>📅 30 Août 2026</p>
+<p>🕗 20h00</p>
+<div class="price">2 500 FCFA</div>
+<button class="btn green" onclick="acheterBillet('Concert Live Bobo-Dioulasso')">
+Acheter mon billet
+</button>
+</div>
+`;
 
-document.getElementById("adminPanel").style.display="block";
-
-document.getElementById("adminNom").innerText=currentUser.nom;
-
-}
-}function creerCreateur(){
-
-const nom=prompt("Nom du créateur :");
-
-if(!nom)return;
-
-let createurs=JSON.parse(localStorage.getItem("createurs")||"[]");
-
-createurs.push({
-nom:nom,
-role:"createur",
-status:"active"
-});
-
-localStorage.setItem("createurs",JSON.stringify(createurs));
-
-alert(nom+" est maintenant créateur (approuvé automatiquement).");
-
-}
-
-function voirCreateurs(){
-
-let createurs=JSON.parse(localStorage.getItem("createurs")||"[]");
-
-if(createurs.length===0){
-alert("Aucun créateur enregistré.");
 return;
 }
 
-let liste="Créateurs FasoPass\n\n";
+evenements.forEach((e)=>{
 
-createurs.forEach((c,i)=>{
-liste+=(i+1)+". "+c.nom+" - "+c.status+"\n";
+liste.innerHTML+=`
+<div class="event">
+<h3>${e.nom}</h3>
+<p>📍 ${e.lieu}</p>
+<p>📅 ${e.date}</p>
+<p>🕗 ${e.heure}</p>
+<div class="price">${e.prix} FCFA</div>
+<button class="btn green" onclick="acheterBillet('${e.nom}')">
+Acheter mon billet
+</button>
+</div>
+`;
+
 });
-
-alert(liste);
 
 }
 
-function reserverTransport(){
+function acheterBillet(nom){
+const code="FP-"+Math.floor(Math.random()*999999);
+alert(
+"Billet confirmé !\n\n"+
+"Événement : "+nom+"\n"+
+"Code : "+code
+);
+}function reserverTransport(){
 
 const depart=document.getElementById("depart").value;
 const arrivee=document.getElementById("arrivee").value;
@@ -309,17 +268,46 @@ alert("Veuillez remplir tous les champs.");
 return;
 }
 
+const numero="TR-"+Math.floor(Math.random()*999999);
+
 alert(
 "Réservation confirmée !\n\n"+
-"Départ : "+depart+
-"\nArrivée : "+arrivee+
+"Trajet : "+depart+" → "+arrivee+
 "\nDate : "+date+
-"\nPassagers : "+passagers
+"\nPassagers : "+passagers+
+"\nN° Billet : "+numero
 );
 
 }
 
-window.addEventListener("load",mettreAJourInterface);
+function voirEvenements(){
+
+if(evenements.length===0){
+alert("Vous n'avez encore créé aucun événement.");
+return;
+}
+
+let liste="MES ÉVÉNEMENTS\n\n";
+
+evenements.forEach((e,i)=>{
+liste+=(i+1)+". "+e.nom+" ("+e.date+")\n";
+});
+
+alert(liste);
+
+}
+
+window.onload=function(){
+
+mettreAJourInterface();
+
+const user=localStorage.getItem("utilisateur");
+
+if(user===OWNER){
+document.getElementById("ownerCard").classList.remove("hidden");
+}
+
+};
 
 </script>
 
