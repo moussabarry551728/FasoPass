@@ -3,153 +3,238 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>FasoPass</title>
+<title>FasoPass - Billetterie mondiale</title>
 
 <style>
-*{
-    box-sizing:border-box;
-    margin:0;
-    padding:0;
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
 }
 
-body{
-    font-family:Arial,sans-serif;
-    background:#f3f5f7;
-    color:#222;
+body {
+    font-family: Arial, sans-serif;
+    background: #f1f3f4;
+    color: #222;
 }
 
-header{
-    background:linear-gradient(135deg,#00843d,#fcd116,#ce1126);
-    color:white;
-    text-align:center;
-    padding:45px 20px;
+header {
+    background: linear-gradient(135deg, #00843d, #ffd100, #d90429);
+    color: white;
+    text-align: center;
+    padding: 45px 20px;
 }
 
-.ticket{
-    font-size:60px;
+.logo {
+    font-size: 65px;
+    margin-bottom: 10px;
 }
 
-header h1{
-    font-size:42px;
-    margin:10px 0;
+header h1 {
+    font-size: 48px;
+    margin-bottom: 10px;
 }
 
-header p{
-    font-size:20px;
+header p {
+    font-size: 20px;
+    max-width: 700px;
+    margin: auto;
 }
 
-.container{
-    width:94%;
-    max-width:900px;
-    margin:25px auto;
+.container {
+    max-width: 1000px;
+    margin: 25px auto;
+    padding: 15px;
 }
 
-.card{
-    background:white;
-    border-radius:20px;
-    padding:25px;
-    margin-bottom:22px;
-    box-shadow:0 5px 20px rgba(0,0,0,.08);
+.card {
+    background: white;
+    border-radius: 25px;
+    padding: 25px;
+    margin-bottom: 25px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
 }
 
-h2{
-    color:#00843d;
-    margin-bottom:15px;
+h2 {
+    color: #00843d;
+    margin-bottom: 20px;
 }
 
-h3{
-    margin-bottom:10px;
+h3 {
+    margin: 15px 0;
 }
 
-p{
-    line-height:1.6;
+button {
+    width: 100%;
+    border: none;
+    border-radius: 15px;
+    padding: 17px;
+    margin: 8px 0;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
 }
 
-button{
-    width:100%;
-    border:0;
-    border-radius:12px;
-    padding:16px;
-    margin-top:12px;
-    font-size:17px;
-    font-weight:bold;
-    cursor:pointer;
+.btn-green {
+    background: #00843d;
+    color: white;
 }
 
-.green{
-    background:#00843d;
-    color:white;
+.btn-yellow {
+    background: #ffd100;
+    color: #111;
 }
 
-.yellow{
-    background:#fcd116;
-    color:#111;
+.btn-red {
+    background: #d90429;
+    color: white;
 }
 
-.red{
-    background:#ce1126;
-    color:white;
+.btn-blue {
+    background: #1976d2;
+    color: white;
 }
 
-.dark{
-    background:#222;
-    color:white;
+input, select, textarea {
+    width: 100%;
+    padding: 14px;
+    margin: 7px 0 15px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 16px;
 }
 
-.blue{
-    background:#1976d2;
-    color:white;
+label {
+    font-weight: bold;
+    display: block;
+    margin-top: 8px;
 }
 
-input,select{
-    width:100%;
-    padding:14px;
-    margin:7px 0 14px;
-    border:1px solid #ccc;
-    border-radius:10px;
-    font-size:16px;
+.hidden {
+    display: none;
 }
 
-.badge{
-    display:inline-block;
-    background:#00843d;
-    color:white;
-    padding:8px 14px;
-    border-radius:30px;
-    margin-top:10px;
-    font-weight:bold;
+.ticket {
+    border: 2px solid #00843d;
+    border-radius: 15px;
+    padding: 18px;
+    margin: 12px 0;
 }
 
-.item{
-    border:1px solid #ddd;
-    border-radius:14px;
-    padding:16px;
-    margin-top:12px;
+.ticket strong {
+    color: #00843d;
 }
 
-.price{
-    color:#ce1126;
-    font-size:22px;
-    font-weight:bold;
-    margin-top:8px;
+.admin-box {
+    border-left: 5px solid #d90429;
+    padding-left: 15px;
 }
 
-.hidden{
-    display:none;
+.wallet {
+    background: #00843d;
+    color: white;
+    border-radius: 18px;
+    padding: 20px;
+    text-align: center;
+    margin-bottom: 20px;
 }
 
-footer{
-    background:#222;
-    color:white;
-    text-align:center;
-    padding:30px 20px;
-    margin-top:30px;
+.wallet .amount {
+    font-size: 32px;
+    font-weight: bold;
 }
 
-.small{
-    font-size:14px;
-    color:#666;
+footer {
+    background: #222;
+    color: white;
+    text-align: center;
+    padding: 30px 15px;
+    margin-top: 40px;
+}
+
+.notice {
+    background: #fff3cd;
+    padding: 15px;
+    border-radius: 10px;
+    margin: 10px 0;
+}
+
+.success {
+    background: #d1e7dd;
+    padding: 15px;
+    border-radius: 10px;
+    margin: 10px 0;
+}
+
+.danger {
+    background: #f8d7da;
+    padding: 15px;
+    border-radius: 10px;
+    margin: 10px 0;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 15px;
+}
+
+.transport-card {
+    border: 2px solid #ddd;
+    border-radius: 15px;
+    padding: 18px;
+    cursor: pointer;
+}
+
+.transport-card:hover {
+    border-color: #00843d;
+}
+
+.modal {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    z-index: 1000;
+}
+
+.modal-content {
+    background: white;
+    width: 100%;
+    max-width: 600px;
+    max-height: 90vh;
+    overflow-y: auto;
+    border-radius: 20px;
+    padding: 25px;
+}
+
+.close {
+    float: right;
+    font-size: 28px;
+    cursor: pointer;
+    color: #d90429;
+}
+
+.small {
+    font-size: 14px;
+    color: #666;
+}
+
+@media(max-width:600px) {
+    header h1 {
+        font-size: 38px;
+    }
+
+    header p {
+        font-size: 17px;
+    }
+
+    .container {
+        padding: 10px;
+    }
 }
 </style>
 </head>
@@ -157,444 +242,288 @@ footer{
 <body>
 
 <header>
-
-<div class="ticket">🎟️</div>
-
-<h1>FasoPass</h1>
-
-<p>Billetterie mondiale pour événements et transports</p>
-
-<p style="margin-top:10px">
-Créateur : <strong>Moussa Barry</strong>
-</p>
-
+    <div class="logo">🎫</div>
+    <h1>FasoPass</h1>
+    <p>Billetterie mondiale pour événements et transports</p>
+    <p>Créateur : Moussa Barry</p>
 </header>
-
 
 <div class="container">
 
+    <div class="card">
+        <h2>🌍 Bienvenue sur FasoPass</h2>
 
-<!-- ACCUEIL -->
+        <p>
+            Réservez facilement vos billets d'événements
+            et vos billets de transport partout dans le monde.
+        </p>
 
-<div class="card">
+        <button class="btn-green" onclick="showTransport()">
+            🌍 Billets de transport
+        </button>
 
-<h2>Bienvenue sur FasoPass</h2>
+        <button class="btn-yellow" onclick="showEvents()">
+            🎉 Événements
+        </button>
 
-<p>
-Réservez facilement vos billets d'événements
-et vos billets de transport partout dans le monde.
-</p>
+        <button class="btn-red" onclick="openOwnerLogin()">
+            👑 Espace propriétaire
+        </button>
 
-<button class="green"
-onclick="afficher('transport')">
-🌍 Billets de transport
-</button>
+        <button class="btn-blue" onclick="openSellerLogin()">
+            🏢 Espace vendeur
+        </button>
+    </div>
 
-<button class="yellow"
-onclick="afficher('evenements')">
-🎉 Événements
-</button>
+    <div id="transportSection" class="card hidden">
 
-<button class="red"
-onclick="connexionProprietaire()">
-👑 Espace propriétaire
-</button>
+        <h2>🌍 Billets de transport</h2>
 
-</div>
+        <p>
+            Recherchez un transport selon le type,
+            la ville, la société ou la gare.
+        </p>
 
+        <label>Type de transport</label>
 
-<!-- TRANSPORT -->
+        <select id="transportType">
+            <option value="">Choisir</option>
+            <option>🚌 Bus / Car</option>
+            <option>✈️ Avion</option>
+            <option>🚆 Train</option>
+            <option>🚢 Bateau</option>
+            <option>🚕 Taxi</option>
+            <option>🚐 Minibus</option>
+            <option>🚍 Autre transport</option>
+        </select>
 
-<div id="transport" class="card hidden">
+        <label>Pays de départ</label>
+        <input id="departureCountry" placeholder="Exemple : Burkina Faso">
 
-<h2>🌍 Billets de transport</h2>
+        <label>Ville de départ</label>
+        <input id="departureCity" placeholder="Exemple : Bobo-Dioulasso">
 
-<label>Type de transport</label>
+        <label>Pays d'arrivée</label>
+        <input id="arrivalCountry" placeholder="Exemple : Côte d'Ivoire">
 
-<select id="typeTransport">
-<option value="">Choisir</option>
-<option>🚌 Bus</option>
-<option>🚍 Car</option>
-<option>✈️ Avion</option>
-<option>🚆 Train</option>
-<option>🚢 Bateau</option>
-<option>🚕 Taxi</option>
-<option>🚐 Minibus</option>
-<option>Autre</option>
-</select>
+        <label>Ville d'arrivée</label>
+        <input id="arrivalCity" placeholder="Exemple : Abidjan">
 
+        <label>Nom de la société / compagnie / gare</label>
+        <input id="transportCompany"
+               placeholder="Exemple : compagnie de transport">
 
-<label>Pays</label>
+        <button class="btn-green" onclick="searchTransport()">
+            🔎 Rechercher
+        </button>
 
-<input
-id="paysTransport"
-placeholder="Exemple : Burkina Faso">
+        <div id="transportResults"></div>
 
+    </div>
 
-<label>Ville de départ</label>
+    <div id="eventsSection" class="card hidden">
 
-<input
-id="departTransport"
-placeholder="Exemple : Bobo-Dioulasso">
+        <h2>🎉 Événements disponibles</h2>
 
+        <div id="eventList">
+            <p>Aucun événement affiché pour le moment.</p>
+        </div>
 
-<label>Destination</label>
+    </div>
 
-<input
-id="destinationTransport"
-placeholder="Exemple : Ouagadougou">
+    <div id="sellerSection" class="card hidden">
 
+        <h2>🏢 Espace vendeur</h2>
 
-<label>Compagnie / Société / Gare</label>
+        <div class="notice">
+            Les créateurs d'événements et les sociétés de transport
+            pourront publier leurs offres, fixer leurs prix et vendre
+            leurs billets en ligne.
+        </div>
 
-<input
-id="societeTransport"
-placeholder="Exemple : TSR, Air France, gare...">
+        <button class="btn-green" onclick="openEventCreator()">
+            🎉 Publier un événement
+        </button>
 
+        <button class="btn-yellow" onclick="openTransportCreator()">
+            🚌 Publier un transport
+        </button>
 
-<label>Date du voyage</label>
+        <div class="wallet">
+            <p>💰 Solde vendeur</p>
+            <div class="amount" id="sellerBalance">0 FCFA</div>
+        </div>
 
-<input
-id="dateTransport"
-type="date">
+        <button class="btn-blue" onclick="requestWithdrawal()">
+            💳 Demander un retrait
+        </button>
 
+    </div>
 
-<button class="green"
-onclick="rechercherTransport()">
-🔎 Rechercher un billet
-</button>
+    <div id="ownerSection" class="card hidden">
 
-<div id="resultatTransport"></div>
+        <h2>👑 Administration propriétaire</h2>
 
-</div>
+        <div class="admin-box">
 
+            <p>
+                Bienvenue dans l'espace du propriétaire de FasoPass.
+            </p>
 
-<!-- EVENEMENTS -->
+            <br>
 
-<div id="evenements" class="card hidden">
+            <p>
+                Le propriétaire peut gérer les administrateurs,
+                les vendeurs, les événements, les transports
+                et les paramètres de la plateforme.
+            </p>
 
-<h2>🎉 Événements disponibles</h2>
+        </div>
 
-<div id="listeEvenements">
+        <button class="btn-green" onclick="manageAdmins()">
+            🛡️ Gérer les administrateurs
+        </button>
 
-<p class="small">
-Aucun événement publié pour le moment.
-</p>
+        <button class="btn-yellow" onclick="manageSellers()">
+            🏢 Gérer les vendeurs
+        </button>
 
-</div>
+        <button class="btn-blue" onclick="platformSettings()">
+            ⚙️ Paramètres de la plateforme
+        </button>
 
-</div>
+        <button class="btn-red" onclick="logoutOwner()">
+            🚪 Fermer l'espace propriétaire
+        </button>
 
-
-<!-- PROPRIETAIRE -->
-
-<div id="proprietaire" class="hidden">
-
-
-<div class="card">
-
-<h2>👑 Espace Propriétaire</h2>
-
-<p>
-Bienvenue dans votre espace,
-<strong>Moussa Barry</strong>.
-</p>
-
-<span class="badge">
-PROPRIÉTAIRE PRINCIPAL
-</span>
-
-</div>
-
-
-<!-- ADMINISTRATEURS -->
-
-<div class="card">
-
-<h2>🔐 Administrateurs</h2>
-
-<p>
-Seul le propriétaire peut nommer ou révoquer
-les administrateurs.
-</p>
-
-<button class="green"
-onclick="nommerAdministrateur()">
-➕ Nommer un administrateur
-</button>
-
-<button class="yellow"
-onclick="afficherAdministrateurs()">
-👥 Voir les administrateurs
-</button>
-
-<button class="red"
-onclick="revoquerAdministrateur()">
-🚫 Révoquer un administrateur
-</button>
+    </div>
 
 </div>
-
-
-<!-- CREER EVENEMENT -->
-
-<div class="card">
-
-<h2>🎉 Créer un événement</h2>
-
-<label>Nom de l'événement</label>
-
-<input
-id="nomEvenement"
-placeholder="Concert, festival...">
-
-<label>Ville</label>
-
-<input
-id="villeEvenement"
-placeholder="Ouagadougou">
-
-<label>Date</label>
-
-<input
-id="dateEvenement"
-type="date">
-
-<label>Heure</label>
-
-<input
-id="heureEvenement"
-type="time">
-
-<label>Prix du billet FCFA</label>
-
-<input
-id="prixEvenement"
-type="number"
-placeholder="2500">
-
-<button class="green"
-onclick="publierEvenement()">
-📢 Publier l'événement
-</button>
-
-</div>
-
-
-<!-- TRANSPORTS -->
-
-<div class="card">
-
-<h2>🚌 Ajouter une société de transport</h2>
-
-<label>Type de transport</label>
-
-<select id="adminTypeTransport">
-
-<option>🚌 Bus</option>
-<option>🚍 Car</option>
-<option>✈️ Avion</option>
-<option>🚆 Train</option>
-<option>🚢 Bateau</option>
-<option>🚕 Taxi</option>
-<option>🚐 Minibus</option>
-
-</select>
-
-
-<label>Nom de la société / compagnie</label>
-
-<input
-id="adminSociete"
-placeholder="Nom de la société">
-
-
-<label>Ville / Gare</label>
-
-<input
-id="adminVille"
-placeholder="Exemple : Bobo-Dioulasso">
-
-
-<label>Destination</label>
-
-<input
-id="adminDestination"
-placeholder="Exemple : Ouagadougou">
-
-
-<label>Prix du billet FCFA</label>
-
-<input
-id="adminPrix"
-type="number"
-placeholder="5000">
-
-
-<button class="yellow"
-onclick="publierTransport()">
-📢 Publier le transport
-</button>
-
-</div>
-
-
-<!-- GESTION -->
-
-<div class="card">
-
-<h2>⚙️ Administration FasoPass</h2>
-
-<button class="green"
-onclick="afficherUtilisateurs()">
-👥 Utilisateurs
-</button>
-
-<button class="green"
-onclick="afficherOrganisateurs()">
-🎉 Organisateurs
-</button>
-
-<button class="yellow"
-onclick="afficherTransporteurs()">
-🚌 Sociétés de transport
-</button>
-
-<button class="yellow"
-onclick="afficherTransactions()">
-💳 Transactions
-</button>
-
-<button class="yellow"
-onclick="afficherRetraits()">
-💰 Retraits
-</button>
-
-<button class="dark"
-onclick="parametres()">
-⚙️ Paramètres du propriétaire
-</button>
-
-</div>
-
-
-<!-- SECURITE -->
-
-<div class="card">
-
-<h2>🛡️ Sécurité</h2>
-
-<p>
-Le compte propriétaire doit être protégé par une
-authentification sécurisée côté serveur.
-</p>
-
-<button class="red"
-onclick="deconnexion()">
-🚪 Déconnexion
-</button>
-
-</div>
-
-</div>
-
-
-</div>
-
 
 <footer>
+    <p>© 2026 FasoPass</p>
+    <p>Billetterie simple, rapide et accessible.</p>
+    <p>Créateur : Moussa Barry</p>
+</footer><script>
 
-<p>© 2026 FasoPass</p>
+const OWNER_NAME = "Moussa Barry";
 
-<p>Billetterie simple, rapide et accessible.</p>
+/*
+   Pour la démonstration, le propriétaire est protégé
+   par ce code. Nous pourrons remplacer cela plus tard
+   par une vraie connexion sécurisée.
+*/
+const OWNER_CODE = "FASOPASS_OWNER_2026";
 
-<p>Créateur : Moussa Barry</p>
+let events = JSON.parse(localStorage.getItem("fasopass_events")) || [];
+let transports = JSON.parse(localStorage.getItem("fasopass_transports")) || [];
+let admins = JSON.parse(localStorage.getItem("fasopass_admins")) || [];
+let sellers = JSON.parse(localStorage.getItem("fasopass_sellers")) || [];
 
-</footer>
-
-
-<script>
-
-/* =========================
-   DONNÉES
-========================= */
-
-let administrateurs =
-JSON.parse(
-localStorage.getItem("administrateurs")
-) || [];
-
-let evenements =
-JSON.parse(
-localStorage.getItem("evenements")
-) || [];
-
-let transports =
-JSON.parse(
-localStorage.getItem("transports")
-) || [];
+let sellerBalance =
+    Number(localStorage.getItem("fasopass_balance")) || 0;
 
 
 /* =========================
-   AFFICHAGE
+   NAVIGATION
 ========================= */
 
-function afficher(section){
+function showTransport() {
 
-document
-.getElementById(section)
-.classList.remove("hidden");
+    document.getElementById("transportSection")
+        .classList.remove("hidden");
 
-document
-.getElementById(section)
-.scrollIntoView({
-behavior:"smooth"
-});
+    document.getElementById("eventsSection")
+        .classList.add("hidden");
 
+    document.getElementById("sellerSection")
+        .classList.add("hidden");
+
+    document.getElementById("ownerSection")
+        .classList.add("hidden");
+
+    window.scrollTo({
+        top: document.getElementById("transportSection").offsetTop,
+        behavior: "smooth"
+    });
+
+    displayTransports();
+}
+
+
+function showEvents() {
+
+    document.getElementById("eventsSection")
+        .classList.remove("hidden");
+
+    document.getElementById("transportSection")
+        .classList.add("hidden");
+
+    document.getElementById("sellerSection")
+        .classList.add("hidden");
+
+    document.getElementById("ownerSection")
+        .classList.add("hidden");
+
+    displayEvents();
+
+    window.scrollTo({
+        top: document.getElementById("eventsSection").offsetTop,
+        behavior: "smooth"
+    });
 }
 
 
 /* =========================
-   PROPRIETAIRE
+   ESPACE PROPRIÉTAIRE
 ========================= */
 
-function connexionProprietaire(){
+function openOwnerLogin() {
 
-let nom =
-prompt(
-"Nom du propriétaire :"
-);
+    const code = prompt(
+        "👑 ESPACE PROPRIÉTAIRE\n\n" +
+        "Entrez le code propriétaire :"
+    );
 
-if(
-nom &&
-nom.toLowerCase()
-.trim()
-===
-"moussa barry"
-){
+    if (code === OWNER_CODE) {
 
-document
-.getElementById("proprietaire")
-.classList.remove("hidden");
+        document.getElementById("ownerSection")
+            .classList.remove("hidden");
 
-document
-.getElementById("proprietaire")
-.scrollIntoView({
-behavior:"smooth"
-});
+        document.getElementById("transportSection")
+            .classList.add("hidden");
 
-alert(
-"👑 Bienvenue Moussa Barry !"
-);
+        document.getElementById("eventsSection")
+            .classList.add("hidden");
 
-}else{
+        document.getElementById("sellerSection")
+            .classList.add("hidden");
 
-alert(
-"❌ Accès refusé."
-);
+        alert(
+            "Bienvenue " +
+            OWNER_NAME +
+            " !\n\n" +
+            "Vous êtes connecté comme propriétaire."
+        );
 
+        window.scrollTo({
+            top: document.getElementById("ownerSection").offsetTop,
+            behavior: "smooth"
+        });
+
+    } else {
+
+        alert("❌ Code propriétaire incorrect.");
+    }
 }
 
+
+function logoutOwner() {
+
+    document.getElementById("ownerSection")
+        .classList.add("hidden");
+
+    alert("Vous avez quitté l'espace propriétaire.");
 }
 
 
@@ -602,362 +531,434 @@ alert(
    ADMINISTRATEURS
 ========================= */
 
-function nommerAdministrateur(){
+function manageAdmins() {
 
-let nom =
-prompt(
-"Nom de l'administrateur :"
-);
+    const choix = prompt(
+        "🛡️ GESTION DES ADMINISTRATEURS\n\n" +
 
-if(!nom) return;
+        "1 - Nommer un administrateur\n" +
+        "2 - Voir les administrateurs\n" +
+        "3 - Révoquer un administrateur\n\n" +
 
-administrateurs.push({
+        "Entrez 1, 2 ou 3 :"
+    );
 
-nom:nom,
+    if (choix === "1") {
 
-role:"Administrateur",
+        const name = prompt(
+            "Nom de l'administrateur :"
+        );
 
-statut:"Actif"
+        if (!name) return;
 
-});
+        admins.push({
+            id: Date.now(),
+            name: name,
+            date: new Date().toLocaleString()
+        });
 
-localStorage.setItem(
+        saveData();
 
-"administrateurs",
+        alert(
+            "✅ " +
+            name +
+            " a été nommé administrateur."
+        );
+    }
 
-JSON.stringify(
-administrateurs
-)
+    else if (choix === "2") {
 
-);
+        if (admins.length === 0) {
 
-alert(
-"✅ Administrateur nommé : "
-+ nom
-);
+            alert(
+                "Aucun administrateur nommé pour le moment."
+            );
 
-}
+            return;
+        }
 
+        let message =
+            "🛡️ ADMINISTRATEURS\n\n";
 
-function afficherAdministrateurs(){
+        admins.forEach((admin, index) => {
 
-if(
-administrateurs.length===0
-){
+            message +=
+                (index + 1) +
+                " - " +
+                admin.name +
+                "\n";
 
-alert(
-"Aucun administrateur."
-);
+        });
 
-return;
+        alert(message);
+    }
 
-}
+    else if (choix === "3") {
 
-let texte =
-"👥 ADMINISTRATEURS\n\n";
+        if (admins.length === 0) {
 
-administrateurs.forEach(
-(a,i)=>{
+            alert(
+                "Il n'y a aucun administrateur à révoquer."
+            );
 
-texte +=
-(i+1)+". "+
-a.nom+
-"\nRôle : "+
-a.role+
-"\nStatut : "+
-a.statut+
-"\n\n";
+            return;
+        }
 
-});
+        let message =
+            "Entrez le numéro de l'administrateur à révoquer :\n\n";
 
-alert(texte);
+        admins.forEach((admin, index) => {
 
-}
+            message +=
+                (index + 1) +
+                " - " +
+                admin.name +
+                "\n";
+        });
 
+        const number = Number(prompt(message));
 
-function revoquerAdministrateur(){
+        if (
+            number >= 1 &&
+            number <= admins.length
+        ) {
 
-if(
-administrateurs.length===0
-){
+            const removed =
+                admins.splice(number - 1, 1)[0];
 
-alert(
-"Aucun administrateur."
-);
+            saveData();
 
-return;
-
-}
-
-let numero =
-prompt(
-"Numéro de l'administrateur à révoquer :"
-);
-
-let index =
-Number(numero)-1;
-
-if(
-index>=0 &&
-index<administrateurs.length
-){
-
-let nom =
-administrateurs[index].nom;
-
-administrateurs.splice(
-index,
-1
-);
-
-localStorage.setItem(
-
-"administrateurs",
-
-JSON.stringify(
-administrateurs
-)
-
-);
-
-alert(
-"🚫 Administrateur révoqué : "
-+ nom
-);
-
-}
-
+            alert(
+                "✅ " +
+                removed.name +
+                " a été révoqué."
+            );
+        }
+    }
 }
 
 
 /* =========================
-   EVENEMENTS
+   VENDEURS
 ========================= */
 
-function publierEvenement(){
+function openSellerLogin() {
 
-let nom =
-document
-.getElementById("nomEvenement")
-.value;
+    const name = prompt(
+        "🏢 ESPACE VENDEUR\n\n" +
+        "Nom de votre société, organisation ou activité :"
+    );
 
-let ville =
-document
-.getElementById("villeEvenement")
-.value;
+    if (!name) return;
 
-let date =
-document
-.getElementById("dateEvenement")
-.value;
+    const existing = sellers.find(
+        seller => seller.name.toLowerCase() === name.toLowerCase()
+    );
 
-let heure =
-document
-.getElementById("heureEvenement")
-.value;
+    if (!existing) {
 
-let prix =
-document
-.getElementById("prixEvenement")
-.value;
+        sellers.push({
+            id: Date.now(),
+            name: name,
+            balance: 0,
+            active: true
+        });
 
-if(
-!nom ||
-!ville ||
-!date ||
-!heure ||
-!prix
-){
+        saveData();
+    }
 
-alert(
-"⚠️ Remplissez tous les champs."
-);
+    document.getElementById("sellerSection")
+        .classList.remove("hidden");
 
-return;
+    document.getElementById("ownerSection")
+        .classList.add("hidden");
 
-}
+    document.getElementById("transportSection")
+        .classList.add("hidden");
 
-evenements.push({
+    document.getElementById("eventsSection")
+        .classList.add("hidden");
 
-nom:nom,
+    updateBalance();
 
-ville:ville,
-
-date:date,
-
-heure:heure,
-
-prix:prix,
-
-createur:"Moussa Barry"
-
-});
-
-localStorage.setItem(
-
-"evenements",
-
-JSON.stringify(
-evenements
-)
-
-);
-
-alert(
-"✅ Événement publié !"
-);
-
-afficherEvenements();
-
-}
-
-
-function afficherEvenements(){
-
-let zone =
-document
-.getElementById("listeEvenements");
-
-if(
-evenements.length===0
-){
-
-zone.innerHTML =
-"<p>Aucun événement publié.</p>";
-
-return;
-
-}
-
-zone.innerHTML="";
-
-evenements.forEach(
-(e)=>{
-
-zone.innerHTML += `
-
-<div class="item">
-
-<h3>🎉 ${e.nom}</h3>
-
-<p>📍 ${e.ville}</p>
-
-<p>📅 ${e.date}</p>
-
-<p>🕐 ${e.heure}</p>
-
-<div class="price">
-${e.prix} FCFA
-</div>
-
-<button
-class="green"
-onclick="acheterBillet('${e.nom}')">
-
-🎟️ Acheter mon billet
-
-</button>
-
-</div>
-
-`;
-
-});
-
-}
-
-
-function acheterBillet(nom){
-
-alert(
-"🎟️ Achat du billet\n\n"+
-nom+
-"\n\nLe système de paiement sécurisé sera connecté dans la prochaine étape."
-);
-
+    window.scrollTo({
+        top: document.getElementById("sellerSection").offsetTop,
+        behavior: "smooth"
+    });
 }
 
 
 /* =========================
-   TRANSPORTS
+   CRÉATION D'ÉVÉNEMENT
 ========================= */
 
-function publierTransport(){
+function openEventCreator() {
 
-let type =
-document
-.getElementById(
-"adminTypeTransport"
-).value;
+    const name = prompt(
+        "🎉 NOM DE L'ÉVÉNEMENT :"
+    );
 
-let societe =
-document
-.getElementById(
-"adminSociete"
-).value;
+    if (!name) return;
 
-let ville =
-document
-.getElementById(
-"adminVille"
-).value;
+    const city = prompt(
+        "📍 VILLE :"
+    );
 
-let destination =
-document
-.getElementById(
-"adminDestination"
-).value;
+    if (!city) return;
 
-let prix =
-document
-.getElementById(
-"adminPrix"
-).value;
+    const country = prompt(
+        "🌍 PAYS :"
+    );
 
-if(
-!type ||
-!societe ||
-!ville ||
-!destination ||
-!prix
-){
+    if (!country) return;
 
-alert(
-"⚠️ Remplissez tous les champs."
-);
+    const date = prompt(
+        "📅 DATE :\nExemple : 25/12/2026"
+    );
 
-return;
+    if (!date) return;
 
+    const price = Number(
+        prompt(
+            "💰 PRIX DU BILLET EN FCFA :"
+        )
+    );
+
+    if (!price || price < 0) {
+
+        alert("❌ Prix incorrect.");
+
+        return;
+    }
+
+    events.push({
+
+        id: Date.now(),
+
+        name: name,
+
+        city: city,
+
+        country: country,
+
+        date: date,
+
+        price: price,
+
+        seller: "Vendeur FasoPass",
+
+        available: true
+    });
+
+    saveData();
+
+    alert(
+        "✅ Événement publié avec succès !\n\n" +
+        "Les clients peuvent maintenant voir le billet."
+    );
+
+    displayEvents();
 }
 
-transports.push({
 
-type:type,
+/* =========================
+   CRÉATION TRANSPORT
+========================= */
 
-societe:societe,
+function openTransportCreator() {
 
-ville:ville,
+    const type = prompt(
+        "🚌 TYPE DE TRANSPORT :\n\n" +
+        "Exemple : Bus, Car, Avion, Train, Bateau..."
+    );
 
-destination:destination,
+    if (!type) return;
 
-prix:prix
+    const company = prompt(
+        "🏢 NOM DE LA SOCIÉTÉ / COMPAGNIE / GARE :"
+    );
 
-});
+    if (!company) return;
 
-localStorage.setItem(
+    const departure = prompt(
+        "📍 VILLE DE DÉPART :"
+    );
 
-"transports",
+    if (!departure) return;
 
-JSON.stringify(
-transports
-)
+    const arrival = prompt(
+        "📍 VILLE D'ARRIVÉE :"
+    );
 
-);
+    if (!arrival) return;
 
-alert(
-"✅ Société de transport publiée !"
-);
+    const date = prompt(
+        "📅 DATE DU VOYAGE :"
+    );
 
+    if (!date) return;
+
+    const price = Number(
+        prompt(
+            "💰 PRIX DU BILLET EN FCFA :"
+        )
+    );
+
+    if (!price || price < 0) {
+
+        alert("❌ Prix incorrect.");
+
+        return;
+    }
+
+    transports.push({
+
+        id: Date.now(),
+
+        type: type,
+
+        company: company,
+
+        departure: departure,
+
+        arrival: arrival,
+
+        date: date,
+
+        price: price,
+
+        available: true
+    });
+
+    saveData();
+
+    alert(
+        "✅ Billet de transport publié !"
+    );
+
+    displayTransports();
+}
+
+
+/* =========================
+   AFFICHAGE ÉVÉNEMENTS
+========================= */
+
+function displayEvents() {
+
+    const list =
+        document.getElementById("eventList");
+
+    if (events.length === 0) {
+
+        list.innerHTML =
+            "<p>Aucun événement disponible.</p>";
+
+        return;
+    }
+
+    list.innerHTML = "";
+
+    events.forEach(event => {
+
+        const div =
+            document.createElement("div");
+
+        div.className = "ticket";
+
+        div.innerHTML = `
+
+            <h3>🎉 ${event.name}</h3>
+
+            <p>
+                📍 ${event.city}, ${event.country}
+            </p>
+
+            <p>
+                📅 ${event.date}
+            </p>
+
+            <p>
+                💰 <strong>
+                ${event.price.toLocaleString()}
+                FCFA
+                </strong>
+            </p>
+
+            <button
+                class="btn-green"
+                onclick="buyEvent(${event.id})">
+                🎫 Acheter le billet
+            </button>
+        `;
+
+        list.appendChild(div);
+    });
+}
+
+
+/* =========================
+   AFFICHAGE TRANSPORTS
+========================= */
+
+function displayTransports() {
+
+    const results =
+        document.getElementById("transportResults");
+
+    if (transports.length === 0) {
+
+        results.innerHTML =
+            "<p>Aucun billet de transport disponible pour le moment.</p>";
+
+        return;
+    }
+
+    results.innerHTML =
+        "<h3>🚍 Billets disponibles</h3>";
+
+    transports.forEach(item => {
+
+        const div =
+            document.createElement("div");
+
+        div.className = "ticket";
+
+        div.innerHTML = `
+
+            <h3>${item.type}</h3>
+
+            <p>
+                🏢 <strong>
+                ${item.company}
+                </strong>
+            </p>
+
+            <p>
+                📍 ${item.departure}
+                ➡️ ${item.arrival}
+            </p>
+
+            <p>
+                📅 ${item.date}
+            </p>
+
+            <p>
+                💰 <strong>
+                ${item.price.toLocaleString()}
+                FCFA
+                </strong>
+            </p>
+
+            <button
+                class="btn-green"
+                onclick="buyTransport(${item.id})">
+                🎫 Réserver ce billet
+            </button>
+        `;
+
+        results.appendChild(div);
+    });
 }
 
 
@@ -965,236 +966,385 @@ alert(
    RECHERCHE TRANSPORT
 ========================= */
 
-function rechercherTransport(){
+function searchTransport() {
 
-let type =
-document
-.getElementById(
-"typeTransport"
-).value;
+    const type =
+        document.getElementById("transportType").value
+        .toLowerCase();
 
-let depart =
-document
-.getElementById(
-"departTransport"
-).value;
+    const departure =
+        document.getElementById("departureCity").value
+        .toLowerCase();
 
-let destination =
-document
-.getElementById(
-"destinationTransport"
-).value;
+    const arrival =
+        document.getElementById("arrivalCity").value
+        .toLowerCase();
 
-let societe =
-document
-.getElementById(
-"societeTransport"
-).value;
+    const company =
+        document.getElementById("transportCompany").value
+        .toLowerCase();
 
-let result =
-document
-.getElementById(
-"resultatTransport"
-);
+    const results =
+        transports.filter(item => {
 
-let trouvees =
-transports.filter(
-(t)=>{
+            return (
 
-return (
+                (!type ||
+                item.type.toLowerCase().includes(type))
 
-(!type ||
-t.type===type)
+                &&
 
-&&
+                (!departure ||
+                item.departure.toLowerCase().includes(departure))
 
-(!depart ||
-t.ville
-.toLowerCase()
-.includes(
-depart.toLowerCase()
-))
+                &&
 
-&&
+                (!arrival ||
+                item.arrival.toLowerCase().includes(arrival))
 
-(!destination ||
-t.destination
-.toLowerCase()
-.includes(
-destination.toLowerCase()
-))
+                &&
 
-&&
+                (!company ||
+                item.company.toLowerCase().includes(company))
+            );
+        });
 
-(!societe ||
-t.societe
-.toLowerCase()
-.includes(
-societe.toLowerCase()
-))
+    const box =
+        document.getElementById("transportResults");
 
-);
+    if (results.length === 0) {
 
-});
+        box.innerHTML =
+            "<div class='danger'>❌ Aucun transport trouvé.</div>";
 
+        return;
+    }
 
-if(
-trouvees.length===0
-){
+    box.innerHTML =
+        "<h3>🔎 Résultats</h3>";
 
-result.innerHTML = `
+    results.forEach(item => {
 
-<div class="item">
+        box.innerHTML += `
 
-<p>
-❌ Aucun transport trouvé.
-</p>
+            <div class="ticket">
 
-</div>
+                <h3>${item.type}</h3>
 
-`;
+                <p>
+                    🏢 ${item.company}
+                </p>
 
-return;
+                <p>
+                    📍 ${item.departure}
+                    ➡️ ${item.arrival}
+                </p>
 
-}
+                <p>
+                    📅 ${item.date}
+                </p>
 
+                <p>
+                    💰 <strong>
+                    ${item.price.toLocaleString()}
+                    FCFA
+                    </strong>
+                </p>
 
-result.innerHTML="";
+                <button
+                    class="btn-green"
+                    onclick="buyTransport(${item.id})">
+                    🎫 Réserver
+                </button>
 
-trouvees.forEach(
-(t)=>{
-
-result.innerHTML += `
-
-<div class="item">
-
-<h3>${t.type}</h3>
-
-<p>
-🏢 ${t.societe}
-</p>
-
-<p>
-📍 ${t.ville}
-→
-${t.destination}
-</p>
-
-<div class="price">
-${t.prix} FCFA
-</div>
-
-<button
-class="green"
-onclick="reserverTransport('${t.societe}')">
-
-🎟️ Réserver
-
-</button>
-
-</div>
-
-`;
-
-});
-
-}
-
-
-function reserverTransport(societe){
-
-alert(
-
-"🎟️ Réservation\n\n"+
-"société : "+
-societe+
-"\n\n"+
-"Le paiement sécurisé sera connecté dans la prochaine étape."
-
-);
-
+            </div>
+        `;
+    });
 }
 
 
 /* =========================
-   ADMINISTRATION
+   ACHAT ÉVÉNEMENT
 ========================= */
 
-function afficherUtilisateurs(){
+function buyEvent(id) {
 
-alert(
-"👥 Gestion des utilisateurs\n\n"+
-"Cette partie sera connectée à la base de données."
-);
+    const event =
+        events.find(item => item.id === id);
 
+    if (!event) return;
+
+    const confirmBuy =
+        confirm(
+            "🎫 Acheter ce billet ?\n\n" +
+            event.name +
+            "\n" +
+            event.price.toLocaleString() +
+            " FCFA"
+        );
+
+    if (!confirmBuy) return;
+
+    alert(
+        "✅ Réservation enregistrée !\n\n" +
+        "Le paiement en ligne sécurisé sera connecté " +
+        "dans la prochaine étape."
+    );
 }
 
 
-function afficherOrganisateurs(){
+/* =========================
+   ACHAT TRANSPORT
+========================= */
 
-alert(
-"🎉 Gestion des organisateurs\n\n"+
-"Les créateurs pourront publier leurs événements et vendre leurs billets."
-);
+function buyTransport(id) {
 
+    const transport =
+        transports.find(item => item.id === id);
+
+    if (!transport) return;
+
+    const confirmBuy =
+        confirm(
+            "🎫 Réserver ce billet ?\n\n" +
+
+            transport.type +
+            "\n" +
+
+            transport.company +
+            "\n" +
+
+            transport.departure +
+            " ➡️ " +
+            transport.arrival +
+            "\n\n" +
+
+            transport.price.toLocaleString() +
+            " FCFA"
+        );
+
+    if (!confirmBuy) return;
+
+    alert(
+        "✅ Réservation enregistrée !\n\n" +
+        "Le paiement sécurisé sera connecté " +
+        "dans la prochaine étape."
+    );
 }
 
 
-function afficherTransporteurs(){
+/* =========================
+   RETRAIT VENDEUR
+========================= */
 
-alert(
-"🚌 Gestion des transporteurs\n\n"+
-"Les sociétés pourront publier leurs transports, leurs trajets et leurs prix."
-);
+function requestWithdrawal() {
 
+    if (sellerBalance <= 0) {
+
+        alert(
+            "💰 Votre solde est actuellement de 0 FCFA."
+        );
+
+        return;
+    }
+
+    const amount = Number(
+        prompt(
+            "💳 Montant à retirer :\n\n" +
+            "Solde disponible : " +
+            sellerBalance.toLocaleString() +
+            " FCFA"
+        )
+    );
+
+    if (!amount || amount <= 0) {
+
+        alert("❌ Montant incorrect.");
+
+        return;
+    }
+
+    if (amount > sellerBalance) {
+
+        alert(
+            "❌ Solde insuffisant."
+        );
+
+        return;
+    }
+
+    alert(
+        "✅ Demande de retrait enregistrée.\n\n" +
+        "Dans la version connectée, le retrait sera envoyé " +
+        "vers le moyen de paiement du vendeur."
+    );
 }
 
 
-function afficherTransactions(){
+/* =========================
+   GESTION VENDEURS
+========================= */
 
-alert(
-"💳 Transactions\n\n"+
-"Les ventes et paiements seront affichés ici."
-);
+function manageSellers() {
 
+    if (sellers.length === 0) {
+
+        alert(
+            "Aucun vendeur enregistré."
+        );
+
+        return;
+    }
+
+    let message =
+        "🏢 VENDEURS\n\n";
+
+    sellers.forEach((seller, index) => {
+
+        message +=
+
+            (index + 1) +
+            " - " +
+            seller.name +
+            "\n" +
+
+            "   Statut : " +
+            (seller.active ? "Actif" : "Désactivé") +
+            "\n\n";
+    });
+
+    alert(message);
 }
 
 
-function afficherRetraits(){
+/* =========================
+   PARAMÈTRES PROPRIÉTAIRE
+========================= */
 
-alert(
-"💰 Retraits\n\n"+
-"Les vendeurs pourront demander leurs retraits."
-);
+function platformSettings() {
 
+    const choice =
+        prompt(
+            "⚙️ PARAMÈTRES PROPRIÉTAIRE\n\n" +
+
+            "1 - Nom de la plateforme\n" +
+            "2 - Message d'accueil\n" +
+            "3 - Voir les statistiques\n\n" +
+
+            "Entrez votre choix :"
+        );
+
+    if (choice === "1") {
+
+        const name =
+            prompt(
+                "Nouveau nom de la plateforme :",
+                "FasoPass"
+            );
+
+        if (name) {
+
+            document.title = name;
+
+            alert(
+                "✅ Nom modifié."
+            );
+        }
+    }
+
+    else if (choice === "2") {
+
+        const message =
+            prompt(
+                "Nouveau message d'accueil :"
+            );
+
+        if (message) {
+
+            alert(
+                "✅ Message enregistré pour la prochaine version."
+            );
+        }
+    }
+
+    else if (choice === "3") {
+
+        alert(
+
+            "📊 STATISTIQUES FASOPASS\n\n" +
+
+            "Événements : " +
+            events.length +
+            "\n\n" +
+
+            "Transports : " +
+            transports.length +
+            "\n\n" +
+
+            "Administrateurs : " +
+            admins.length +
+            "\n\n" +
+
+            "Vendeurs : " +
+            sellers.length
+        );
+    }
 }
 
 
-function parametres(){
+/* =========================
+   SOLDE
+========================= */
 
-alert(
-"⚙️ PARAMÈTRES PROPRIÉTAIRE\n\n"+
-"Seul Moussa Barry pourra modifier les paramètres importants de FasoPass."
-);
+function updateBalance() {
 
+    sellerBalance =
+        Number(
+            localStorage.getItem("fasopass_balance")
+        ) || 0;
+
+    const element =
+        document.getElementById("sellerBalance");
+
+    if (element) {
+
+        element.textContent =
+            sellerBalance.toLocaleString() +
+            " FCFA";
+    }
 }
 
 
-function deconnexion(){
+/* =========================
+   SAUVEGARDE
+========================= */
 
-document
-.getElementById("proprietaire")
-.classList.add("hidden");
+function saveData() {
 
-window.scrollTo({
-top:0,
-behavior:"smooth"
-});
+    localStorage.setItem(
+        "fasopass_events",
+        JSON.stringify(events)
+    );
 
-alert(
-"👋 Déconnexion effectuée."
-);
+    localStorage.setItem(
+        "fasopass_transports",
+        JSON.stringify(transports)
+    );
 
+    localStorage.setItem(
+        "fasopass_admins",
+        JSON.stringify(admins)
+    );
+
+    localStorage.setItem(
+        "fasopass_sellers",
+        JSON.stringify(sellers)
+    );
+
+    localStorage.setItem(
+        "fasopass_balance",
+        sellerBalance
+    );
 }
 
 
@@ -1202,7 +1352,9 @@ alert(
    INITIALISATION
 ========================= */
 
-afficherEvenements();
+displayEvents();
+displayTransports();
+updateBalance();
 
 </script>
 
