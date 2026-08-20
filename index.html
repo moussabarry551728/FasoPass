@@ -4,169 +4,152 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>FasoPass - Billetterie</title>
+<title>FasoPass</title>
 
 <style>
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
 }
 
-body {
-    font-family: Arial, sans-serif;
-    background: #f3f4f6;
-    color: #222;
+body{
+    font-family:Arial,sans-serif;
+    background:#f3f5f7;
+    color:#222;
 }
 
-header {
-    background: linear-gradient(135deg, #00843D, #FCD116, #CE1126);
-    color: white;
-    text-align: center;
-    padding: 45px 20px;
+header{
+    background:linear-gradient(135deg,#00843d,#fcd116,#ce1126);
+    color:white;
+    text-align:center;
+    padding:45px 20px;
 }
 
-.logo {
-    font-size: 60px;
-    margin-bottom: 10px;
+.ticket{
+    font-size:60px;
 }
 
-header h1 {
-    font-size: 48px;
-    margin-bottom: 10px;
+header h1{
+    font-size:42px;
+    margin:10px 0;
 }
 
-header p {
-    font-size: 20px;
+header p{
+    font-size:20px;
 }
 
-.container {
-    width: 92%;
-    max-width: 1000px;
-    margin: 25px auto;
+.container{
+    width:94%;
+    max-width:900px;
+    margin:25px auto;
 }
 
-.card {
-    background: white;
-    border-radius: 20px;
-    padding: 25px;
-    margin-bottom: 25px;
-    box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+.card{
+    background:white;
+    border-radius:20px;
+    padding:25px;
+    margin-bottom:22px;
+    box-shadow:0 5px 20px rgba(0,0,0,.08);
 }
 
-h2 {
-    color: #00843D;
-    margin-bottom: 20px;
+h2{
+    color:#00843d;
+    margin-bottom:15px;
 }
 
-button {
-    width: 100%;
-    border: none;
-    border-radius: 12px;
-    padding: 16px;
-    font-size: 18px;
-    font-weight: bold;
-    cursor: pointer;
-    margin-top: 10px;
+h3{
+    margin-bottom:10px;
 }
 
-.btn-green {
-    background: #00843D;
-    color: white;
+p{
+    line-height:1.6;
 }
 
-.btn-yellow {
-    background: #FCD116;
-    color: #222;
+button{
+    width:100%;
+    border:0;
+    border-radius:12px;
+    padding:16px;
+    margin-top:12px;
+    font-size:17px;
+    font-weight:bold;
+    cursor:pointer;
 }
 
-.btn-red {
-    background: #CE1126;
-    color: white;
+.green{
+    background:#00843d;
+    color:white;
 }
 
-input,
-select {
-    width: 100%;
-    padding: 14px;
-    margin-top: 7px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 10px;
-    font-size: 16px;
+.yellow{
+    background:#fcd116;
+    color:#111;
 }
 
-label {
-    font-weight: bold;
+.red{
+    background:#ce1126;
+    color:white;
 }
 
-.hidden {
-    display: none;
+.dark{
+    background:#222;
+    color:white;
 }
 
-.transport-title {
-    font-size: 24px;
-    font-weight: bold;
-    color: #00843D;
-    margin-bottom: 15px;
+.blue{
+    background:#1976d2;
+    color:white;
 }
 
-.transport-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
+input,select{
+    width:100%;
+    padding:14px;
+    margin:7px 0 14px;
+    border:1px solid #ccc;
+    border-radius:10px;
+    font-size:16px;
 }
 
-.transport-option {
-    background: #f5f5f5;
-    border: 2px solid #ddd;
-    border-radius: 12px;
-    padding: 18px 10px;
-    text-align: center;
-    cursor: pointer;
-    font-size: 18px;
+.badge{
+    display:inline-block;
+    background:#00843d;
+    color:white;
+    padding:8px 14px;
+    border-radius:30px;
+    margin-top:10px;
+    font-weight:bold;
 }
 
-.transport-option:hover {
-    border-color: #00843D;
+.item{
+    border:1px solid #ddd;
+    border-radius:14px;
+    padding:16px;
+    margin-top:12px;
 }
 
-.event {
-    border: 1px solid #ddd;
-    border-radius: 15px;
-    padding: 20px;
-    margin-bottom: 15px;
+.price{
+    color:#ce1126;
+    font-size:22px;
+    font-weight:bold;
+    margin-top:8px;
 }
 
-.event h3 {
-    color: #00843D;
-    margin-bottom: 10px;
+.hidden{
+    display:none;
 }
 
-.price {
-    color: #CE1126;
-    font-size: 24px;
-    font-weight: bold;
-    margin-top: 10px;
+footer{
+    background:#222;
+    color:white;
+    text-align:center;
+    padding:30px 20px;
+    margin-top:30px;
 }
 
-footer {
-    background: #222;
-    color: white;
-    text-align: center;
-    padding: 30px;
-    margin-top: 30px;
-}
-
-@media(max-width:600px) {
-
-    header h1 {
-        font-size: 38px;
-    }
-
-    .transport-grid {
-        grid-template-columns: 1fr;
-    }
+.small{
+    font-size:14px;
+    color:#666;
 }
 </style>
 </head>
@@ -175,17 +158,15 @@ footer {
 
 <header>
 
-    <div class="logo">🎟️</div>
+<div class="ticket">🎟️</div>
 
-    <h1>FasoPass</h1>
+<h1>FasoPass</h1>
 
-    <p>
-        Billetterie mondiale pour événements et transports
-    </p>
+<p>Billetterie mondiale pour événements et transports</p>
 
-    <p style="margin-top:10px;font-size:15px;">
-        Créateur : Moussa Barry
-    </p>
+<p style="margin-top:10px">
+Créateur : <strong>Moussa Barry</strong>
+</p>
 
 </header>
 
@@ -193,293 +174,327 @@ footer {
 <div class="container">
 
 
-<!-- ============================= -->
-<!-- MENU PRINCIPAL -->
-<!-- ============================= -->
+<!-- ACCUEIL -->
 
 <div class="card">
 
-    <h2>Bienvenue sur FasoPass</h2>
+<h2>Bienvenue sur FasoPass</h2>
 
-    <p style="font-size:18px;line-height:1.6;">
-        Réservez facilement vos billets d'événements
-        et vos billets de transport partout dans le monde.
-    </p>
+<p>
+Réservez facilement vos billets d'événements
+et vos billets de transport partout dans le monde.
+</p>
 
-    <button
-        class="btn-green"
-        onclick="ouvrirTransport()">
-        🌍 Billets de transport
-    </button>
+<button class="green"
+onclick="afficher('transport')">
+🌍 Billets de transport
+</button>
 
-    <button
-        class="btn-yellow"
-        onclick="ouvrirEvenements()">
-        🎉 Événements
-    </button>
+<button class="yellow"
+onclick="afficher('evenements')">
+🎉 Événements
+</button>
 
-    <button
-        class="btn-red"
-        onclick="connexionAdmin()">
-        ❤️ Entrer comme Administrateur
-    </button>
+<button class="red"
+onclick="connexionProprietaire()">
+👑 Espace propriétaire
+</button>
 
 </div>
 
 
-<!-- ============================= -->
-<!-- ESPACE TRANSPORT -->
-<!-- ============================= -->
+<!-- TRANSPORT -->
 
-<div id="transportSection" class="card hidden">
+<div id="transport" class="card hidden">
 
-    <div class="transport-title">
-        🌍 Réserver un billet de transport
-    </div>
+<h2>🌍 Billets de transport</h2>
 
-    <p style="margin-bottom:20px;">
-        Choisissez votre moyen de transport.
-    </p>
+<label>Type de transport</label>
 
-
-    <div class="transport-grid">
-
-        <div
-            class="transport-option"
-            onclick="choisirTransport('Avion')">
-            ✈️<br>
-            Avion
-        </div>
-
-        <div
-            class="transport-option"
-            onclick="choisirTransport('Bus')">
-            🚌<br>
-            Bus
-        </div>
-
-        <div
-            class="transport-option"
-            onclick="choisirTransport('Car')">
-            🚍<br>
-            Car
-        </div>
-
-        <div
-            class="transport-option"
-            onclick="choisirTransport('Train')">
-            🚆<br>
-            Train
-        </div>
-
-        <div
-            class="transport-option"
-            onclick="choisirTransport('Bateau')">
-            🚢<br>
-            Bateau / Ferry
-        </div>
-
-        <div
-            class="transport-option"
-            onclick="choisirTransport('Autre')">
-            🚐<br>
-            Autre transport
-        </div>
-
-    </div>
+<select id="typeTransport">
+<option value="">Choisir</option>
+<option>🚌 Bus</option>
+<option>🚍 Car</option>
+<option>✈️ Avion</option>
+<option>🚆 Train</option>
+<option>🚢 Bateau</option>
+<option>🚕 Taxi</option>
+<option>🚐 Minibus</option>
+<option>Autre</option>
+</select>
 
 
-    <!-- FORMULAIRE TRANSPORT -->
+<label>Pays</label>
 
-    <div id="transportForm" class="hidden"
-         style="margin-top:25px;">
-
-        <h2>Informations du voyage</h2>
-
-
-        <label>
-            Type de transport
-        </label>
-
-        <input
-            id="typeTransport"
-            type="text"
-            readonly>
+<input
+id="paysTransport"
+placeholder="Exemple : Burkina Faso">
 
 
-        <label>
-            Compagnie / société
-        </label>
+<label>Ville de départ</label>
 
-        <input
-            id="compagnie"
-            type="text"
-            placeholder="Exemple : Air Burkina, une compagnie de bus...">
+<input
+id="departTransport"
+placeholder="Exemple : Bobo-Dioulasso">
 
 
-        <label>
-            Gare / aéroport / terminal / agence
-        </label>
+<label>Destination</label>
 
-        <input
-            id="gare"
-            type="text"
-            placeholder="Nom du lieu de départ">
+<input
+id="destinationTransport"
+placeholder="Exemple : Ouagadougou">
 
 
-        <label>
-            Pays de départ
-        </label>
+<label>Compagnie / Société / Gare</label>
 
-        <input
-            id="paysDepart"
-            type="text"
-            placeholder="Exemple : Burkina Faso">
+<input
+id="societeTransport"
+placeholder="Exemple : TSR, Air France, gare...">
 
 
-        <label>
-            Ville de départ
-        </label>
+<label>Date du voyage</label>
 
-        <input
-            id="villeDepart"
-            type="text"
-            placeholder="Exemple : Bobo-Dioulasso">
+<input
+id="dateTransport"
+type="date">
 
 
-        <label>
-            Pays de destination
-        </label>
+<button class="green"
+onclick="rechercherTransport()">
+🔎 Rechercher un billet
+</button>
 
-        <input
-            id="paysArrivee"
-            type="text"
-            placeholder="Exemple : Côte d'Ivoire">
-
-
-        <label>
-            Ville de destination
-        </label>
-
-        <input
-            id="villeArrivee"
-            type="text"
-            placeholder="Exemple : Abidjan">
-
-
-        <label>
-            Date du voyage
-        </label>
-
-        <input
-            id="dateVoyage"
-            type="date">
-
-
-        <label>
-            Heure du départ
-        </label>
-
-        <input
-            id="heureVoyage"
-            type="time">
-
-
-        <label>
-            Nombre de passagers
-        </label>
-
-        <input
-            id="passagers"
-            type="number"
-            min="1"
-            value="1">
-
-
-        <label>
-            Prix du billet
-        </label>
-
-        <input
-            id="prixTransport"
-            type="number"
-            min="0"
-            placeholder="Exemple : 150000">
-
-
-        <label>
-            Devise
-        </label>
-
-        <select id="devise">
-
-            <option value="FCFA">
-                FCFA
-            </option>
-
-            <option value="EUR">
-                Euro (€)
-            </option>
-
-            <option value="USD">
-                Dollar américain ($)
-            </option>
-
-            <option value="GBP">
-                Livre sterling (£)
-            </option>
-
-        </select>
-
-
-        <button
-            class="btn-green"
-            onclick="reserverTransport()">
-            🎟️ Réserver mon billet
-        </button>
-
-    </div>
+<div id="resultatTransport"></div>
 
 </div>
 
 
-<!-- ============================= -->
 <!-- EVENEMENTS -->
-<!-- ============================= -->
 
-<div id="evenementsSection" class="card hidden">
+<div id="evenements" class="card hidden">
 
-    <h2>🎉 Événements disponibles</h2>
+<h2>🎉 Événements disponibles</h2>
 
-    <div id="listeEvenements"></div>
+<div id="listeEvenements">
+
+<p class="small">
+Aucun événement publié pour le moment.
+</p>
+
+</div>
 
 </div>
 
 
-<!-- ============================= -->
-<!-- ADMINISTRATEUR -->
-<!-- ============================= -->
+<!-- PROPRIETAIRE -->
 
-<div id="adminSection" class="card hidden">
+<div id="proprietaire" class="hidden">
 
-    <h2>👤 Administration FasoPass</h2>
 
-    <p>
-        Bienvenue dans votre espace administrateur,
-        <strong>Moussa Barry</strong>.
-    </p>
+<div class="card">
 
-    <button
-        class="btn-green"
-        onclick="creerEvenement()">
-        ➕ Créer un événement
-    </button>
+<h2>👑 Espace Propriétaire</h2>
 
-    <button
-        class="btn-yellow"
-        onclick="gererTransport()">
-        🚌 Gérer les transports
-    </button>
+<p>
+Bienvenue dans votre espace,
+<strong>Moussa Barry</strong>.
+</p>
+
+<span class="badge">
+PROPRIÉTAIRE PRINCIPAL
+</span>
+
+</div>
+
+
+<!-- ADMINISTRATEURS -->
+
+<div class="card">
+
+<h2>🔐 Administrateurs</h2>
+
+<p>
+Seul le propriétaire peut nommer ou révoquer
+les administrateurs.
+</p>
+
+<button class="green"
+onclick="nommerAdministrateur()">
+➕ Nommer un administrateur
+</button>
+
+<button class="yellow"
+onclick="afficherAdministrateurs()">
+👥 Voir les administrateurs
+</button>
+
+<button class="red"
+onclick="revoquerAdministrateur()">
+🚫 Révoquer un administrateur
+</button>
+
+</div>
+
+
+<!-- CREER EVENEMENT -->
+
+<div class="card">
+
+<h2>🎉 Créer un événement</h2>
+
+<label>Nom de l'événement</label>
+
+<input
+id="nomEvenement"
+placeholder="Concert, festival...">
+
+<label>Ville</label>
+
+<input
+id="villeEvenement"
+placeholder="Ouagadougou">
+
+<label>Date</label>
+
+<input
+id="dateEvenement"
+type="date">
+
+<label>Heure</label>
+
+<input
+id="heureEvenement"
+type="time">
+
+<label>Prix du billet FCFA</label>
+
+<input
+id="prixEvenement"
+type="number"
+placeholder="2500">
+
+<button class="green"
+onclick="publierEvenement()">
+📢 Publier l'événement
+</button>
+
+</div>
+
+
+<!-- TRANSPORTS -->
+
+<div class="card">
+
+<h2>🚌 Ajouter une société de transport</h2>
+
+<label>Type de transport</label>
+
+<select id="adminTypeTransport">
+
+<option>🚌 Bus</option>
+<option>🚍 Car</option>
+<option>✈️ Avion</option>
+<option>🚆 Train</option>
+<option>🚢 Bateau</option>
+<option>🚕 Taxi</option>
+<option>🚐 Minibus</option>
+
+</select>
+
+
+<label>Nom de la société / compagnie</label>
+
+<input
+id="adminSociete"
+placeholder="Nom de la société">
+
+
+<label>Ville / Gare</label>
+
+<input
+id="adminVille"
+placeholder="Exemple : Bobo-Dioulasso">
+
+
+<label>Destination</label>
+
+<input
+id="adminDestination"
+placeholder="Exemple : Ouagadougou">
+
+
+<label>Prix du billet FCFA</label>
+
+<input
+id="adminPrix"
+type="number"
+placeholder="5000">
+
+
+<button class="yellow"
+onclick="publierTransport()">
+📢 Publier le transport
+</button>
+
+</div>
+
+
+<!-- GESTION -->
+
+<div class="card">
+
+<h2>⚙️ Administration FasoPass</h2>
+
+<button class="green"
+onclick="afficherUtilisateurs()">
+👥 Utilisateurs
+</button>
+
+<button class="green"
+onclick="afficherOrganisateurs()">
+🎉 Organisateurs
+</button>
+
+<button class="yellow"
+onclick="afficherTransporteurs()">
+🚌 Sociétés de transport
+</button>
+
+<button class="yellow"
+onclick="afficherTransactions()">
+💳 Transactions
+</button>
+
+<button class="yellow"
+onclick="afficherRetraits()">
+💰 Retraits
+</button>
+
+<button class="dark"
+onclick="parametres()">
+⚙️ Paramètres du propriétaire
+</button>
+
+</div>
+
+
+<!-- SECURITE -->
+
+<div class="card">
+
+<h2>🛡️ Sécurité</h2>
+
+<p>
+Le compte propriétaire doit être protégé par une
+authentification sécurisée côté serveur.
+</p>
+
+<button class="red"
+onclick="deconnexion()">
+🚪 Déconnexion
+</button>
+
+</div>
 
 </div>
 
@@ -489,736 +504,706 @@ footer {
 
 <footer>
 
-    <p>
-        © 2026 FasoPass
-    </p>
+<p>© 2026 FasoPass</p>
 
-    <p style="margin-top:8px;">
-        Billetterie simple, rapide et accessible.
-    </p>
+<p>Billetterie simple, rapide et accessible.</p>
 
-    <p style="margin-top:8px;">
-        Créateur : Moussa Barry
-    </p>
+<p>Créateur : Moussa Barry</p>
 
 </footer>
 
 
 <script>
-// ================================
-// FONCTIONNEMENT FASOPASS
-// PARTIE 2 : TRANSPORTS
-// ================================
 
+/* =========================
+   DONNÉES
+========================= */
 
-// Ouvrir la partie transport
-function ouvrirTransport() {
+let administrateurs =
+JSON.parse(
+localStorage.getItem("administrateurs")
+) || [];
 
-    document
-        .getElementById("transportSection")
-        .classList.remove("hidden");
+let evenements =
+JSON.parse(
+localStorage.getItem("evenements")
+) || [];
 
-    document
-        .getElementById("evenementsSection")
-        .classList.add("hidden");
+let transports =
+JSON.parse(
+localStorage.getItem("transports")
+) || [];
 
-    document
-        .getElementById("adminSection")
-        .classList.add("hidden");
 
-    window.scrollTo({
-        top: document.getElementById("transportSection").offsetTop,
-        behavior: "smooth"
-    });
-}
+/* =========================
+   AFFICHAGE
+========================= */
 
+function afficher(section){
 
-// Choisir un moyen de transport
-function choisirTransport(type) {
+document
+.getElementById(section)
+.classList.remove("hidden");
 
-    document
-        .getElementById("transportForm")
-        .classList.remove("hidden");
-
-    document
-        .getElementById("typeTransport")
-        .value = type;
-
-    window.scrollTo({
-        top: document.getElementById("transportForm").offsetTop,
-        behavior: "smooth"
-    });
-}
-
-
-// Réserver un billet de transport
-function reserverTransport() {
-
-    const type =
-        document.getElementById("typeTransport").value;
-
-    const compagnie =
-        document.getElementById("compagnie").value.trim();
-
-    const gare =
-        document.getElementById("gare").value.trim();
-
-    const paysDepart =
-        document.getElementById("paysDepart").value.trim();
-
-    const villeDepart =
-        document.getElementById("villeDepart").value.trim();
-
-    const paysArrivee =
-        document.getElementById("paysArrivee").value.trim();
-
-    const villeArrivee =
-        document.getElementById("villeArrivee").value.trim();
-
-    const date =
-        document.getElementById("dateVoyage").value;
-
-    const heure =
-        document.getElementById("heureVoyage").value;
-
-    const passagers =
-        document.getElementById("passagers").value;
-
-    const prix =
-        document.getElementById("prixTransport").value;
-
-    const devise =
-        document.getElementById("devise").value;
-
-
-    // Vérification
-    if (
-        !type ||
-        !compagnie ||
-        !gare ||
-        !paysDepart ||
-        !villeDepart ||
-        !paysArrivee ||
-        !villeArrivee ||
-        !date ||
-        !heure ||
-        !passagers ||
-        !prix
-    ) {
-
-        alert(
-            "⚠️ Veuillez remplir toutes les informations du voyage."
-        );
-
-        return;
-    }
-
-
-    // Confirmation
-    const confirmation =
-
-        "🎟️ BILLET RÉSERVÉ AVEC SUCCÈS !\n\n" +
-
-        "🚍 Transport : " + type + "\n" +
-
-        "🏢 Compagnie / société : " +
-        compagnie + "\n" +
-
-        "📍 Gare / aéroport / terminal : " +
-        gare + "\n\n" +
-
-        "🛫 Départ : " +
-        villeDepart +
-        ", " +
-        paysDepart +
-        "\n" +
-
-        "🛬 Destination : " +
-        villeArrivee +
-        ", " +
-        paysArrivee +
-        "\n\n" +
-
-        "📅 Date : " +
-        date +
-        "\n" +
-
-        "⏰ Heure : " +
-        heure +
-        "\n" +
-
-        "👥 Passagers : " +
-        passagers +
-        "\n" +
-
-        "💰 Prix : " +
-        prix +
-        " " +
-        devise;
-
-
-    alert(confirmation);
-
-
-    // Enregistrement local
-    const reservation = {
-
-        type: type,
-
-        compagnie: compagnie,
-
-        gare: gare,
-
-        paysDepart: paysDepart,
-
-        villeDepart: villeDepart,
-
-        paysArrivee: paysArrivee,
-
-        villeArrivee: villeArrivee,
-
-        date: date,
-
-        heure: heure,
-
-        passagers: passagers,
-
-        prix: prix,
-
-        devise: devise
-
-    };
-
-
-    let reservations =
-        JSON.parse(
-            localStorage.getItem("reservationsTransport")
-        ) || [];
-
-
-    reservations.push(reservation);
-
-
-    localStorage.setItem(
-        "reservationsTransport",
-        JSON.stringify(reservations)
-    );
+document
+.getElementById(section)
+.scrollIntoView({
+behavior:"smooth"
+});
 
 }
 
 
-// ================================
-// ADMINISTRATEUR
-// ================================
-
-function connexionAdmin() {
-
-    const nom =
-        prompt("Nom de l'administrateur :");
-
-
-    if (!nom) {
-        return;
-    }
-
-
-    if (
-        nom.trim().toLowerCase()
-        === "moussa barry"
-    ) {
-
-        alert(
-            "✅ Bienvenue Moussa Barry !"
-        );
-
-        document
-            .getElementById("adminSection")
-            .classList.remove("hidden");
-
-        document
-            .getElementById("transportSection")
-            .classList.add("hidden");
-
-        document
-            .getElementById("evenementsSection")
-            .classList.add("hidden");
-
-        window.scrollTo({
-            top: document.getElementById("adminSection").offsetTop,
-            behavior: "smooth"
-        });
-
-    } else {
-
-        alert(
-            "❌ Nom d'administrateur incorrect."
-        );
-
-    }
-
-}
-
-
-// ================================
-// ÉVÉNEMENTS
-// ================================
-
-function ouvrirEvenements() {
-
-    document
-        .getElementById("evenementsSection")
-        .classList.remove("hidden");
-
-    document
-        .getElementById("transportSection")
-        .classList.add("hidden");
-
-    document
-        .getElementById("adminSection")
-        .classList.add("hidden");
-
-    afficherEvenements();
-
-}
-
-
-// Afficher les événements
-function afficherEvenements() {
-
-    const liste =
-        document.getElementById("listeEvenements");
-
-
-    let evenements =
-        JSON.parse(
-            localStorage.getItem("evenementsFasoPass")
-        ) || [];
-
-
-    if (evenements.length === 0) {
-
-        liste.innerHTML =
-            "<p>Aucun événement disponible pour le moment.</p>";
-
-        return;
-    }
-
-
-    liste.innerHTML = "";
-
-
-    evenements.forEach(function(event) {
-
-        const div =
-            document.createElement("div");
-
-        div.className = "event";
-
-
-        div.innerHTML =
-
-            "<h3>" +
-            event.nom +
-            "</h3>" +
-
-            "<p>📍 " +
-            event.ville +
-            "</p>" +
-
-            "<p>📅 " +
-            event.date +
-            "</p>" +
-
-            "<p>⏰ " +
-            event.heure +
-            "</p>" +
-
-            "<div class='price'>" +
-            event.prix +
-            " " +
-            event.devise +
-            "</div>" +
-
-            "<button class='btn-green' " +
-            "onclick=\"acheterEvenement('" +
-            event.nom.replace(/'/g, "\\'") +
-            "','" +
-            event.prix +
-            "','" +
-            event.devise +
-            "')\">" +
-
-            "🎟️ Acheter mon billet" +
-
-            "</button>";
-
-
-        liste.appendChild(div);
-
-    });
-
-}
-
-
-// Acheter un billet d'événement
-function acheterEvenement(
-    nom,
-    prix,
-    devise
-) {
-
-    alert(
-
-        "🎟️ BILLET RÉSERVÉ !\n\n" +
-
-        "Événement : " +
-        nom +
-        "\n" +
-
-        "Prix : " +
-        prix +
-        " " +
-        devise
-
-    );
-
-}// ================================
-// PARTIE 3 : GESTION DES ÉVÉNEMENTS
-// ================================
-
-function creerEvenement() {
-
-    const nom = prompt(
-        "Nom de l'événement :"
-    );
-
-    if (!nom) {
-        return;
-    }
-
-
-    const ville = prompt(
-        "Ville de l'événement :",
-        "Bobo-Dioulasso"
-    );
-
-    if (!ville) {
-        return;
-    }
-
-
-    const date = prompt(
-        "Date de l'événement :"
-    );
-
-    if (!date) {
-        return;
-    }
-
-
-    const heure = prompt(
-        "Heure de l'événement :",
-        "20:00"
-    );
-
-    if (!heure) {
-        return;
-    }
-
-
-    const prix = prompt(
-        "Prix du billet :"
-    );
-
-    if (!prix) {
-        return;
-    }
-
-
-    const devise = prompt(
-        "Devise :",
-        "FCFA"
-    );
-
-    if (!devise) {
-        return;
-    }
-
-
-    const nouvelEvenement = {
-
-        nom: nom,
-
-        ville: ville,
-
-        date: date,
-
-        heure: heure,
-
-        prix: prix,
-
-        devise: devise,
-
-        createur: "Moussa Barry"
-
-    };
-
-
-    let evenements =
-        JSON.parse(
-            localStorage.getItem(
-                "evenementsFasoPass"
-            )
-        ) || [];
-
-
-    evenements.push(
-        nouvelEvenement
-    );
-
-
-    localStorage.setItem(
-        "evenementsFasoPass",
-        JSON.stringify(evenements)
-    );
-
-
-    alert(
-        "✅ Événement créé avec succès !\n\n" +
-        "Créateur : Moussa Barry"
-    );
-
-
-    afficherEvenements();
-}
-
-
-// ================================
-// GESTION DES TRANSPORTS
-// ================================
-
-function gererTransport() {
-
-    const choix = prompt(
-
-        "GESTION DES TRANSPORTS\n\n" +
-
-        "1 - Ajouter une compagnie\n" +
-        "2 - Voir les compagnies\n\n" +
-
-        "Entrez 1 ou 2 :"
-
-    );
-
-
-    if (choix === "1") {
-
-        ajouterCompagnie();
-
-    }
-
-    else if (choix === "2") {
-
-        afficherCompagnies();
-
-    }
-
-    else {
-
-        alert(
-            "Choix invalide."
-        );
-
-    }
-
-}
-
-
-// Ajouter une compagnie de transport
-function ajouterCompagnie() {
-
-    const nom =
-        prompt(
-            "Nom de la compagnie / société :"
-        );
-
-
-    if (!nom) {
-        return;
-    }
-
-
-    const type =
-        prompt(
-
-            "Type de transport :\n\n" +
-
-            "Exemple : Avion, Bus, Car, Train, Bateau..."
-
-        );
-
-
-    if (!type) {
-        return;
-    }
-
-
-    const pays =
-        prompt(
-            "Pays de la compagnie :"
-        );
-
-
-    if (!pays) {
-        return;
-    }
-
-
-    const ville =
-        prompt(
-            "Ville / gare / aéroport / terminal :"
-        );
-
-
-    if (!ville) {
-        return;
-    }
-
-
-    const compagnie = {
-
-        nom: nom,
-
-        type: type,
-
-        pays: pays,
-
-        ville: ville,
-
-        createur: "Moussa Barry"
-
-    };
-
-
-    let compagnies =
-        JSON.parse(
-            localStorage.getItem(
-                "compagniesFasoPass"
-            )
-        ) || [];
-
-
-    compagnies.push(
-        compagnie
-    );
-
-
-    localStorage.setItem(
-        "compagniesFasoPass",
-        JSON.stringify(
-            compagnies
-        )
-    );
-
-
-    alert(
-        "✅ Compagnie ajoutée !\n\n" +
-        nom +
-        "\n" +
-        type +
-        "\n" +
-        ville +
-        ", " +
-        pays
-    );
-
-}
-
-
-// Voir les compagnies
-function afficherCompagnies() {
-
-    let compagnies =
-        JSON.parse(
-            localStorage.getItem(
-                "compagniesFasoPass"
-            )
-        ) || [];
-
-
-    if (
-        compagnies.length === 0
-    ) {
-
-        alert(
-            "Aucune compagnie n'a encore été ajoutée."
-        );
-
-        return;
-    }
-
-
-    let texte =
-        "🏢 COMPAGNIES FASOPASS\n\n";
-
-
-    compagnies.forEach(
-        function(compagnie, index) {
-
-            texte +=
-
-                (index + 1) +
-                ". " +
-
-                compagnie.nom +
-
-                "\n" +
-
-                "Transport : " +
-                compagnie.type +
-
-                "\n" +
-
-                "Lieu : " +
-                compagnie.ville +
-
-                ", " +
-                compagnie.pays +
-
-                "\n\n";
-
-        }
-    );
-
-
-    alert(texte);
-
-}// ================================
-// PARTIE 4 : INITIALISATION
-// ================================
-
-// Afficher les événements lorsqu'on ouvre la section
-function initialiserFasoPass() {
-
-    afficherEvenements();
-
-}
-
-
-// Vérifier que FasoPass est chargé
-window.addEventListener(
-    "load",
-    function() {
-
-        initialiserFasoPass();
-
-    }
+/* =========================
+   PROPRIETAIRE
+========================= */
+
+function connexionProprietaire(){
+
+let nom =
+prompt(
+"Nom du propriétaire :"
 );
 
+if(
+nom &&
+nom.toLowerCase()
+.trim()
+===
+"moussa barry"
+){
 
-// ================================
-// FIN DU JAVASCRIPT
-// ================================
+document
+.getElementById("proprietaire")
+.classList.remove("hidden");
+
+document
+.getElementById("proprietaire")
+.scrollIntoView({
+behavior:"smooth"
+});
+
+alert(
+"👑 Bienvenue Moussa Barry !"
+);
+
+}else{
+
+alert(
+"❌ Accès refusé."
+);
+
+}
+
+}
+
+
+/* =========================
+   ADMINISTRATEURS
+========================= */
+
+function nommerAdministrateur(){
+
+let nom =
+prompt(
+"Nom de l'administrateur :"
+);
+
+if(!nom) return;
+
+administrateurs.push({
+
+nom:nom,
+
+role:"Administrateur",
+
+statut:"Actif"
+
+});
+
+localStorage.setItem(
+
+"administrateurs",
+
+JSON.stringify(
+administrateurs
+)
+
+);
+
+alert(
+"✅ Administrateur nommé : "
++ nom
+);
+
+}
+
+
+function afficherAdministrateurs(){
+
+if(
+administrateurs.length===0
+){
+
+alert(
+"Aucun administrateur."
+);
+
+return;
+
+}
+
+let texte =
+"👥 ADMINISTRATEURS\n\n";
+
+administrateurs.forEach(
+(a,i)=>{
+
+texte +=
+(i+1)+". "+
+a.nom+
+"\nRôle : "+
+a.role+
+"\nStatut : "+
+a.statut+
+"\n\n";
+
+});
+
+alert(texte);
+
+}
+
+
+function revoquerAdministrateur(){
+
+if(
+administrateurs.length===0
+){
+
+alert(
+"Aucun administrateur."
+);
+
+return;
+
+}
+
+let numero =
+prompt(
+"Numéro de l'administrateur à révoquer :"
+);
+
+let index =
+Number(numero)-1;
+
+if(
+index>=0 &&
+index<administrateurs.length
+){
+
+let nom =
+administrateurs[index].nom;
+
+administrateurs.splice(
+index,
+1
+);
+
+localStorage.setItem(
+
+"administrateurs",
+
+JSON.stringify(
+administrateurs
+)
+
+);
+
+alert(
+"🚫 Administrateur révoqué : "
++ nom
+);
+
+}
+
+}
+
+
+/* =========================
+   EVENEMENTS
+========================= */
+
+function publierEvenement(){
+
+let nom =
+document
+.getElementById("nomEvenement")
+.value;
+
+let ville =
+document
+.getElementById("villeEvenement")
+.value;
+
+let date =
+document
+.getElementById("dateEvenement")
+.value;
+
+let heure =
+document
+.getElementById("heureEvenement")
+.value;
+
+let prix =
+document
+.getElementById("prixEvenement")
+.value;
+
+if(
+!nom ||
+!ville ||
+!date ||
+!heure ||
+!prix
+){
+
+alert(
+"⚠️ Remplissez tous les champs."
+);
+
+return;
+
+}
+
+evenements.push({
+
+nom:nom,
+
+ville:ville,
+
+date:date,
+
+heure:heure,
+
+prix:prix,
+
+createur:"Moussa Barry"
+
+});
+
+localStorage.setItem(
+
+"evenements",
+
+JSON.stringify(
+evenements
+)
+
+);
+
+alert(
+"✅ Événement publié !"
+);
+
+afficherEvenements();
+
+}
+
+
+function afficherEvenements(){
+
+let zone =
+document
+.getElementById("listeEvenements");
+
+if(
+evenements.length===0
+){
+
+zone.innerHTML =
+"<p>Aucun événement publié.</p>";
+
+return;
+
+}
+
+zone.innerHTML="";
+
+evenements.forEach(
+(e)=>{
+
+zone.innerHTML += `
+
+<div class="item">
+
+<h3>🎉 ${e.nom}</h3>
+
+<p>📍 ${e.ville}</p>
+
+<p>📅 ${e.date}</p>
+
+<p>🕐 ${e.heure}</p>
+
+<div class="price">
+${e.prix} FCFA
+</div>
+
+<button
+class="green"
+onclick="acheterBillet('${e.nom}')">
+
+🎟️ Acheter mon billet
+
+</button>
+
+</div>
+
+`;
+
+});
+
+}
+
+
+function acheterBillet(nom){
+
+alert(
+"🎟️ Achat du billet\n\n"+
+nom+
+"\n\nLe système de paiement sécurisé sera connecté dans la prochaine étape."
+);
+
+}
+
+
+/* =========================
+   TRANSPORTS
+========================= */
+
+function publierTransport(){
+
+let type =
+document
+.getElementById(
+"adminTypeTransport"
+).value;
+
+let societe =
+document
+.getElementById(
+"adminSociete"
+).value;
+
+let ville =
+document
+.getElementById(
+"adminVille"
+).value;
+
+let destination =
+document
+.getElementById(
+"adminDestination"
+).value;
+
+let prix =
+document
+.getElementById(
+"adminPrix"
+).value;
+
+if(
+!type ||
+!societe ||
+!ville ||
+!destination ||
+!prix
+){
+
+alert(
+"⚠️ Remplissez tous les champs."
+);
+
+return;
+
+}
+
+transports.push({
+
+type:type,
+
+societe:societe,
+
+ville:ville,
+
+destination:destination,
+
+prix:prix
+
+});
+
+localStorage.setItem(
+
+"transports",
+
+JSON.stringify(
+transports
+)
+
+);
+
+alert(
+"✅ Société de transport publiée !"
+);
+
+}
+
+
+/* =========================
+   RECHERCHE TRANSPORT
+========================= */
+
+function rechercherTransport(){
+
+let type =
+document
+.getElementById(
+"typeTransport"
+).value;
+
+let depart =
+document
+.getElementById(
+"departTransport"
+).value;
+
+let destination =
+document
+.getElementById(
+"destinationTransport"
+).value;
+
+let societe =
+document
+.getElementById(
+"societeTransport"
+).value;
+
+let result =
+document
+.getElementById(
+"resultatTransport"
+);
+
+let trouvees =
+transports.filter(
+(t)=>{
+
+return (
+
+(!type ||
+t.type===type)
+
+&&
+
+(!depart ||
+t.ville
+.toLowerCase()
+.includes(
+depart.toLowerCase()
+))
+
+&&
+
+(!destination ||
+t.destination
+.toLowerCase()
+.includes(
+destination.toLowerCase()
+))
+
+&&
+
+(!societe ||
+t.societe
+.toLowerCase()
+.includes(
+societe.toLowerCase()
+))
+
+);
+
+});
+
+
+if(
+trouvees.length===0
+){
+
+result.innerHTML = `
+
+<div class="item">
+
+<p>
+❌ Aucun transport trouvé.
+</p>
+
+</div>
+
+`;
+
+return;
+
+}
+
+
+result.innerHTML="";
+
+trouvees.forEach(
+(t)=>{
+
+result.innerHTML += `
+
+<div class="item">
+
+<h3>${t.type}</h3>
+
+<p>
+🏢 ${t.societe}
+</p>
+
+<p>
+📍 ${t.ville}
+→
+${t.destination}
+</p>
+
+<div class="price">
+${t.prix} FCFA
+</div>
+
+<button
+class="green"
+onclick="reserverTransport('${t.societe}')">
+
+🎟️ Réserver
+
+</button>
+
+</div>
+
+`;
+
+});
+
+}
+
+
+function reserverTransport(societe){
+
+alert(
+
+"🎟️ Réservation\n\n"+
+"société : "+
+societe+
+"\n\n"+
+"Le paiement sécurisé sera connecté dans la prochaine étape."
+
+);
+
+}
+
+
+/* =========================
+   ADMINISTRATION
+========================= */
+
+function afficherUtilisateurs(){
+
+alert(
+"👥 Gestion des utilisateurs\n\n"+
+"Cette partie sera connectée à la base de données."
+);
+
+}
+
+
+function afficherOrganisateurs(){
+
+alert(
+"🎉 Gestion des organisateurs\n\n"+
+"Les créateurs pourront publier leurs événements et vendre leurs billets."
+);
+
+}
+
+
+function afficherTransporteurs(){
+
+alert(
+"🚌 Gestion des transporteurs\n\n"+
+"Les sociétés pourront publier leurs transports, leurs trajets et leurs prix."
+);
+
+}
+
+
+function afficherTransactions(){
+
+alert(
+"💳 Transactions\n\n"+
+"Les ventes et paiements seront affichés ici."
+);
+
+}
+
+
+function afficherRetraits(){
+
+alert(
+"💰 Retraits\n\n"+
+"Les vendeurs pourront demander leurs retraits."
+);
+
+}
+
+
+function parametres(){
+
+alert(
+"⚙️ PARAMÈTRES PROPRIÉTAIRE\n\n"+
+"Seul Moussa Barry pourra modifier les paramètres importants de FasoPass."
+);
+
+}
+
+
+function deconnexion(){
+
+document
+.getElementById("proprietaire")
+.classList.add("hidden");
+
+window.scrollTo({
+top:0,
+behavior:"smooth"
+});
+
+alert(
+"👋 Déconnexion effectuée."
+);
+
+}
+
+
+/* =========================
+   INITIALISATION
+========================= */
+
+afficherEvenements();
+
 </script>
 
 </body>
