@@ -1315,7 +1315,23 @@ window.addEventListener(
         );
 
     }
-);
+);function ouvrirConnexion() {
+    const nom = prompt("Entrez votre nom d'admirateur :");
+
+    if (!nom) {
+        return;
+    }
+
+    const user = {
+        nom: nom,
+        role: "admirateur",
+        status: "active"
+    };
+
+    localStorage.setItem("currentUser", JSON.stringify(user));
+
+    alert("Bienvenue " + nom + " ! Vous êtes maintenant Admirateur de FasoPass.");
+}
 
 </script>
 
