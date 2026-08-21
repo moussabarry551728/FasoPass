@@ -4,685 +4,260 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Paramètres - FasoPass</title>
+    <title>FasoPass - Mon billet</title>
+
+    <!-- Bibliothèque QR Code -->
+    <script src="https://cdn.jsdelivr.net/npm/qrcodejs@1.0.0/qrcode.min.js"></script>
 
     <style>
         * {
             box-sizing: border-box;
-            margin: 0;
-            padding: 0;
             font-family: Arial, sans-serif;
         }
 
         body {
+            margin: 0;
             background: #f1f3f5;
-            color: #222;
         }
 
-        .header {
+        header {
             background: #008f45;
             color: white;
-            padding: 20px;
             text-align: center;
+            padding: 20px;
         }
 
-        .header h1 {
-            font-size: 26px;
-            margin-bottom: 5px;
-        }
-
-        .header p {
-            font-size: 14px;
+        header h1 {
+            margin: 0;
         }
 
         .container {
-            max-width: 900px;
-            margin: 20px auto;
+            max-width: 500px;
+            margin: 25px auto;
             padding: 15px;
         }
 
-        .owner-badge {
+        .ticket {
             background: white;
-            border-radius: 18px;
-            padding: 20px;
-            margin-bottom: 20px;
-            box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+            border-radius: 20px;
+            padding: 25px;
+            box-shadow: 0 5px 20px rgba(0,0,0,.12);
         }
 
-        .owner-badge h2 {
+        .ticket h2 {
+            text-align: center;
             color: #008f45;
-            margin-bottom: 8px;
         }
 
-        .owner-badge p {
-            color: #555;
+        .info {
+            margin: 18px 0;
         }
 
-        .settings-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 15px;
+        .info p {
+            margin: 10px 0;
         }
 
-        .setting-card {
-            background: white;
-            border-radius: 18px;
-            padding: 20px;
-            box-shadow: 0 3px 12px rgba(0,0,0,0.08);
-            cursor: pointer;
-            transition: 0.2s;
+        .info strong {
+            color: #333;
         }
 
-        .setting-card:hover {
-            transform: translateY(-3px);
-        }
-
-        .setting-card .icon {
-            font-size: 35px;
-            margin-bottom: 10px;
-        }
-
-        .setting-card h3 {
-            margin-bottom: 8px;
-        }
-
-        .setting-card p {
-            color: #666;
-            font-size: 14px;
-        }
-
-        .panel {
-            display: none;
-            background: white;
-            margin-top: 20px;
-            padding: 22px;
-            border-radius: 18px;
-            box-shadow: 0 3px 12px rgba(0,0,0,0.08);
-        }
-
-        .panel.active {
-            display: block;
-        }
-
-        .panel h2 {
-            color: #008f45;
-            margin-bottom: 20px;
-        }
-
-        .form-group {
-            margin-bottom: 16px;
-        }
-
-        .form-group label {
-            display: block;
-            font-weight: bold;
-            margin-bottom: 7px;
-        }
-
-        .form-group input,
-        .form-group select {
-            width: 100%;
-            padding: 13px;
-            border: 1px solid #ccc;
-            border-radius: 10px;
-            font-size: 15px;
-        }
-
-        .switch-row {
+        #qrcode {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 14px 0;
-            border-bottom: 1px solid #eee;
+            justify-content: center;
+            margin: 25px 0;
         }
 
-        .switch {
-            width: 50px;
-            height: 27px;
-            position: relative;
-        }
-
-        .switch input {
-            display: none;
-        }
-
-        .slider {
-            position: absolute;
-            inset: 0;
-            background: #ccc;
-            border-radius: 30px;
-            cursor: pointer;
-        }
-
-        .slider:before {
-            content: "";
-            position: absolute;
-            width: 21px;
-            height: 21px;
-            left: 3px;
-            top: 3px;
-            background: white;
-            border-radius: 50%;
-            transition: 0.2s;
-        }
-
-        .switch input:checked + .slider {
-            background: #008f45;
-        }
-
-        .switch input:checked + .slider:before {
-            transform: translateX(23px);
-        }
-
-        .save-btn {
-            width: 100%;
-            padding: 15px;
-            border: none;
-            border-radius: 12px;
-            background: #008f45;
-            color: white;
-            font-size: 17px;
+        .status {
+            text-align: center;
+            background: #e7f7ee;
+            color: #008f45;
+            padding: 12px;
+            border-radius: 10px;
             font-weight: bold;
-            margin-top: 20px;
+        }
+
+        .btn {
+            width: 100%;
+            border: none;
+            border-radius: 10px;
+            padding: 14px;
+            margin-top: 15px;
+            color: white;
+            background: #008f45;
+            font-size: 16px;
+            font-weight: bold;
             cursor: pointer;
         }
 
-        .save-btn:hover {
+        .btn:hover {
             background: #00783a;
         }
 
-        .danger {
-            background: #df002b;
-        }
-
-        .back-btn {
-            width: 100%;
-            margin-top: 12px;
-            padding: 14px;
-            border: none;
-            border-radius: 12px;
-            background: #333;
-            color: white;
-            font-size: 16px;
-            cursor: pointer;
-        }
-
         footer {
-            margin-top: 30px;
-            background: #222;
-            color: white;
             text-align: center;
             padding: 25px;
+            color: #666;
         }
     </style>
 </head>
 
 <body>
 
-<header class="header">
-    <h1>👑 Paramètres FasoPass</h1>
-    <p>Administration propriétaire</p>
+<header>
+    <h1>🎫 FasoPass</h1>
+    <p>Mon billet</p>
 </header>
 
-<main class="container">
+<div class="container">
 
-    <section class="owner-badge">
-        <h2>👑 Accès propriétaire</h2>
-        <p>
-            Vous avez les droits maximum sur la plateforme FasoPass.
-            Vous pouvez gérer l'ensemble des paramètres de l'application.
-        </p>
-    </section>
+    <div class="ticket">
 
-    <section class="settings-grid">
+        <h2>🎟️ Billet FasoPass</h2>
 
-        <div class="setting-card" onclick="openPanel('general')">
-            <div class="icon">⚙️</div>
-            <h3>Paramètres généraux</h3>
-            <p>Nom, logo, langue, devise et informations de la plateforme.</p>
+        <div class="info">
+
+            <p>
+                <strong>Événement :</strong>
+                Concert FasoPass
+            </p>
+
+            <p>
+                <strong>Client :</strong>
+                Moussa Barry
+            </p>
+
+            <p>
+                <strong>Date :</strong>
+                25 décembre 2026
+            </p>
+
+            <p>
+                <strong>Heure :</strong>
+                20:00
+            </p>
+
+            <p>
+                <strong>Lieu :</strong>
+                Ouagadougou
+            </p>
+
+            <p>
+                <strong>Type :</strong>
+                VIP
+            </p>
+
+            <p>
+                <strong>Prix :</strong>
+                10 000 FCFA
+            </p>
+
+            <p>
+                <strong>Numéro du billet :</strong>
+                <span id="ticketNumber"></span>
+            </p>
+
         </div>
 
-        <div class="setting-card" onclick="openPanel('users')">
-            <div class="icon">👥</div>
-            <h3>Utilisateurs et rôles</h3>
-            <p>Administrateurs, vendeurs, clients et permissions.</p>
+        <div id="qrcode"></div>
+
+        <div class="status">
+            ✅ Billet valide
         </div>
 
-        <div class="setting-card" onclick="openPanel('tickets')">
-            <div class="icon">🎫</div>
-            <h3>Billetterie</h3>
-            <p>Prix, commissions, billets et remboursements.</p>
-        </div>
-
-        <div class="setting-card" onclick="openPanel('events')">
-            <div class="icon">🎭</div>
-            <h3>Événements</h3>
-            <p>Validation, publication et gestion des événements.</p>
-        </div>
-
-        <div class="setting-card" onclick="openPanel('transport')">
-            <div class="icon">🚌</div>
-            <h3>Transports</h3>
-            <p>Trajets, horaires, compagnies et tarifs.</p>
-        </div>
-
-        <div class="setting-card" onclick="openPanel('payments')">
-            <div class="icon">💰</div>
-            <h3>Paiements</h3>
-            <p>Transactions, moyens de paiement et commissions.</p>
-        </div>
-
-        <div class="setting-card" onclick="openPanel('security')">
-            <div class="icon">🔐</div>
-            <h3>Sécurité</h3>
-            <p>Sessions, permissions, accès et journal d'activité.</p>
-        </div>
-
-        <div class="setting-card" onclick="openPanel('notifications')">
-            <div class="icon">🔔</div>
-            <h3>Notifications</h3>
-            <p>Notifications, SMS et messages aux utilisateurs.</p>
-        </div>
-
-        <div class="setting-card" onclick="openPanel('statistics')">
-            <div class="icon">📊</div>
-            <h3>Statistiques</h3>
-            <p>Ventes, revenus, billets et activité.</p>
-        </div>
-
-        <div class="setting-card" onclick="openPanel('maintenance')">
-            <div class="icon">🛠️</div>
-            <h3>Maintenance</h3>
-            <p>Sauvegardes et mode maintenance de la plateforme.</p>
-        </div>
-
-    </section>
-
-
-    <!-- PARAMÈTRES GÉNÉRAUX -->
-
-    <section id="general" class="panel">
-
-        <h2>⚙️ Paramètres généraux</h2>
-
-        <div class="form-group">
-            <label>Nom de l'application</label>
-            <input type="text" value="FasoPass">
-        </div>
-
-        <div class="form-group">
-            <label>Devise</label>
-            <select>
-                <option>FCFA</option>
-                <option>EUR</option>
-                <option>USD</option>
-            </select>
-        </div>
-
-        <div class="form-group">
-            <label>Langue</label>
-            <select>
-                <option>Français</option>
-                <option>English</option>
-            </select>
-        </div>
-
-        <div class="form-group">
-            <label>Description</label>
-            <input
-                type="text"
-                value="Billetterie simple, rapide et accessible."
-            >
-        </div>
-
-        <button class="save-btn" onclick="saveSettings()">
-            💾 Enregistrer
+        <button class="btn" onclick="generateTicket()">
+            🔄 Générer un nouveau billet
         </button>
 
-    </section>
+    </div>
 
-
-    <!-- UTILISATEURS -->
-
-    <section id="users" class="panel">
-
-        <h2>👥 Utilisateurs et rôles</h2>
-
-        <div class="switch-row">
-            <span>Autoriser les inscriptions</span>
-            <label class="switch">
-                <input type="checkbox" checked>
-                <span class="slider"></span>
-            </label>
-        </div>
-
-        <div class="switch-row">
-            <span>Validation des vendeurs obligatoire</span>
-            <label class="switch">
-                <input type="checkbox" checked>
-                <span class="slider"></span>
-            </label>
-        </div>
-
-        <div class="switch-row">
-            <span>Validation des administrateurs par le propriétaire</span>
-            <label class="switch">
-                <input type="checkbox" checked>
-                <span class="slider"></span>
-            </label>
-        </div>
-
-        <button class="save-btn" onclick="saveSettings()">
-            💾 Enregistrer
-        </button>
-
-    </section>
-
-
-    <!-- BILLETERIE -->
-
-    <section id="tickets" class="panel">
-
-        <h2>🎫 Billetterie</h2>
-
-        <div class="form-group">
-            <label>Commission FasoPass (%)</label>
-            <input type="number" value="5">
-        </div>
-
-        <div class="form-group">
-            <label>Durée de validité d'un billet (heures)</label>
-            <input type="number" value="24">
-        </div>
-
-        <div class="switch-row">
-            <span>Autoriser les remboursements</span>
-            <label class="switch">
-                <input type="checkbox" checked>
-                <span class="slider"></span>
-            </label>
-        </div>
-
-        <button class="save-btn" onclick="saveSettings()">
-            💾 Enregistrer
-        </button>
-
-    </section>
-
-
-    <!-- ÉVÉNEMENTS -->
-
-    <section id="events" class="panel">
-
-        <h2>🎭 Événements</h2>
-
-        <div class="switch-row">
-            <span>Validation des événements obligatoire</span>
-            <label class="switch">
-                <input type="checkbox" checked>
-                <span class="slider"></span>
-            </label>
-        </div>
-
-        <div class="switch-row">
-            <span>Autoriser l'annulation</span>
-            <label class="switch">
-                <input type="checkbox" checked>
-                <span class="slider"></span>
-            </label>
-        </div>
-
-        <button class="save-btn" onclick="saveSettings()">
-            💾 Enregistrer
-        </button>
-
-    </section>
-
-
-    <!-- TRANSPORT -->
-
-    <section id="transport" class="panel">
-
-        <h2>🚌 Transports</h2>
-
-        <div class="switch-row">
-            <span>Activer le module transport</span>
-            <label class="switch">
-                <input type="checkbox" checked>
-                <span class="slider"></span>
-            </label>
-        </div>
-
-        <div class="form-group">
-            <label>Commission transport (%)</label>
-            <input type="number" value="5">
-        </div>
-
-        <button class="save-btn" onclick="saveSettings()">
-            💾 Enregistrer
-        </button>
-
-    </section>
-
-
-    <!-- PAIEMENTS -->
-
-    <section id="payments" class="panel">
-
-        <h2>💰 Paiements</h2>
-
-        <div class="switch-row">
-            <span>Mobile Money</span>
-            <label class="switch">
-                <input type="checkbox" checked>
-                <span class="slider"></span>
-            </label>
-        </div>
-
-        <div class="switch-row">
-            <span>Paiement par carte</span>
-            <label class="switch">
-                <input type="checkbox">
-                <span class="slider"></span>
-            </label>
-        </div>
-
-        <button class="save-btn" onclick="saveSettings()">
-            💾 Enregistrer
-        </button>
-
-    </section>
-
-
-    <!-- SÉCURITÉ -->
-
-    <section id="security" class="panel">
-
-        <h2>🔐 Sécurité</h2>
-
-        <div class="switch-row">
-            <span>Authentification renforcée du propriétaire</span>
-            <label class="switch">
-                <input type="checkbox" checked>
-                <span class="slider"></span>
-            </label>
-        </div>
-
-        <div class="switch-row">
-            <span>Journaliser les actions administratives</span>
-            <label class="switch">
-                <input type="checkbox" checked>
-                <span class="slider"></span>
-            </label>
-        </div>
-
-        <button class="save-btn" onclick="saveSettings()">
-            💾 Enregistrer
-        </button>
-
-    </section>
-
-
-    <!-- NOTIFICATIONS -->
-
-    <section id="notifications" class="panel">
-
-        <h2>🔔 Notifications</h2>
-
-        <div class="switch-row">
-            <span>Notifications des achats</span>
-            <label class="switch">
-                <input type="checkbox" checked>
-                <span class="slider"></span>
-            </label>
-        </div>
-
-        <div class="switch-row">
-            <span>Notifications des événements</span>
-            <label class="switch">
-                <input type="checkbox" checked>
-                <span class="slider"></span>
-            </label>
-        </div>
-
-        <div class="switch-row">
-            <span>Notifications administratives</span>
-            <label class="switch">
-                <input type="checkbox" checked>
-                <span class="slider"></span>
-            </label>
-        </div>
-
-        <button class="save-btn" onclick="saveSettings()">
-            💾 Enregistrer
-        </button>
-
-    </section>
-
-
-    <!-- STATISTIQUES -->
-
-    <section id="statistics" class="panel">
-
-        <h2>📊 Statistiques</h2>
-
-        <div class="switch-row">
-            <span>Statistiques des ventes</span>
-            <label class="switch">
-                <input type="checkbox" checked>
-                <span class="slider"></span>
-            </label>
-        </div>
-
-        <div class="switch-row">
-            <span>Statistiques des utilisateurs</span>
-            <label class="switch">
-                <input type="checkbox" checked>
-                <span class="slider"></span>
-            </label>
-        </div>
-
-        <button class="save-btn" onclick="saveSettings()">
-            💾 Enregistrer
-        </button>
-
-    </section>
-
-
-    <!-- MAINTENANCE -->
-
-    <section id="maintenance" class="panel">
-
-        <h2>🛠️ Maintenance</h2>
-
-        <div class="switch-row">
-            <span>Mode maintenance</span>
-            <label class="switch">
-                <input type="checkbox">
-                <span class="slider"></span>
-            </label>
-        </div>
-
-        <div class="switch-row">
-            <span>Sauvegardes automatiques</span>
-            <label class="switch">
-                <input type="checkbox" checked>
-                <span class="slider"></span>
-            </label>
-        </div>
-
-        <button class="save-btn danger" onclick="maintenanceWarning()">
-            🛠️ Appliquer les paramètres
-        </button>
-
-    </section>
-
-
-    <button class="back-btn" onclick="goBack()">
-        ← Retour à l'espace propriétaire
-    </button>
-
-</main>
-
+</div>
 
 <footer>
-    © 2026 FasoPass<br>
-    Billetterie simple, rapide et accessible.<br>
-    Créateur : Moussa Barry
+    © 2026 FasoPass
 </footer>
 
 
 <script>
 
-function openPanel(panelId) {
+/*
+    Génération d'un identifiant unique
+    pour le billet.
+*/
+function generateTicketId() {
 
-    const panels = document.querySelectorAll(".panel");
+    const date = Date.now();
 
-    panels.forEach(panel => {
-        panel.classList.remove("active");
+    const random =
+        Math.random()
+        .toString(36)
+        .substring(2, 10)
+        .toUpperCase();
+
+    return "FP-" + date + "-" + random;
+}
+
+
+/*
+    Génération du billet et du QR Code
+*/
+function generateTicket() {
+
+    const ticketId = generateTicketId();
+
+    document.getElementById("ticketNumber").textContent =
+        ticketId;
+
+    /*
+        On efface l'ancien QR Code
+    */
+    document.getElementById("qrcode").innerHTML = "";
+
+    /*
+        Données associées au billet.
+        Dans la vraie application,
+        ces données devront être générées
+        par le serveur.
+    */
+    const ticketData = JSON.stringify({
+
+        ticket_id: ticketId,
+
+        application: "FasoPass",
+
+        event: "Concert FasoPass",
+
+        date: "2026-12-25",
+
+        time: "20:00",
+
+        type: "VIP"
+
     });
 
-    const panel = document.getElementById(panelId);
 
-    if (panel) {
-        panel.classList.add("active");
+    /*
+        Création du QR Code
+    */
+    new QRCode(
+        document.getElementById("qrcode"),
+        {
+            text: ticketData,
 
-        panel.scrollIntoView({
-            behavior: "smooth",
-            block: "start"
-        });
-    }
-}
+            width: 220,
 
+            height: 220,
 
-function saveSettings() {
-
-    alert(
-        "✅ Les paramètres ont été enregistrés.\n\n" +
-        "FasoPass : paramètres du propriétaire."
+            correctLevel:
+                QRCode.CorrectLevel.H
+        }
     );
 }
 
 
-function maintenanceWarning() {
-
-    const confirmation = confirm(
-        "⚠️ Attention\n\n" +
-        "Vous êtes sur le point de modifier les paramètres de maintenance de FasoPass.\n\n" +
-        "Voulez-vous continuer ?"
-    );
-
-    if (confirmation) {
-        alert("✅ Paramètres de maintenance appliqués.");
-    }
-}
-
-
-function goBack() {
-
-    window.history.back();
-
-}
+/*
+    Génération initiale
+*/
+generateTicket();
 
 </script>
 
