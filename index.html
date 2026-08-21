@@ -6,91 +6,105 @@
 <title>FasoPass - Billetterie officielle</title>
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box;}
+*{margin:0;padding:0;box-sizing:border-box}
+
 body{
 font-family:Arial,sans-serif;
-background:#f2f2f2;
-color:#222;
+background:linear-gradient(135deg,#0a8f3c,#ffd400,#ff4d2d);
+padding:20px;
 }
 
-.hero{
-background:linear-gradient(135deg,#00853F,#FCD116,#EF3340);
-padding:70px 20px 50px;
+.header{
 text-align:center;
 color:white;
+padding:30px 10px;
 }
 
 .logo{
 font-size:70px;
 }
 
-.hero h1{
-font-size:52px;
-margin:10px 0;
+.header h1{
+font-size:42px;
+margin-top:10px;
 }
 
-.hero p{
+.header p{
 font-size:20px;
-margin-bottom:25px;
+margin-top:8px;
 }
 
-.btn{
-display:flex;
-align-items:center;
-justify-content:center;
-gap:10px;
+.admin-link{text-decoration:none}
+
+.admin-btn{
 width:100%;
-max-width:500px;
-margin:15px auto;
-padding:18px;
-border-radius:50px;
-text-decoration:none;
-font-size:22px;
+background:white;
+color:#00853F;
+padding:22px;
+border:none;
+border-radius:40px;
+font-size:20px;
 font-weight:bold;
-transition:.2s;
+margin:20px 0;
+cursor:pointer;
 }
-
-.btn:hover{transform:scale(1.02);}
-
-.white{background:white;color:#00853F;}
-.green{background:#00853F;color:white;}
-.yellow{background:#FCD116;color:black;}
 
 .card{
-background:white;
-margin:20px;
+background:#f5f5f5;
+border-radius:30px;
 padding:25px;
-border-radius:25px;
-box-shadow:0 6px 15px rgba(0,0,0,.08);
+margin:20px 0;
+box-shadow:0 10px 25px rgba(0,0,0,.2);
 }
 
 .card h2{
 color:#00853F;
-font-size:40px;
+font-size:28px;
 margin-bottom:20px;
 }
 
+.big-btn{
+display:block;
+text-align:center;
+text-decoration:none;
+padding:22px;
+border-radius:40px;
+font-size:20px;
+font-weight:bold;
+margin:15px 0;
+color:white;
+}
+
+.green{background:#00853F;}
+.yellow{background:#FFD400;color:black;}
+
 .event{
-background:#fafafa;
-padding:18px;
-border-radius:18px;
-margin-top:18px;
-border-left:6px solid #00853F;
+background:white;
+border-left:8px solid #00853F;
+border-radius:20px;
+padding:20px;
+margin-top:20px;
 }
 
 .event h3{
+color:#00853F;
 font-size:24px;
-margin-bottom:8px;
+margin-bottom:10px;
+}
+
+.event p{
+font-size:18px;
+margin:8px 0;
 }
 
 .buy{
-margin-top:15px;
 display:inline-block;
-padding:12px 24px;
+margin-top:15px;
 background:#00853F;
 color:white;
-border-radius:30px;
 text-decoration:none;
+padding:14px 28px;
+border-radius:30px;
 font-weight:bold;
 }
 
@@ -98,76 +112,63 @@ footer{
 background:#111;
 color:white;
 text-align:center;
-padding:35px 20px;
-margin-top:40px;
-line-height:1.8;
+padding:30px;
+margin-top:30px;
+border-radius:20px;
+font-size:18px;
+line-height:1.6;
 }
 </style>
 </head>
 
 <body>
 
-<section class="hero">
-
+<div class="header">
 <div class="logo">🎟️</div>
-
 <h1>FasoPass</h1>
-
 <p>Bobo-Dioulasso • Billetterie officielle</p>
+</div>
 
-<a href="admin.html" class="btn white">🛡️ Entrer comme Administrateur</a
+<a class="admin-link" href="admin.html">
+<button class="admin-btn">🛡️ Entrer comme Administrateur</button>
+</a>
 
-</section>
-
-<section class="card">
-
+<div class="card">
 <h2>Bienvenue</h2>
 
-<p style="font-size:22px;line-height:1.5;">
-Créez, gérez et achetez des billets facilement à Bobo-Dioulasso.
-</p>
+<a class="big-btn green" href="#">📅 Créer un événement</a>
+<a class="big-btn yellow" href="#">🚌 Billet de transport</a>
+</div>
 
-<a href="#" class="btn green">📅 Créer un événement</a>
-
-<a href="#" class="btn yellow">🚌 Billet de transport</a>
-
-</section>
-
-<section class="card">
-
+<div class="card">
 <h2>Événements disponibles</h2>
 
 <div class="event">
 <h3>Festival Sya</h3>
 <p>📅 25 août 2026</p>
 <p>📍 Bobo-Dioulasso</p>
-<a href="#" class="buy">Acheter</a>
+<a class="buy" href="#">Acheter</a>
 </div>
 
 <div class="event">
 <h3>Concert Faso Music</h3>
 <p>📅 5 septembre 2026</p>
 <p>📍 Maison de la Culture</p>
-<a href="#" class="buy">Acheter</a>
+<a class="buy" href="#">Acheter</a>
 </div>
 
 <div class="event">
 <h3>Forum Jeunesse</h3>
 <p>📅 20 septembre 2026</p>
 <p>📍 Salle des Fêtes</p>
-<a href="#" class="buy">Acheter</a>
+<a class="buy" href="#">Acheter</a>
 </div>
 
-</section>
+</div>
 
 <footer>
-
-© 2026 FasoPass
-
-Billetterie simple, rapide et accessible.
-
+© 2026 FasoPass — Billetterie simple, rapide et accessible.<br>
 Créateur : Moussa Barry
-
 </footer>
 
 </body>
