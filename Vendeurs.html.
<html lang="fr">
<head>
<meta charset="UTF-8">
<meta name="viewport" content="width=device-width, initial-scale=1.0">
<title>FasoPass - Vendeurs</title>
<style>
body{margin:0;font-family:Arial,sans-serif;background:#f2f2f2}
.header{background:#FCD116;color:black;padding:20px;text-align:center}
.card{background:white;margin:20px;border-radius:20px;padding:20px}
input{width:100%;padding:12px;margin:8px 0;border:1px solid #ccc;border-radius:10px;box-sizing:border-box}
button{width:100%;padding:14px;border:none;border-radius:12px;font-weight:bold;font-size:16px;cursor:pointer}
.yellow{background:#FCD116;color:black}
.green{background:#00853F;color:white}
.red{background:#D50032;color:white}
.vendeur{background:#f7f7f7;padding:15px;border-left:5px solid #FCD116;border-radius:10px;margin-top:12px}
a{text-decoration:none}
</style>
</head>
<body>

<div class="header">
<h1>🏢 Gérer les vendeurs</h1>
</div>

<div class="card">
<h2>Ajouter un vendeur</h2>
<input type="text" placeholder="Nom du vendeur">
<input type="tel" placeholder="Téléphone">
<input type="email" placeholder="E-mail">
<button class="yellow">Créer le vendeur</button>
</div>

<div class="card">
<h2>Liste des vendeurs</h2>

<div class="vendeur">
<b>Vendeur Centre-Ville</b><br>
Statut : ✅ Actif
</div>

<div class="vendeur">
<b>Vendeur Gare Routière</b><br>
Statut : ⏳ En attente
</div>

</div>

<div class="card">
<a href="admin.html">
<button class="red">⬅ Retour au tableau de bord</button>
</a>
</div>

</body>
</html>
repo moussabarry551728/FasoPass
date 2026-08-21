@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FasoPass - Vendeurs</title>
+<style>
+body{margin:0;font-family:Arial,sans-serif;background:#f2f2f2}
+.header{background:#FCD116;color:black;padding:20px;text-align:center}
+.card{background:white;margin:20px;border-radius:20px;padding:20px}
+input{width:100%;padding:12px;margin:8px 0;border:1px solid #ccc;border-radius:10px;box-sizing:border-box}
+button{width:100%;padding:14px;border:none;border-radius:12px;font-weight:bold;font-size:16px;cursor:pointer}
+.yellow{background:#FCD116;color:black}
+.green{background:#00853F;color:white}
+.red{background:#D50032;color:white}
+.vendeur{background:#f7f7f7;padding:15px;border-left:5px solid #FCD116;border-radius:10px;margin-top:12px}
+a{text-decoration:none}
+</style>
+</head>
+<body>
+
+<div class="header">
+<h1>🏢 Gérer les vendeurs</h1>
+</div>
+
+<div class="card">
+<h2>Ajouter un vendeur</h2>
+<input type="text" placeholder="Nom du vendeur">
+<input type="tel" placeholder="Téléphone">
+<input type="email" placeholder="E-mail">
+<button class="yellow">Créer le vendeur</button>
+</div>
+
+<div class="card">
+<h2>Liste des vendeurs</h2>
+
+<div class="vendeur">
+<b>Vendeur Centre-Ville</b><br>
+Statut : ✅ Actif
+</div>
+
+<div class="vendeur">
+<b>Vendeur Gare Routière</b><br>
+Statut : ⏳ En attente
+</div>
+
+</div>
+
+<div class="card">
+<a href="admin.html">
+<button class="red">⬅ Retour au tableau de bord</button>
+</a>
+</div>
+
+</body>
+</html>
