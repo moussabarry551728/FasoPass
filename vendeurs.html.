@@ -3,54 +3,150 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FasoPass - Vendeurs</title>
+<title>FasoPass - Vendeur</title>
+
 <style>
-body{margin:0;font-family:Arial,sans-serif;background:#f2f2f2}
-.header{background:#FCD116;color:black;padding:20px;text-align:center}
-.card{background:white;margin:20px;border-radius:20px;padding:20px}
-input{width:100%;padding:12px;margin:8px 0;border:1px solid #ccc;border-radius:10px;box-sizing:border-box}
-button{width:100%;padding:14px;border:none;border-radius:12px;font-weight:bold;font-size:16px;cursor:pointer}
-.yellow{background:#FCD116;color:black}
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+font-family:Arial,sans-serif;
+background:#f4f6f8;
+}
+header{
+background:linear-gradient(135deg,#00853F,#006B31);
+color:white;
+padding:25px;
+text-align:center;
+}
+.container{
+max-width:500px;
+margin:auto;
+padding:20px;
+}
+.card{
+background:white;
+padding:20px;
+margin-top:20px;
+border-radius:18px;
+box-shadow:0 8px 20px rgba(0,0,0,.08);
+}
+h2{
+color:#00853F;
+margin-bottom:12px;
+}
+input{
+width:100%;
+padding:12px;
+margin:10px 0;
+border:1px solid #ccc;
+border-radius:10px;
+font-size:16px;
+}
+button{
+width:100%;
+padding:14px;
+margin-top:10px;
+border:none;
+border-radius:12px;
+font-size:16px;
+font-weight:bold;
+cursor:pointer;
+}
 .green{background:#00853F;color:white}
-.red{background:#D50032;color:white}
-.vendeur{background:#f7f7f7;padding:15px;border-left:5px solid #FCD116;border-radius:10px;margin-top:12px}
-a{text-decoration:none}
+.gold{background:#FCD116;color:black}
+#result{
+display:none;
+text-align:center;
+margin-top:20px;
+padding:15px;
+border-radius:12px;
+}
+.valide{
+background:#E8F5E9;
+color:#00853F;
+}
+.invalide{
+background:#FFEBEE;
+color:#C62828;
+}
+.big{
+font-size:50px;
+margin-bottom:10px;
+}
+footer{
+margin-top:30px;
+background:#00853F;
+color:white;
+padding:15px;
+text-align:center;
+}
 </style>
 </head>
+
 <body>
 
-<div class="header">
-<h1>🏢 Gérer les vendeurs</h1>
-</div>
+<header>
+<h1>🏪 FasoPass</h1>
+<p>Espace Vendeur</p>
+</header>
+
+<div class="container">
 
 <div class="card">
-<h2>Ajouter un vendeur</h2>
-<input type="text" placeholder="Nom du vendeur">
-<input type="tel" placeholder="Téléphone">
-<input type="email" placeholder="E-mail">
-<button class="yellow">Créer le vendeur</button>
-</div>
+<h2>Vérification d'identité</h2>
 
-<div class="card">
-<h2>Liste des vendeurs</h2>
+<input id="idPass" type="text" placeholder="Ex : FP-2026-0001">
 
-<div class="vendeur">
-<b>Vendeur Centre-Ville</b><br>
-Statut : ✅ Actif
-</div>
+<button class="green" onclick="verifier()">
+Vérifier le FasoPass
+</button>
 
-<div class="vendeur">
-<b>Vendeur Gare Routière</b><br>
-Statut : ⏳ En attente
-</div>
+<button class="gold">
+Scanner un QR Code (bientôt)
+</button>
+
+<div id="result"></div>
 
 </div>
 
 <div class="card">
-<a href="admin.html">
-<button class="red">⬅ Retour au tableau de bord</button>
-</a>
+<h2>Conseil</h2>
+<p>Demandez au citoyen de présenter son QR Code FasoPass avant la vérification.</p>
 </div>
+
+</div>
+
+<footer>
+© 2026 FasoPass
+</footer>
+
+<script>
+function verifier(){
+
+const id=document.getElementById("idPass").value.trim().toUpperCase();
+const result=document.getElementById("result");
+
+if(id==="FP-2026-0001"){
+result.className="valide";
+result.innerHTML=`
+<div class="big">✅</div>
+<h2>Identité valide</h2>
+<p><strong>Nom :</strong> Utilisateur Démo</p>
+<p><strong>ID :</strong> FP-2026-0001</p>
+<p>Statut : Actif</p>
+`;
+}else{
+result.className="invalide";
+result.innerHTML=`
+<div class="big">❌</div>
+<h2>Identité introuvable</h2>
+<p>Vérifiez le numéro FasoPass.</p>
+`;
+}
+
+result.style.display="block";
+
+}
+</script>
 
 </body>
 </html>
