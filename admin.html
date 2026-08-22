@@ -4,138 +4,53 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>FasoPass - Administration</title>
-
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{
-font-family:Arial,sans-serif;
-background:linear-gradient(135deg,#00853F,#FFD400,#FF4D2D);
-min-height:100vh;
-padding:20px;
-}
-.container{
-max-width:450px;
-margin:30px auto;
-background:white;
-border-radius:25px;
-padding:25px;
-box-shadow:0 10px 25px rgba(0,0,0,.25);
-}
-.logo{
-font-size:55px;
-text-align:center;
-}
-h1{
-text-align:center;
-color:#00853F;
-margin:10px 0 20px;
-}
-input{
-width:100%;
-padding:15px;
-margin:10px 0;
-border:1px solid #ccc;
-border-radius:12px;
-font-size:16px;
-}
-button{
-width:100%;
-padding:15px;
-margin-top:12px;
-border:none;
-border-radius:12px;
-font-size:17px;
-font-weight:bold;
-cursor:pointer;
-}
-.green{background:#00853F;color:white;}
-.red{background:#D50032;color:white;}
-.card{
-background:#f7f7f7;
-border-left:6px solid #00853F;
-padding:15px;
-border-radius:12px;
-margin-top:15px;
-}
-a{text-decoration:none;}
-#dashboard{display:none;}
+body{margin:0;font-family:Arial,sans-serif;background:#f4f4f4}
+header{background:#00853F;color:white;padding:20px;text-align:center}
+.container{padding:20px}
+.card{background:white;padding:20px;border-radius:15px;margin-bottom:15px;box-shadow:0 4px 10px rgba(0,0,0,.1)}
+input{width:100%;padding:12px;margin:8px 0;border:1px solid #ccc;border-radius:8px}
+button{width:100%;padding:14px;background:#00853F;color:white;border:none;border-radius:10px;font-size:16px}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.stat{background:#FCD116;padding:15px;border-radius:10px;text-align:center;font-weight:bold}
 </style>
 </head>
-
 <body>
 
-<div class="container" id="loginBox">
+<header>
+<h1>🛡 Administration FasoPass</h1>
+<p>Espace sécurisé</p>
+</header>
 
-<div class="logo">🛡️</div>
-<h1>Admin FasoPass</h1>
-
-<input id="email" type="email" placeholder="Email administrateur">
-<input id="password" type="password" placeholder="Mot de passe">
-
-<button class="green" onclick="login()">Se connecter</button>
-
-<a href="index.html">
-<button class="red">← Retour à l'accueil</button>
-</a>
-
-</div>
-
-<div class="container" id="dashboard">
-
-<div class="logo">🎟️</div>
-<h1>Tableau de bord</h1>
+<div class="container">
 
 <div class="card">
-<a href="administrateurs.html">
-<button class="green">👥 Gérer les administrateurs</button>
-</a>
+<h2>Connexion administrateur</h2>
+<input type="text" placeholder="Nom d'utilisateur">
+<input type="password" placeholder="Mot de passe">
+<button>Se connecter</button>
 </div>
 
 <div class="card">
-<a href="utilisateurs.html">
-<button class="green">👤 Gérer les utilisateurs</button>
-</a>
+<h2>Tableau de bord</h2>
+<div class="stats">
+<div class="stat">👤 120 Utilisateurs</div>
+<div class="stat">🏪 18 Vendeurs</div>
+<div class="stat">📄 245 Pass créés</div>
+<div class="stat">✅ 96 Vérifications</div>
+</div>
 </div>
 
 <div class="card">
-<a href="documents.html">
-<button class="green">📄 Gérer les documents</button>
-</a>
+<h2>Actions rapides</h2>
+<button>Gérer les utilisateurs</button>
+<br><br>
+<button>Gérer les vendeurs</button>
+<br><br>
+<button>Voir les statistiques</button>
 </div>
 
-<div class="card">
-<a href="statistiques.html">
-<button class="green">📊 Statistiques</button>
-</a>
 </div>
-
-<button class="red" onclick="logout()">🚪 Déconnexion</button>
-
-</div>
-
-<script>
-const ADMIN_EMAIL="admin@fasopass.bf";
-const ADMIN_PASSWORD="FasoPass2026";
-
-function login(){
-const email=document.getElementById("email").value.trim();
-const password=document.getElementById("password").value;
-
-if(email===ADMIN_EMAIL && password===ADMIN_PASSWORD){
-document.getElementById("loginBox").style.display="none";
-document.getElementById("dashboard").style.display="block";
-}else{
-alert("Email ou mot de passe incorrect.");
-}
-}
-
-function logout(){
-document.getElementById("dashboard").style.display="none";
-document.getElementById("loginBox").style.display="block";
-document.getElementById("email").value="";
-document.getElementById("password").value="";
-}
-</script>
 
 </body>
 </html>
