@@ -1,7 +1,21 @@
-import { auth, db } from "./firebase.js";
+import { db } from "./firebase-config.js";
 import {
-  signInWithEmailAndPassword,
-  createUserWithEmailAndPassword
-} from "https://www.gstatic.com/firebasejs/12.2.1/firebase-auth.js";
+  collection,
+  getDocs,
+  doc,
+  getDoc
+} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
 
-console.log("Firebase connecté !");
+console.log("✅ FasoPass connecté à Firebase !");
+
+// Vérifie la connexion à Firestore
+async function testerConnexion() {
+  try {
+    const utilisateurs = await getDocs(collection(db, "utilisateurs"));
+    console.log("Connexion réussie :", utilisateurs.size, "utilisateur(s).");
+  } catch (e) {
+    console.error("Erreur Firebase :", e);
+  }
+}
+
+testerConnexion();
