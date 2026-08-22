@@ -1,79 +1,32 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Accès Administrateur - FasoPass</title>
-
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{
-font-family:Arial,sans-serif;
-background:linear-gradient(135deg,#00853F,#006B31);
-display:flex;
-justify-content:center;
-align-items:center;
-height:100vh;
-}
-.card{
-background:white;
-padding:30px;
-border-radius:20px;
-width:90%;
-max-width:350px;
-text-align:center;
-box-shadow:0 10px 25px rgba(0,0,0,.2);
-}
-.logo{font-size:55px;margin-bottom:10px}
-h2{color:#00853F;margin-bottom:15px}
-input{
-width:100%;
-padding:12px;
-margin:8px 0;
-border:1px solid #ccc;
-border-radius:10px;
-}
-button{
-width:100%;
-padding:14px;
-margin-top:12px;
-border:none;
-border-radius:10px;
-background:#00853F;
-color:white;
-font-size:16px;
-font-weight:bold;
-cursor:pointer;
-}
-.info{
-margin-top:15px;
-font-size:13px;
-color:#666;
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Connexion Administrateur - FasoPass</title>
+  <link rel="stylesheet" href="css/style.css">
 </head>
-
 <body>
 
-<div class="card">
+  <header>
+    <h1>FasoPass</h1>
+  </header>
 
-<div class="logo">🛡️</div>
+  <main class="container">
+    <div class="card">
+      <h2>Connexion Administrateur</h2>
 
-<h2>Administrateur FasoPass</h2>
+      <input type="email" id="email" placeholder="Adresse e-mail">
+      <input type="password" id="password" placeholder="Mot de passe">
 
-<input type="text" placeholder="Nom d'utilisateur">
+      <button id="btnConnexion">Se connecter</button>
 
-<input type="password" placeholder="Mot de passe">
+      <p id="message"></p>
+    </div>
+  </main>
 
-<button onclick="window.location.href='admin.html'">
-Se connecter
-</button>
-
-<p class="info">
-Accès réservé aux administrateurs autorisés.
-</p>
-
-</div>
+  <script type="module" src="firebase-config.js"></script>
+  <script type="module" src="app.js"></script>
 
 </body>
 </html>
