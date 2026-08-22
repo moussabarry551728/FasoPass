@@ -3,125 +3,116 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FasoPass - Scanner QR</title>
-
-<script src="https://unpkg.com/html5-qrcode"></script>
+<title>FasoPass - Gestion des Vendeurs</title>
+<link rel="stylesheet" href="css/style.css">
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:Arial,sans-serif;background:#f4f6f8}
-header{
-background:linear-gradient(135deg,#00853F,#006B31);
-color:white;
-padding:22px;
-text-align:center;
-}
-.container{max-width:500px;margin:auto;padding:20px}
-.card{
-background:white;
-padding:20px;
-margin-top:20px;
-border-radius:18px;
-box-shadow:0 8px 20px rgba(0,0,0,.08);
-}
-button{
-width:100%;
-padding:14px;
-margin-top:10px;
-border:none;
-border-radius:12px;
-background:#00853F;
-color:white;
-font-size:16px;
-font-weight:bold;
-}
-#reader{
-margin-top:15px;
-border-radius:12px;
-overflow:hidden;
-}
-#result{
-display:none;
-margin-top:20px;
-padding:15px;
-border-radius:12px;
-text-align:center;
-}
-.valide{background:#E8F5E9;color:#00853F}
-.invalide{background:#FFEBEE;color:#C62828}
-.big{font-size:48px}
+body{margin:0;font-family:Arial,sans-serif;background:#f5f7fa;}
+.hero{background:linear-gradient(90deg,#0a8f3c,#f4d03f,#d50032);color:white;text-align:center;padding:25px;}
+.container{max-width:700px;margin:20px auto;padding:15px;}
+.card{background:white;padding:20px;border-radius:18px;box-shadow:0 5px 15px rgba(0,0,0,.15);margin-bottom:20px;}
+.btn{width:100%;padding:14px;margin:8px 0;border:none;border-radius:30px;font-size:16px;font-weight:bold;cursor:pointer;}
+.green{background:#0a8f3c;color:white;}
+.blue{background:#1565c0;color:white;}
+.red{background:#d50032;color:white;}
+.vendeur-item{display:flex;justify-content:space-between;align-items:center;padding:12px;border-bottom:1px solid #ddd;gap:10px;}
+.vendeur-item:last-child{border-bottom:none;}
+input{width:100%;padding:12px;margin:8px 0;border:1px solid #ccc;border-radius:10px;font-size:16px;box-sizing:border-box;}
+.small-btn{padding:10px 14px;border:none;border-radius:20px;cursor:pointer;}
 </style>
 </head>
 
 <body>
 
-<header>
-<h1>🏪 FasoPass</h1>
-<p>Scanner QR Code</p>
+<header class="hero">
+<h1>🏪 Gestion des Vendeurs</h1>
+<p>Ajouter, supprimer et gérer les vendeurs.</p>
 </header>
 
 <div class="container">
 
 <div class="card">
+<h2>Ajouter un vendeur</h2>
 
-<button onclick="startScanner()">
-📷 Ouvrir la caméra
+<input id="nomVendeur" placeholder="Nom complet">
+<input id="emailVendeur" type="email" placeholder="Email">
+<input id="telephoneVendeur" placeholder="Téléphone">
+
+<button id="ajouterVendeur" class="btn green">
+➕ Ajouter un vendeur
 </button>
+</div>
 
-<div id="reader"></div>
+<div class="card">
+<h2>Liste des vendeurs</h2>
 
-<div id="result"></div>
+<div id="listeVendeurs">
+
+<div class="vendeur-item">
+<div>
+<strong>Vendeur Démo</strong><br>
+vendeur@fasopass.com
+</div>
+
+<button class="small-btn red supprimerVendeur">
+Supprimer
+</button>
+</div>
 
 </div>
+</div>
+
+<button id="retourDashboard" class="btn blue">
+⬅ Retour au tableau de bord
+</button>
 
 </div>
 
 <script>
-let scanner;
+const liste=document.getElementById("listeVendeurs");
 
-function startScanner(){
+document.getElementById("ajouterVendeur").onclick=()=>{
 
-scanner=new Html5Qrcode("reader");
+const nom=document.getElementById("nomVendeur").value.trim();
+const email=document.getElementById("emailVendeur").value.trim();
+const tel=document.getElementById("telephoneVendeur").value.trim();
 
-scanner.start(
-{ facingMode:"environment" },
-{ fps:10, qrbox:250 },
-success,
-error=>{}
-);
-
+if(!nom||!email||!tel){
+alert("Remplissez tous les champs.");
+return;
 }
 
-function success(text){
+const bloc=document.createElement("div");
+bloc.className="vendeur-item";
 
-scanner.stop();
+bloc.innerHTML=`
+<div>
+<strong>${nom}</strong><br>
+${email}<br>
+${tel}
+</div>
 
-const result=document.getElementById("result");
-
-if(text==="FP-2026-0001"){
-
-result.className="valide";
-result.innerHTML=`
-<div class="big">✅</div>
-<h2>Identité vérifiée</h2>
-<p><strong>ID :</strong> ${text}</p>
-<p>Compte actif</p>
+<button class="small-btn red supprimerVendeur">
+Supprimer
+</button>
 `;
 
-}else{
+liste.appendChild(bloc);
 
-result.className="invalide";
-result.innerHTML=`
-<div class="big">❌</div>
-<h2>QR Code inconnu</h2>
-<p>${text}</p>
-`;
+document.getElementById("nomVendeur").value="";
+document.getElementById("emailVendeur").value="";
+document.getElementById("telephoneVendeur").value="";
+};
 
+document.addEventListener("click",e=>{
+if(e.target.classList.contains("supprimerVendeur")){
+e.target.parentElement.remove();
 }
+});
 
-result.style.display="block";
-
-}
+document.getElementById("retourDashboard").onclick=()=>{
+window.location.href="admin.html";
+};
 </script>
 
 </body>
