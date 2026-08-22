@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FasoPass - Mon Profil</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header style="background:linear-gradient(90deg,#1b8f3a,#f4d03f,#e74c3c);padding:25px;text-align:center;color:white;">
+  <h1>👤 Mon Profil</h1>
+  <p>Compte FasoPass</p>
+</header>
+
+<main style="max-width:600px;margin:auto;padding:20px;">
+
+  <div style="background:white;border-radius:20px;padding:20px;text-align:center;">
+
+    <img id="photoProfil"
+      src="https://via.placeholder.com/140"
+      alt="Photo de profil"
+      style="width:140px;height:140px;border-radius:50%;object-fit:cover;border:4px solid #0a8f3c;">
+
+    <h2 id="nomUtilisateur">Utilisateur FasoPass</h2>
+    <p id="emailUtilisateur">Aucun e-mail connecté</p>
+
+    <button id="btnCamera"
+      style="width:100%;padding:14px;margin-top:15px;border:none;border-radius:30px;background:#0a8f3c;color:white;font-weight:bold;">
+      📷 Prendre une photo
+    </button>
+
+    <button id="btnGalerie"
+      style="width:100%;padding:14px;margin-top:10px;border:none;border-radius:30px;background:#1565c0;color:white;font-weight:bold;">
+      🖼️ Choisir dans la galerie
+    </button>
+
+    <button onclick="location.href='index.html'"
+      style="width:100%;padding:14px;margin-top:20px;border:none;border-radius:30px;background:#d50032;color:white;font-weight:bold;">
+      ⬅ Retour à l'accueil
+    </button>
+
+  </div>
+
+</main>
+
+<script>
+document.getElementById("btnCamera").onclick = function () {
+  alert("La caméra sera activée à l'étape suivante.");
+};
+
+document.getElementById("btnGalerie").onclick = function () {
+  alert("La galerie sera activée à l'étape suivante.");
+};
+</script>
+
+</body>
+</html>
