@@ -3,137 +3,56 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FasoPass - Administration</title>
+<title>FasoPass - Espace Propriétaire</title>
+<link rel="stylesheet" href="css/style.css">
 
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:Arial,sans-serif;background:#f4f6f8}
-header{
-background:linear-gradient(135deg,#00853F,#006B31);
+body{margin:0;background:#f5f7fa;font-family:Arial,sans-serif;}
+header{background:linear-gradient(90deg,#0a8f3c,#f4d03f,#d50032);padding:25px;text-align:center;color:white;}
+.container{max-width:600px;margin:20px auto;padding:15px;}
+.card{background:white;padding:20px;border-radius:20px;box-shadow:0 5px 15px rgba(0,0,0,.15);}
+.btn{
+display:block;
+text-decoration:none;
+text-align:center;
+padding:15px;
+margin:10px 0;
+border-radius:30px;
+font-weight:bold;
 color:white;
-padding:22px;
-text-align:center;
 }
-.container{max-width:700px;margin:auto;padding:20px}
-.card{
-background:white;
-padding:20px;
-margin-top:20px;
-border-radius:18px;
-box-shadow:0 8px 20px rgba(0,0,0,.08);
-}
-h2{color:#00853F;margin-bottom:12px}
-input{
-width:100%;
-padding:12px;
-margin:8px 0;
-border:1px solid #ccc;
-border-radius:10px;
-}
-button{
-width:100%;
-padding:14px;
-margin-top:10px;
-border:none;
-border-radius:12px;
-font-size:16px;
-font-weight:bold;
-cursor:pointer;
-}
-.green{background:#00853F;color:white}
-.gold{background:#FCD116;color:black}
-.red{background:#EF3340;color:white}
-.stats{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:12px;
-margin-top:15px;
-}
-.stat{
-background:#FCD116;
-padding:18px;
-border-radius:12px;
-text-align:center;
-font-weight:bold;
-}
-table{
-width:100%;
-border-collapse:collapse;
-margin-top:12px;
-}
-th,td{
-padding:10px;
-border-bottom:1px solid #ddd;
-text-align:left;
-}
-th{background:#00853F;color:white}
+.green{background:#0a8f3c;}
+.yellow{background:#f1c40f;color:black;}
+.blue{background:#1565c0;}
+.purple{background:#6a1b9a;}
+.orange{background:#ef6c00;}
+.red{background:#d50032;}
 </style>
 </head>
 
 <body>
 
 <header>
-<h1>🛡 FasoPass Admin</h1>
-<p>Tableau de bord administrateur</p>
+<h1>👑 Espace Propriétaire</h1>
+<p>Tableau de bord FasoPass</p>
 </header>
 
 <div class="container">
-
 <div class="card">
-<h2>Connexion</h2>
-<input type="text" placeholder="Nom d'utilisateur">
-<input type="password" placeholder="Mot de passe">
-<button class="green">Se connecter</button>
-</div>
 
-<div class="card">
-<h2>Statistiques</h2>
+<a href="administrateurs.html" class="btn green">🛡️ Gérer les administrateurs</a>
 
-<div class="stats">
-<div class="stat">👤 120 Citoyens</div>
-<div class="stat">🏪 18 Vendeurs</div>
-<div class="stat">📄 245 Pass</div>
-<div class="stat">✅ 96 Vérifications</div>
-</div>
+<a href="vendeurs.html" class="btn yellow">🏪 Gérer les vendeurs</a>
+
+<a href="utilisateurs.html" class="btn blue">👥 Gérer les utilisateurs</a>
+
+<a href="profil.html" class="btn purple">👤 Mon profil</a>
+
+<a href="dashboard.html" class="btn orange">📊 Tableau de bord</a>
+
+<a href="index.html" class="btn red">🚪 Retour à l'accueil</a>
 
 </div>
-
-<div class="card">
-<h2>Utilisateurs récents</h2>
-
-<table>
-<tr>
-<th>Nom</th>
-<th>Statut</th>
-</tr>
-
-<tr>
-<td>Ali Barry</td>
-<td>Actif</td>
-</tr>
-
-<tr>
-<td>Awa Traoré</td>
-<td>Actif</td>
-</tr>
-
-<tr>
-<td>Issa Ouédraogo</td>
-<td>En attente</td>
-</tr>
-</table>
-
-</div>
-
-<div class="card">
-<h2>Actions rapides</h2>
-
-<button class="green">Créer un utilisateur</button>
-<button class="gold">Gérer les vendeurs</button>
-<button class="red">Suspendre un compte</button>
-
-</div>
-
 </div>
 
 </body>
