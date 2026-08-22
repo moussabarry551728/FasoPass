@@ -3,58 +3,81 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FasoPass</title>
+<title>FasoPass – Identité Numérique</title>
 
 <style>
+*{margin:0;padding:0;box-sizing:border-box}
 body{
-margin:0;
 font-family:Arial,sans-serif;
-background:#f4f4f4;
-color:#222;
+background:#f4f6f8;
 }
 
 header{
-background:#00853F;
+background:linear-gradient(135deg,#00853F,#006B31);
 color:white;
-padding:18px;
+padding:25px;
 text-align:center;
+}
+
+.logo{
+font-size:55px;
+margin-bottom:10px;
 }
 
 main{
 padding:20px;
+max-width:500px;
+margin:auto;
 }
 
 .card{
 background:white;
-border-radius:15px;
-padding:20px;
-margin-bottom:20px;
-box-shadow:0 4px 10px rgba(0,0,0,.1);
+padding:22px;
+border-radius:18px;
+margin-top:20px;
+box-shadow:0 8px 20px rgba(0,0,0,.08);
 }
 
 h2{
-margin-top:0;
 color:#00853F;
+margin-bottom:10px;
+}
+
+p{
+color:#555;
+line-height:1.5;
 }
 
 .btn{
 display:block;
 width:100%;
-padding:14px;
+padding:15px;
 margin-top:12px;
 border:none;
-border-radius:10px;
-background:#FCD116;
-color:black;
+border-radius:12px;
 font-size:17px;
 font-weight:bold;
+cursor:pointer;
+}
+
+.green{background:#00853F;color:white;}
+.gold{background:#FCD116;color:black;}
+.red{background:#EF3340;color:white;}
+
+.menu{
+display:grid;
+grid-template-columns:1fr;
+gap:12px;
+margin-top:15px;
 }
 
 footer{
-text-align:center;
-padding:15px;
+margin-top:30px;
 background:#00853F;
 color:white;
+padding:18px;
+text-align:center;
+font-size:14px;
 }
 </style>
 </head>
@@ -62,31 +85,44 @@ color:white;
 <body>
 
 <header>
-<h1>🇧🇫 FasoPass</h1>
-<p>Version de démonstration</p>
+<div class="logo">🇧🇫</div>
+<h1>FasoPass</h1>
+<p>Votre identité numérique sécurisée</p>
 </header>
 
 <main>
 
 <div class="card">
 <h2>Bienvenue</h2>
-<p>Votre identité numérique simplifiée.</p>
-<button class="btn">Créer un compte</button>
-<button class="btn">Se connecter</button>
+<p>Accédez rapidement aux services numériques grâce à votre identité FasoPass.</p>
+
+<button class="btn green">Créer un compte</button>
+<button class="btn gold">Se connecter</button>
 </div>
 
 <div class="card">
-<h2>Services</h2>
+<h2>Accès rapide</h2>
+
+<div class="menu">
+<button class="btn green">👤 Citoyen</button>
+<button class="btn gold">🏪 Vendeur</button>
+<button class="btn red">🛡 Administrateur</button>
+</div>
+</div>
+
+<div class="card">
+<h2>Fonctionnalités</h2>
+<p>✔ QR Code sécurisé</p>
 <p>✔ Vérification d'identité</p>
-<p>✔ Accès sécurisé</p>
-<p>✔ Gestion du profil</p>
+<p>✔ Tableau de bord personnel</p>
+<p>✔ Connexion rapide</p>
 </div>
 
 </main>
 
 <footer>
-© 2026 FasoPass
+© 2026 FasoPass • Burkina Faso
 </footer>
 
 </body>
-</html>
+</html
