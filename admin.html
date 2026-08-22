@@ -4,50 +4,134 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>FasoPass - Administration</title>
+
 <style>
-body{margin:0;font-family:Arial,sans-serif;background:#f4f4f4}
-header{background:#00853F;color:white;padding:20px;text-align:center}
-.container{padding:20px}
-.card{background:white;padding:20px;border-radius:15px;margin-bottom:15px;box-shadow:0 4px 10px rgba(0,0,0,.1)}
-input{width:100%;padding:12px;margin:8px 0;border:1px solid #ccc;border-radius:8px}
-button{width:100%;padding:14px;background:#00853F;color:white;border:none;border-radius:10px;font-size:16px}
-.stats{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.stat{background:#FCD116;padding:15px;border-radius:10px;text-align:center;font-weight:bold}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Arial,sans-serif;background:#f4f6f8}
+header{
+background:linear-gradient(135deg,#00853F,#006B31);
+color:white;
+padding:22px;
+text-align:center;
+}
+.container{max-width:700px;margin:auto;padding:20px}
+.card{
+background:white;
+padding:20px;
+margin-top:20px;
+border-radius:18px;
+box-shadow:0 8px 20px rgba(0,0,0,.08);
+}
+h2{color:#00853F;margin-bottom:12px}
+input{
+width:100%;
+padding:12px;
+margin:8px 0;
+border:1px solid #ccc;
+border-radius:10px;
+}
+button{
+width:100%;
+padding:14px;
+margin-top:10px;
+border:none;
+border-radius:12px;
+font-size:16px;
+font-weight:bold;
+cursor:pointer;
+}
+.green{background:#00853F;color:white}
+.gold{background:#FCD116;color:black}
+.red{background:#EF3340;color:white}
+.stats{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:12px;
+margin-top:15px;
+}
+.stat{
+background:#FCD116;
+padding:18px;
+border-radius:12px;
+text-align:center;
+font-weight:bold;
+}
+table{
+width:100%;
+border-collapse:collapse;
+margin-top:12px;
+}
+th,td{
+padding:10px;
+border-bottom:1px solid #ddd;
+text-align:left;
+}
+th{background:#00853F;color:white}
 </style>
 </head>
+
 <body>
 
 <header>
-<h1>🛡 Administration FasoPass</h1>
-<p>Espace sécurisé</p>
+<h1>🛡 FasoPass Admin</h1>
+<p>Tableau de bord administrateur</p>
 </header>
 
 <div class="container">
 
 <div class="card">
-<h2>Connexion administrateur</h2>
+<h2>Connexion</h2>
 <input type="text" placeholder="Nom d'utilisateur">
 <input type="password" placeholder="Mot de passe">
-<button>Se connecter</button>
+<button class="green">Se connecter</button>
 </div>
 
 <div class="card">
-<h2>Tableau de bord</h2>
+<h2>Statistiques</h2>
+
 <div class="stats">
-<div class="stat">👤 120 Utilisateurs</div>
+<div class="stat">👤 120 Citoyens</div>
 <div class="stat">🏪 18 Vendeurs</div>
-<div class="stat">📄 245 Pass créés</div>
+<div class="stat">📄 245 Pass</div>
 <div class="stat">✅ 96 Vérifications</div>
 </div>
+
+</div>
+
+<div class="card">
+<h2>Utilisateurs récents</h2>
+
+<table>
+<tr>
+<th>Nom</th>
+<th>Statut</th>
+</tr>
+
+<tr>
+<td>Ali Barry</td>
+<td>Actif</td>
+</tr>
+
+<tr>
+<td>Awa Traoré</td>
+<td>Actif</td>
+</tr>
+
+<tr>
+<td>Issa Ouédraogo</td>
+<td>En attente</td>
+</tr>
+</table>
+
 </div>
 
 <div class="card">
 <h2>Actions rapides</h2>
-<button>Gérer les utilisateurs</button>
-<br><br>
-<button>Gérer les vendeurs</button>
-<br><br>
-<button>Voir les statistiques</button>
+
+<button class="green">Créer un utilisateur</button>
+<button class="gold">Gérer les vendeurs</button>
+<button class="red">Suspendre un compte</button>
+
 </div>
 
 </div>
