@@ -3,162 +3,94 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FasoPass - Citoyen</title>
-
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{
-font-family:Arial,sans-serif;
-background:#f4f6f8;
-}
-header{
-background:linear-gradient(135deg,#00853F,#006B31);
-color:white;
-padding:25px;
-text-align:center;
-}
-.container{
-max-width:500px;
-margin:auto;
-padding:20px;
-}
-.card{
-background:white;
-padding:20px;
-margin-top:20px;
-border-radius:18px;
-box-shadow:0 8px 20px rgba(0,0,0,.08);
-}
-h2{
-color:#00853F;
-margin-bottom:12px;
-}
-input{
-width:100%;
-padding:12px;
-margin:8px 0;
-border:1px solid #ccc;
-border-radius:10px;
-font-size:16px;
-}
-button{
-width:100%;
-padding:14px;
-margin-top:10px;
-border:none;
-border-radius:12px;
-font-size:16px;
-font-weight:bold;
-cursor:pointer;
-}
-.green{
-background:#00853F;
-color:white;
-}
-.gold{
-background:#FCD116;
-color:black;
-}
-.profile{
-text-align:center;
-}
-.avatar{
-font-size:60px;
-margin-bottom:10px;
-}
-#qr{
-display:none;
-margin-top:20px;
-text-align:center;
-}
-#qr img{
-width:200px;
-height:200px;
-border-radius:10px;
-background:white;
-padding:10px;
-box-shadow:0 4px 10px rgba(0,0,0,.15);
-}
-.id{
-margin-top:10px;
-font-weight:bold;
-color:#00853F;
-}
-.status{
-display:inline-block;
-margin-top:8px;
-padding:6px 12px;
-background:#00853F;
-color:white;
-border-radius:20px;
-font-size:14px;
-}
-</style>
+<title>FasoPass - Administrateurs</title>
+<link rel="stylesheet" href="css/style.css">
 </head>
-
 <body>
 
-<header>
-<h1>🇧🇫 FasoPass</h1>
-<p>Espace Citoyen</p>
+<header class="hero">
+  <h1>🛡 Gestion des Administrateurs</h1>
+  <p>Ajouter, supprimer et consulter les administrateurs.</p>
 </header>
 
 <div class="container">
 
-<div class="card">
-<h2>Créer un compte</h2>
+  <section class="card">
+    <h2>Ajouter un administrateur</h2>
 
-<input type="text" placeholder="Nom complet">
-<input type="tel" placeholder="Numéro de téléphone">
-<input type="password" placeholder="Mot de passe">
+    <input id="nomAdmin" type="text" placeholder="Nom complet">
+    <input id="emailAdmin" type="email" placeholder="Email">
+    <input id="mdpAdmin" type="password" placeholder="Mot de passe">
 
-<button class="green">Créer mon compte</button>
-</div>
+    <button class="btn green" id="ajouterAdmin">
+      ➕ Ajouter
+    </button>
+  </section>
 
-<div class="card">
-<h2>Se connecter</h2>
+  <section class="card">
+    <h2>Liste des administrateurs</h2>
 
-<input type="tel" placeholder="Numéro de téléphone">
-<input type="password" placeholder="Mot de passe">
+    <div id="listeAdmins">
 
-<button class="gold">Connexion</button>
-</div>
+      <div class="admin-item">
+        <div>
+          <strong>Moussa Barry</strong><br>
+          admin@fasopass.com
+        </div>
 
-<div class="card profile">
+        <button class="btn red supprimerAdmin">
+          Supprimer
+        </button>
+      </div>
 
-<div class="avatar">👤</div>
+    </div>
+  </section>
 
-<h2>Mon Profil FasoPass</h2>
-
-<p><strong>Nom :</strong> Utilisateur Démo</p>
-<p><strong>ID :</strong> FP-2026-0001</p>
-<span class="status">Compte actif</span>
-
-<button class="green" onclick="toggleQR()">
-Afficher mon QR Code
-</button>
-
-<div id="qr">
-<img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=FP-2026-0001" alt="QR Code FasoPass">
-
-<p class="id">Identifiant : FP-2026-0001</p>
-
-<p>Présentez ce QR Code pour vérifier votre identité.</p>
-</div>
+  <button class="btn blue" id="retourAdmin">
+    ⬅ Retour au tableau de bord
+  </button>
 
 </div>
 
-</div>
+<script type="module" src="js/app.js"></script>
 
 <script>
-function toggleQR(){
-const qr=document.getElementById("qr");
-if(qr.style.display==="block"){
-qr.style.display="none";
-}else{
-qr.style.display="block";
-}
-}
+document.getElementById("retourAdmin").onclick = () => {
+  window.location.href = "admin.html";
+};
+
+document.getElementById("ajouterAdmin").onclick = () => {
+
+  const nom = document.getElementById("nomAdmin").value.trim();
+  const email = document.getElementById("emailAdmin").value.trim();
+
+  if(!nom || !email){
+    alert("Remplissez tous les champs.");
+    return;
+  }
+
+  const bloc = document.createElement("div");
+  bloc.className = "admin-item";
+
+  bloc.innerHTML = `
+    <div>
+      <strong>${nom}</strong><br>${email}
+    </div>
+    <button class="btn red supprimerAdmin">Supprimer</button>
+  `;
+
+  document.getElementById("listeAdmins").appendChild(bloc);
+
+  document.getElementById("nomAdmin").value="";
+  document.getElementById("emailAdmin").value="";
+  document.getElementById("mdpAdmin").value="";
+};
+
+document.addEventListener("click", e=>{
+  if(e.target.classList.contains("supprimerAdmin")){
+    e.target.parentElement.remove();
+  }
+});
 </script>
 
 </body>
