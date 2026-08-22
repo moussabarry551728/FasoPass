@@ -3,55 +3,89 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FasoPass - Utilisateurs</title>
+<title>FasoPass - Citoyen</title>
 
 <style>
-body{margin:0;font-family:Arial,sans-serif;background:#f2f2f2}
-.header{background:#00853F;color:white;padding:20px;text-align:center}
-.card{background:white;margin:20px;border-radius:20px;padding:20px}
-button{width:100%;padding:14px;border:none;border-radius:12px;font-weight:bold;font-size:16px;cursor:pointer;margin-top:10px}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Arial,sans-serif;background:#f4f6f8}
+header{
+background:linear-gradient(135deg,#00853F,#006B31);
+color:white;
+padding:25px;
+text-align:center;
+}
+.container{max-width:500px;margin:auto;padding:20px}
+.card{
+background:white;
+padding:20px;
+margin-top:20px;
+border-radius:18px;
+box-shadow:0 8px 20px rgba(0,0,0,.08);
+}
+h2{color:#00853F;margin-bottom:12px}
+input{
+width:100%;
+padding:12px;
+margin:8px 0;
+border:1px solid #ccc;
+border-radius:10px;
+}
+button{
+width:100%;
+padding:14px;
+margin-top:10px;
+border:none;
+border-radius:12px;
+font-size:16px;
+font-weight:bold;
+cursor:pointer;
+}
 .green{background:#00853F;color:white}
-.red{background:#D50032;color:white}
-.user{background:#f7f7f7;padding:15px;border-left:5px solid #00853F;border-radius:10px;margin-top:12px}
-input{width:100%;padding:12px;margin:8px 0;border:1px solid #ccc;border-radius:10px;box-sizing:border-box}
-a{text-decoration:none}
+.gold{background:#FCD116;color:black}
+.profile{
+text-align:center;
+padding:15px;
+}
+.avatar{
+font-size:60px;
+margin-bottom:10px;
+}
 </style>
 </head>
 
 <body>
 
-<div class="header">
-<h1>👤 Gérer les utilisateurs</h1>
-</div>
+<header>
+<h1>🇧🇫 FasoPass</h1>
+<p>Espace Citoyen</p>
+</header>
+
+<div class="container">
 
 <div class="card">
-<h2>Ajouter un utilisateur</h2>
-
+<h2>Créer un compte</h2>
 <input type="text" placeholder="Nom complet">
-<input type="text" placeholder="Numéro CNIB">
-<input type="tel" placeholder="Téléphone">
-
-<button class="green">Ajouter l'utilisateur</button>
+<input type="tel" placeholder="Numéro de téléphone">
+<input type="password" placeholder="Mot de passe">
+<button class="green">Créer mon compte</button>
 </div>
 
 <div class="card">
-<h2>Liste des utilisateurs</h2>
-
-<div class="user">
-<b>Oumar Traoré</b><br>
-CNIB : B1234567
+<h2>Se connecter</h2>
+<input type="tel" placeholder="Numéro de téléphone">
+<input type="password" placeholder="Mot de passe">
+<button class="gold">Connexion</button>
 </div>
 
-<div class="user">
-<b>Aïcha Sawadogo</b><br>
-CNIB : B7654321
-</div>
+<div class="card profile">
+<div class="avatar">👤</div>
+<h2>Profil FasoPass</h2>
+<p>Nom : Utilisateur Démo</p>
+<p>ID : FP-2026-0001</p>
+<p>Statut : Actif</p>
+<button class="green">Afficher mon QR Code</button>
 </div>
 
-<div class="card">
-<a href="admin.html">
-<button class="red">← Retour au tableau de bord</button>
-</a>
 </div>
 
 </body>
