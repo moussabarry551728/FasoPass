@@ -3,57 +3,52 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FasoPass - Espace Propriétaire</title>
+<title>FasoPass - Administration</title>
 <link rel="stylesheet" href="css/style.css">
-
-<style>
-body{margin:0;background:#f5f7fa;font-family:Arial,sans-serif;}
-header{background:linear-gradient(90deg,#0a8f3c,#f4d03f,#d50032);padding:25px;text-align:center;color:white;}
-.container{max-width:600px;margin:20px auto;padding:15px;}
-.card{background:white;padding:20px;border-radius:20px;box-shadow:0 5px 15px rgba(0,0,0,.15);}
-.btn{
-display:block;
-text-decoration:none;
-text-align:center;
-padding:15px;
-margin:10px 0;
-border-radius:30px;
-font-weight:bold;
-color:white;
-}
-.green{background:#0a8f3c;}
-.yellow{background:#f1c40f;color:black;}
-.blue{background:#1565c0;}
-.purple{background:#6a1b9a;}
-.orange{background:#ef6c00;}
-.red{background:#d50032;}
-</style>
 </head>
-
 <body>
 
-<header>
-<h1>👑 Espace Propriétaire</h1>
-<p>Tableau de bord FasoPass</p>
+<header class="hero">
+  <h1>👑 Espace Propriétaire</h1>
+  <p>Bienvenue Moussa Barry</p>
 </header>
 
 <div class="container">
-<div class="card">
 
-<a href="administrateurs.html" class="btn green">🛡️ Gérer les administrateurs</a>
+  <section class="card">
+    <h2>Tableau de bord</h2>
 
-<a href="vendeurs.html" class="btn yellow">🏪 Gérer les vendeurs</a>
+    <div class="stats">
+      <div class="stat"><h3 id="nbEvenements">0</h3><p>Événements</p></div>
+      <div class="stat"><h3 id="nbVendeurs">0</h3><p>Vendeurs</p></div>
+      <div class="stat"><h3 id="nbAdmins">1</h3><p>Administrateurs</p></div>
+      <div class="stat"><h3 id="nbBillets">0</h3><p>Billets vendus</p></div>
+    </div>
+  </section>
 
-<a href="utilisateurs.html" class="btn blue">👥 Gérer les utilisateurs</a>
+  <section class="card">
 
-<a href="profil.html" class="btn purple">👤 Mon profil</a>
+    <button id="btnGererAdmins" class="btn green">🛡 Gérer les administrateurs</button>
 
-<a href="dashboard.html" class="btn orange">📊 Tableau de bord</a>
+    <button id="btnGererVendeurs" class="btn yellow">🏢 Gérer les vendeurs</button>
 
-<a href="index.html" class="btn red">🚪 Retour à l'accueil</a>
+    <button id="btnGererEvenements" class="btn blue">📅 Gérer les événements</button>
+
+    <button id="btnGererTransports" class="btn teal">🚌 Gérer les transports</button>
+
+    <button id="btnPaiements" class="btn purple">💳 Paiements</button>
+
+    <button id="btnStatistiques" class="btn orange">📊 Statistiques</button>
+
+    <button id="btnParametres" class="btn blue">⚙ Paramètres de la plateforme</button>
+
+    <button id="btnRetourAccueil" class="btn red">🚪 Retour à l'accueil</button>
+
+  </section>
 
 </div>
-</div>
+
+<script type="module" src="js/app.js"></script>
 
 </body>
 </html>
