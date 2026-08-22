@@ -4,33 +4,36 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>FasoPass</title>
-
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
   <header>
     <h1>FasoPass</h1>
-    <p>Gestion numérique des identités</p>
+    <p>Plateforme de gestion numérique</p>
   </header>
 
   <main class="container">
 
     <div class="card">
       <h2>Bienvenue</h2>
-      <p>Accédez à votre espace FasoPass.</p>
+      <p>Choisissez votre espace.</p>
 
-      <button onclick="location.href='administrateurs.html'">
-        Connexion Administrateur
-      </button>
-    </div>
+      <a href="administrateurs.html">
+        <button>Connexion Administrateur</button>
+      </a>
 
-    <div class="card">
-      <h2>Accès rapide</h2>
+      <br><br>
 
-      <button class="btn-secondary" onclick="location.href='utilisateurs.html'">
-        Utilisateurs
-      </button>
+      <a href="utilisateurs.html">
+        <button class="btn-secondary">Espace Utilisateur</button>
+      </a>
+
+      <br><br>
+
+      <a href="vendeurs.html">
+        <button>Espace Vendeur</button>
+      </a>
     </div>
 
   </main>
