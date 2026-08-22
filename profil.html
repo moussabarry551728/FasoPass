@@ -8,17 +8,58 @@
 <link rel="stylesheet" href="css/style.css">
 
 <style>
-body{background:#f5f7fa;margin:0;font-family:Arial,sans-serif;}
-header{background:linear-gradient(90deg,#0a8f3c,#f4d03f,#d50032);padding:25px;text-align:center;color:white;}
-.container{max-width:500px;margin:20px auto;padding:15px;}
-.card{background:white;padding:20px;border-radius:20px;box-shadow:0 5px 15px rgba(0,0,0,.15);text-align:center;}
-#photoProfil{width:150px;height:150px;border-radius:50%;object-fit:cover;border:5px solid #0a8f3c;margin-bottom:15px;}
-button{width:100%;padding:14px;margin:8px 0;border:none;border-radius:30px;font-size:16px;font-weight:bold;cursor:pointer;}
+body{margin:0;background:#f5f7fa;font-family:Arial,sans-serif;}
+header{
+background:linear-gradient(90deg,#0a8f3c,#f4d03f,#d50032);
+padding:25px;
+text-align:center;
+color:white;
+}
+.container{
+max-width:520px;
+margin:20px auto;
+padding:15px;
+}
+.card{
+background:white;
+padding:20px;
+border-radius:20px;
+box-shadow:0 5px 15px rgba(0,0,0,.15);
+text-align:center;
+}
+#photoProfil{
+width:150px;
+height:150px;
+border-radius:50%;
+object-fit:cover;
+border:5px solid #0a8f3c;
+margin-bottom:15px;
+}
+.info{text-align:left;margin:20px 0;}
+.info p{margin:8px 0;}
+button{
+width:100%;
+padding:14px;
+margin:8px 0;
+border:none;
+border-radius:30px;
+font-size:16px;
+font-weight:bold;
+cursor:pointer;
+}
 .camera{background:#0a8f3c;color:white;}
 .galerie{background:#1565c0;color:white;}
 .audio{background:#6a1b9a;color:white;}
+.localisation{background:#ef6c00;color:white;}
 .retour{background:#d50032;color:white;}
-audio{width:100%;margin-top:15px;}
+audio{width:100%;margin-top:12px;}
+#gps{
+margin-top:12px;
+padding:12px;
+background:#eef5ff;
+border-radius:10px;
+font-size:14px;
+}
 </style>
 </head>
 
@@ -30,30 +71,55 @@ audio{width:100%;margin-top:15px;}
 </header>
 
 <div class="container">
+
 <div class="card">
 
-<img id="photoProfil" src="https://via.placeholder.com/150">
+<img id="photoProfil"
+src="https://via.placeholder.com/150"
+alt="Photo">
 
-<h2>Utilisateur FasoPass</h2>
-<p>Email : Aucun e-mail</p>
+<h2 id="nomUtilisateur">Utilisateur FasoPass</h2>
+
+<div class="info">
+<p><strong>Email :</strong> <span id="emailUtilisateur">Aucun e-mail</span></p>
+<p><strong>Téléphone :</strong> +226 --------</p>
+<p><strong>Rôle :</strong> Utilisateur</p>
+</div>
 
 <button class="camera" id="btnCamera">📷 Prendre une photo</button>
+
 <button class="galerie" id="btnGalerie">🖼 Choisir dans la galerie</button>
+
 <button class="audio" id="btnAudio">🎤 Enregistrer un audio</button>
+
+<button class="localisation" id="btnGPS">📍 Obtenir ma position</button>
+
+<div id="gps">
+Position non disponible.
+</div>
 
 <audio id="lecteurAudio" controls></audio>
 
-<button class="retour" onclick="location.href='index.html'">⬅ Retour</button>
+<button class="retour"
+onclick="location.href='index.html'">
+⬅ Retour
+</button>
 
 </div>
+
 </div>
 
-<input type="file" id="inputPhoto" accept="image/*" capture="environment" style="display:none">
+<input
+type="file"
+id="inputPhoto"
+accept="image/*"
+capture="environment"
+style="display:none">
 
 <script>
 const input=document.getElementById("inputPhoto");
 const photo=document.getElementById("photoProfil");
-const btnAudio=document.getElementById("btnAudio");
+const gps=document.getElementById("gps");
 const lecteur=document.getElementById("lecteurAudio");
 
 document.getElementById("btnCamera").onclick=()=>{
@@ -78,17 +144,28 @@ lecteurF.readAsDataURL(fichier);
 }
 };
 
-const sauvegarde=localStorage.getItem("photoProfil");
-if(sauvegarde) photo.src=sauvegarde;
+const photoSauvee=localStorage.getItem("photoProfil");
+if(photoSauvee) photo.src=photoSauvee;
 
+// ----- Audio -----
 let mediaRecorder;
 let morceaux=[];
+let streamAudio;
+
+const btnAudio=document.getElementById("btnAudio");
 
 btnAudio.onclick=async()=>{
 try{
-const stream=await navigator.mediaDevices.getUserMedia({audio:true});
+if(btnAudio.dataset.recording==="oui"){
+mediaRecorder.stop();
+streamAudio.getTracks().forEach(t=>t.stop());
+btnAudio.dataset.recording="non";
+btnAudio.textContent="🎤 Enregistrer un audio";
+return;
+}
 
-mediaRecorder=new MediaRecorder(stream);
+streamAudio=await navigator.mediaDevices.getUserMedia({audio:true});
+mediaRecorder=new MediaRecorder(streamAudio);
 morceaux=[];
 
 mediaRecorder.ondataavailable=e=>morceaux.push(e.data);
@@ -100,20 +177,55 @@ lecteur.src=url;
 };
 
 mediaRecorder.start();
+btnAudio.dataset.recording="oui";
 btnAudio.textContent="⏹ Arrêter";
 
-btnAudio.onclick=()=>{
-mediaRecorder.stop();
-stream.getTracks().forEach(track=>track.stop());
-btnAudio.textContent="🎤 Enregistrer un audio";
-btnAudio.onclick=arguments.callee.caller;
-location.reload();
-};
-
-}catch(err){
+}catch(e){
 alert("Autorisation du microphone refusée.");
 }
 };
+
+// ----- GPS -----
+document.getElementById("btnGPS").onclick=()=>{
+if(!navigator.geolocation){
+gps.innerHTML="Le GPS n'est pas pris en charge.";
+return;
+}
+
+gps.innerHTML="Recherche de votre position...";
+
+navigator.geolocation.getCurrentPosition(
+(position)=>{
+const lat=position.coords.latitude;
+const lon=position.coords.longitude;
+const precision=Math.round(position.coords.accuracy);
+
+gps.innerHTML=
+"<strong>Latitude :</strong> "+lat+
+"<br><strong>Longitude :</strong> "+lon+
+"<br><strong>Précision :</strong> "+precision+" m";
+
+localStorage.setItem("gps",JSON.stringify({lat,lon,precision}));
+},
+()=>{
+gps.innerHTML="Autorisation GPS refusée.";
+},
+{
+enableHighAccuracy:true,
+timeout:10000,
+maximumAge:0
+}
+);
+};
+
+const gpsSauve=localStorage.getItem("gps");
+if(gpsSauve){
+const p=JSON.parse(gpsSauve);
+gps.innerHTML=
+"<strong>Latitude :</strong> "+p.lat+
+"<br><strong>Longitude :</strong> "+p.lon+
+"<br><strong>Précision :</strong> "+p.precision+" m";
+}
 </script>
 
 </body>
