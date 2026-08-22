@@ -1,47 +1,51 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FasoPass - Espace Propriétaire</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FasoPass</title>
+<link rel="stylesheet" href="css/style.css">
+
+<style>
+body{margin:0;background:#f5f7fa;font-family:Arial,sans-serif;}
+header{background:linear-gradient(90deg,#0a8f3c,#f4d03f,#d50032);padding:25px;text-align:center;color:white;}
+.container{max-width:500px;margin:20px auto;padding:15px;}
+.card{background:white;padding:20px;border-radius:20px;box-shadow:0 5px 15px rgba(0,0,0,.15);}
+.btn{
+display:block;
+text-align:center;
+text-decoration:none;
+padding:15px;
+margin:12px 0;
+border-radius:30px;
+font-weight:bold;
+font-size:16px;
+color:white;
+}
+.green{background:#0a8f3c;}
+.blue{background:#1565c0;}
+.orange{background:#ef6c00;}
+</style>
 </head>
+
 <body>
 
-<header style="background:linear-gradient(90deg,#1b8f3a,#f4d03f,#e74c3c);padding:25px;text-align:center;color:white;">
-  <h1>👑 Espace Propriétaire</h1>
-  <p>Bienvenue Moussa Barry</p>
+<header>
+<h1>FasoPass</h1>
+<p>Plateforme numérique</p>
 </header>
 
-<main style="padding:15px;max-width:700px;margin:auto;">
+<div class="container">
+<div class="card">
 
-  <div style="background:white;padding:15px;border-radius:15px;margin-bottom:20px;">
-    <h3>Tableau de bord</h3>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
-      <div style="background:#f2f2f2;padding:15px;border-radius:10px;text-align:center;"><b>12</b><br>Événements</div>
-      <div style="background:#f2f2f2;padding:15px;border-radius:10px;text-align:center;"><b>5</b><br>Vendeurs</div>
-      <div style="background:#f2f2f2;padding:15px;border-radius:10px;text-align:center;"><b>3</b><br>Administrateurs</div>
-      <div style="background:#f2f2f2;padding:15px;border-radius:10px;text-align:center;"><b>150</b><br>Billets vendus</div>
-    </div>
-  </div>
+<a href="administrateurs.html" class="btn green">👑 Connexion Administrateur</a>
 
-  <button onclick="location.href='administrateurs.html'" style="width:100%;padding:15px;margin:8px 0;border:none;border-radius:30px;background:#0a8f3c;color:white;font-weight:bold;">🛡️ Gérer les administrateurs</button>
+<a href="utilisateurs.html" class="btn blue">👤 Espace Utilisateur</a>
 
-  <button onclick="location.href='vendeurs.html'" style="width:100%;padding:15px;margin:8px 0;border:none;border-radius:30px;background:#f1c40f;color:black;font-weight:bold;">🏪 Gérer les vendeurs</button>
+<a href="vendeurs.html" class="btn orange">🏪 Espace Vendeur</a>
 
-  <button onclick="alert('Gestion des événements bientôt disponible.')" style="width:100%;padding:15px;margin:8px 0;border:none;border-radius:30px;background:#2d7dd2;color:white;font-weight:bold;">📅 Gérer les événements</button>
-
-  <button onclick="alert('Gestion des transports bientôt disponible.')" style="width:100%;padding:15px;margin:8px 0;border:none;border-radius:30px;background:#0b6b57;color:white;font-weight:bold;">🚌 Gérer les transports</button>
-
-  <button onclick="alert('Paiements bientôt disponible.')" style="width:100%;padding:15px;margin:8px 0;border:none;border-radius:30px;background:#6a1b9a;color:white;font-weight:bold;">💳 Paiements</button>
-
-  <button onclick="alert('Statistiques bientôt disponible.')" style="width:100%;padding:15px;margin:8px 0;border:none;border-radius:30px;background:#ef6c00;color:white;font-weight:bold;">📊 Statistiques</button>
-
-  <button onclick="alert('Paramètres bientôt disponible.')" style="width:100%;padding:15px;margin:8px 0;border:none;border-radius:30px;background:#1565c0;color:white;font-weight:bold;">⚙️ Paramètres de la plateforme</button>
-
-  <button onclick="location.href='index.html'" style="width:100%;padding:15px;margin:8px 0;border:none;border-radius:30px;background:#d50032;color:white;font-weight:bold;">🚪 Retour à l'accueil</button>
-
-</main>
+</div>
+</div>
 
 </body>
 </html>
