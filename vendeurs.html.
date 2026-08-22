@@ -3,25 +3,20 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FasoPass - Vendeur</title>
+<title>FasoPass - Scanner QR</title>
+
+<script src="https://unpkg.com/html5-qrcode"></script>
 
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-body{
-font-family:Arial,sans-serif;
-background:#f4f6f8;
-}
+body{font-family:Arial,sans-serif;background:#f4f6f8}
 header{
 background:linear-gradient(135deg,#00853F,#006B31);
 color:white;
-padding:25px;
+padding:22px;
 text-align:center;
 }
-.container{
-max-width:500px;
-margin:auto;
-padding:20px;
-}
+.container{max-width:500px;margin:auto;padding:20px}
 .card{
 background:white;
 padding:20px;
@@ -29,56 +24,32 @@ margin-top:20px;
 border-radius:18px;
 box-shadow:0 8px 20px rgba(0,0,0,.08);
 }
-h2{
-color:#00853F;
-margin-bottom:12px;
-}
-input{
-width:100%;
-padding:12px;
-margin:10px 0;
-border:1px solid #ccc;
-border-radius:10px;
-font-size:16px;
-}
 button{
 width:100%;
 padding:14px;
 margin-top:10px;
 border:none;
 border-radius:12px;
+background:#00853F;
+color:white;
 font-size:16px;
 font-weight:bold;
-cursor:pointer;
 }
-.green{background:#00853F;color:white}
-.gold{background:#FCD116;color:black}
+#reader{
+margin-top:15px;
+border-radius:12px;
+overflow:hidden;
+}
 #result{
 display:none;
-text-align:center;
 margin-top:20px;
 padding:15px;
 border-radius:12px;
-}
-.valide{
-background:#E8F5E9;
-color:#00853F;
-}
-.invalide{
-background:#FFEBEE;
-color:#C62828;
-}
-.big{
-font-size:50px;
-margin-bottom:10px;
-}
-footer{
-margin-top:30px;
-background:#00853F;
-color:white;
-padding:15px;
 text-align:center;
 }
+.valide{background:#E8F5E9;color:#00853F}
+.invalide{background:#FFEBEE;color:#C62828}
+.big{font-size:48px}
 </style>
 </head>
 
@@ -86,61 +57,66 @@ text-align:center;
 
 <header>
 <h1>🏪 FasoPass</h1>
-<p>Espace Vendeur</p>
+<p>Scanner QR Code</p>
 </header>
 
 <div class="container">
 
 <div class="card">
-<h2>Vérification d'identité</h2>
 
-<input id="idPass" type="text" placeholder="Ex : FP-2026-0001">
-
-<button class="green" onclick="verifier()">
-Vérifier le FasoPass
+<button onclick="startScanner()">
+📷 Ouvrir la caméra
 </button>
 
-<button class="gold">
-Scanner un QR Code (bientôt)
-</button>
+<div id="reader"></div>
 
 <div id="result"></div>
 
 </div>
 
-<div class="card">
-<h2>Conseil</h2>
-<p>Demandez au citoyen de présenter son QR Code FasoPass avant la vérification.</p>
 </div>
-
-</div>
-
-<footer>
-© 2026 FasoPass
-</footer>
 
 <script>
-function verifier(){
+let scanner;
 
-const id=document.getElementById("idPass").value.trim().toUpperCase();
+function startScanner(){
+
+scanner=new Html5Qrcode("reader");
+
+scanner.start(
+{ facingMode:"environment" },
+{ fps:10, qrbox:250 },
+success,
+error=>{}
+);
+
+}
+
+function success(text){
+
+scanner.stop();
+
 const result=document.getElementById("result");
 
-if(id==="FP-2026-0001"){
+if(text==="FP-2026-0001"){
+
 result.className="valide";
 result.innerHTML=`
 <div class="big">✅</div>
-<h2>Identité valide</h2>
-<p><strong>Nom :</strong> Utilisateur Démo</p>
-<p><strong>ID :</strong> FP-2026-0001</p>
-<p>Statut : Actif</p>
+<h2>Identité vérifiée</h2>
+<p><strong>ID :</strong> ${text}</p>
+<p>Compte actif</p>
 `;
+
 }else{
+
 result.className="invalide";
 result.innerHTML=`
 <div class="big">❌</div>
-<h2>Identité introuvable</h2>
-<p>Vérifiez le numéro FasoPass.</p>
+<h2>QR Code inconnu</h2>
+<p>${text}</p>
 `;
+
 }
 
 result.style.display="block";
