@@ -1,77 +1,46 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FasoPass</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FasoPass</title>
 
-<style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:Arial,sans-serif;background:#f4f6f8}
-header{
-background:linear-gradient(135deg,#00853F,#006B31);
-color:white;
-padding:30px;
-text-align:center;
-}
-main{max-width:500px;margin:auto;padding:20px}
-.card{
-background:white;
-padding:22px;
-margin-top:20px;
-border-radius:18px;
-box-shadow:0 8px 20px rgba(0,0,0,.08);
-}
-.btn{
-display:block;
-width:100%;
-padding:15px;
-margin-top:12px;
-border:none;
-border-radius:12px;
-font-size:17px;
-font-weight:bold;
-text-decoration:none;
-text-align:center;
-}
-.green{background:#00853F;color:white}
-.gold{background:#FCD116;color:black}
-.red{background:#EF3340;color:white}
-footer{
-margin-top:30px;
-background:#00853F;
-color:white;
-padding:15px;
-text-align:center;
-}
-</style>
+  <link rel="stylesheet" href="css/style.css">
 </head>
-
 <body>
 
-<header>
-<h1>🇧🇫 FasoPass</h1>
-<p>Votre identité numérique sécurisée</p>
-</header>
+  <header>
+    <h1>FasoPass</h1>
+    <p>Gestion numérique des identités</p>
+  </header>
 
-<main>
+  <main class="container">
 
-<div class="card">
-<h2>Choisissez votre espace</h2>
+    <div class="card">
+      <h2>Bienvenue</h2>
+      <p>Accédez à votre espace FasoPass.</p>
 
-<a class="btn green" href="utilisateurs.html">👤 Espace Citoyen</a>
+      <button onclick="location.href='administrateurs.html'">
+        Connexion Administrateur
+      </button>
+    </div>
 
-<a class="btn gold" href="vendeur.html">🏪 Espace Vendeur</a>
+    <div class="card">
+      <h2>Accès rapide</h2>
 
-<a class="btn red" href="administrateurs.html">🛡 Espace Administrateur</a>
+      <button class="btn-secondary" onclick="location.href='utilisateurs.html'">
+        Utilisateurs
+      </button>
+    </div>
 
-</div>
+  </main>
 
-</main>
+  <footer>
+    © 2026 FasoPass
+  </footer>
 
-<footer>
-© 2026 FasoPass
-</footer>
+  <script type="module" src="firebase-config.js"></script>
+  <script type="module" src="app.js"></script>
 
 </body>
 </html>
