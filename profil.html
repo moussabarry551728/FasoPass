@@ -8,61 +8,20 @@
 <link rel="stylesheet" href="css/style.css">
 
 <style>
-body{
-background:#f5f7fa;
-margin:0;
-font-family:Arial,sans-serif;
-}
-header{
-background:linear-gradient(90deg,#0a8f3c,#f4d03f,#d50032);
-padding:25px;
-text-align:center;
-color:white;
-}
-.container{
-max-width:500px;
-margin:20px auto;
-padding:15px;
-}
-.card{
-background:white;
-padding:20px;
-border-radius:20px;
-box-shadow:0 5px 15px rgba(0,0,0,.15);
-text-align:center;
-}
-#photoProfil{
-width:150px;
-height:150px;
-border-radius:50%;
-object-fit:cover;
-border:5px solid #0a8f3c;
-margin-bottom:15px;
-}
-.info{
-text-align:left;
-margin:20px 0;
-}
-.info p{
-margin:8px 0;
-font-size:16px;
-}
-button{
-width:100%;
-padding:14px;
-margin:8px 0;
-border:none;
-border-radius:30px;
-font-size:16px;
-font-weight:bold;
-cursor:pointer;
-}
+body{background:#f5f7fa;margin:0;font-family:Arial,sans-serif;}
+header{background:linear-gradient(90deg,#0a8f3c,#f4d03f,#d50032);padding:25px;text-align:center;color:white;}
+.container{max-width:500px;margin:20px auto;padding:15px;}
+.card{background:white;padding:20px;border-radius:20px;box-shadow:0 5px 15px rgba(0,0,0,.15);text-align:center;}
+#photoProfil{width:150px;height:150px;border-radius:50%;object-fit:cover;border:5px solid #0a8f3c;margin-bottom:15px;}
+button{width:100%;padding:14px;margin:8px 0;border:none;border-radius:30px;font-size:16px;font-weight:bold;cursor:pointer;}
 .camera{background:#0a8f3c;color:white;}
 .galerie{background:#1565c0;color:white;}
+.audio{background:#6a1b9a;color:white;}
 .retour{background:#d50032;color:white;}
+audio{width:100%;margin-top:15px;}
 </style>
-
 </head>
+
 <body>
 
 <header>
@@ -71,39 +30,31 @@ cursor:pointer;
 </header>
 
 <div class="container">
-
 <div class="card">
 
 <img id="photoProfil" src="https://via.placeholder.com/150">
 
-<h2 id="nomUtilisateur">Utilisateur FasoPass</h2>
-
-<div class="info">
-<p><strong>Email :</strong> <span id="emailUtilisateur">Aucun e-mail</span></p>
-<p><strong>Téléphone :</strong> +226 --------</p>
-<p><strong>Rôle :</strong> Utilisateur</p>
-</div>
+<h2>Utilisateur FasoPass</h2>
+<p>Email : Aucun e-mail</p>
 
 <button class="camera" id="btnCamera">📷 Prendre une photo</button>
-
 <button class="galerie" id="btnGalerie">🖼 Choisir dans la galerie</button>
+<button class="audio" id="btnAudio">🎤 Enregistrer un audio</button>
+
+<audio id="lecteurAudio" controls></audio>
 
 <button class="retour" onclick="location.href='index.html'">⬅ Retour</button>
 
 </div>
-
 </div>
 
-<input
-type="file"
-id="inputPhoto"
-accept="image/*"
-capture="environment"
-style="display:none">
+<input type="file" id="inputPhoto" accept="image/*" capture="environment" style="display:none">
 
 <script>
 const input=document.getElementById("inputPhoto");
 const photo=document.getElementById("photoProfil");
+const btnAudio=document.getElementById("btnAudio");
+const lecteur=document.getElementById("lecteurAudio");
 
 document.getElementById("btnCamera").onclick=()=>{
 input.setAttribute("capture","environment");
@@ -118,19 +69,51 @@ input.click();
 input.onchange=(e)=>{
 const fichier=e.target.files[0];
 if(fichier){
-const lecteur=new FileReader();
-lecteur.onload=(ev)=>{
+const lecteurF=new FileReader();
+lecteurF.onload=(ev)=>{
 photo.src=ev.target.result;
 localStorage.setItem("photoProfil",ev.target.result);
 };
-lecteur.readAsDataURL(fichier);
+lecteurF.readAsDataURL(fichier);
 }
 };
 
 const sauvegarde=localStorage.getItem("photoProfil");
-if(sauvegarde){
-photo.src=sauvegarde;
+if(sauvegarde) photo.src=sauvegarde;
+
+let mediaRecorder;
+let morceaux=[];
+
+btnAudio.onclick=async()=>{
+try{
+const stream=await navigator.mediaDevices.getUserMedia({audio:true});
+
+mediaRecorder=new MediaRecorder(stream);
+morceaux=[];
+
+mediaRecorder.ondataavailable=e=>morceaux.push(e.data);
+
+mediaRecorder.onstop=()=>{
+const blob=new Blob(morceaux,{type:"audio/webm"});
+const url=URL.createObjectURL(blob);
+lecteur.src=url;
+};
+
+mediaRecorder.start();
+btnAudio.textContent="⏹ Arrêter";
+
+btnAudio.onclick=()=>{
+mediaRecorder.stop();
+stream.getTracks().forEach(track=>track.stop());
+btnAudio.textContent="🎤 Enregistrer un audio";
+btnAudio.onclick=arguments.callee.caller;
+location.reload();
+};
+
+}catch(err){
+alert("Autorisation du microphone refusée.");
 }
+};
 </script>
 
 </body>
