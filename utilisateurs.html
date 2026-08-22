@@ -3,94 +3,103 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FasoPass - Administrateurs</title>
+<title>FasoPass - Utilisateur</title>
 <link rel="stylesheet" href="css/style.css">
+
+<style>
+body{margin:0;font-family:Arial,sans-serif;background:#f5f7fa;}
+.hero{background:linear-gradient(90deg,#0a8f3c,#f4d03f,#d50032);color:white;padding:25px;text-align:center;}
+.container{max-width:700px;margin:20px auto;padding:15px;}
+.card{background:white;padding:20px;border-radius:18px;box-shadow:0 5px 15px rgba(0,0,0,.15);margin-bottom:20px;}
+.ticket{border:2px dashed #0a8f3c;border-radius:15px;padding:15px;margin:15px 0;}
+.btn{width:100%;padding:14px;margin:8px 0;border:none;border-radius:30px;font-size:16px;font-weight:bold;cursor:pointer;}
+.green{background:#0a8f3c;color:white;}
+.blue{background:#1565c0;color:white;}
+.orange{background:#ef6c00;color:white;}
+.red{background:#d50032;color:white;}
+.qr{width:120px;height:120px;display:block;margin:auto;}
+</style>
 </head>
+
 <body>
 
 <header class="hero">
-  <h1>🛡 Gestion des Administrateurs</h1>
-  <p>Ajouter, supprimer et consulter les administrateurs.</p>
+<h1>👤 Espace Utilisateur</h1>
+<p>Portefeuille FasoPass</p>
 </header>
 
 <div class="container">
 
-  <section class="card">
-    <h2>Ajouter un administrateur</h2>
+<div class="card">
+<h2>Mon Profil</h2>
 
-    <input id="nomAdmin" type="text" placeholder="Nom complet">
-    <input id="emailAdmin" type="email" placeholder="Email">
-    <input id="mdpAdmin" type="password" placeholder="Mot de passe">
+<p><strong>Nom :</strong> Utilisateur FasoPass</p>
+<p><strong>Email :</strong> utilisateur@fasopass.com</p>
 
-    <button class="btn green" id="ajouterAdmin">
-      ➕ Ajouter
-    </button>
-  </section>
-
-  <section class="card">
-    <h2>Liste des administrateurs</h2>
-
-    <div id="listeAdmins">
-
-      <div class="admin-item">
-        <div>
-          <strong>Moussa Barry</strong><br>
-          admin@fasopass.com
-        </div>
-
-        <button class="btn red supprimerAdmin">
-          Supprimer
-        </button>
-      </div>
-
-    </div>
-  </section>
-
-  <button class="btn blue" id="retourAdmin">
-    ⬅ Retour au tableau de bord
-  </button>
+<button class="btn blue"
+onclick="location.href='profil.html'">
+👤 Ouvrir mon profil
+</button>
 
 </div>
 
-<script type="module" src="js/app.js"></script>
+<div class="card">
+<h2>Mes Billets</h2>
+
+<div class="ticket">
+
+<h3>🎵 Concert Démo</h3>
+
+<p>📅 20 Septembre 2026</p>
+
+<p>📍 Ouagadougou</p>
+
+<img
+class="qr"
+src="https://api.qrserver.com/v1/create-qr-code/?size=120x120&data=FasoPass-Demo">
+
+<button class="btn orange revendre">
+Revendre ce billet
+</button>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<h2>Revente officielle</h2>
+
+<p>Les billets revendus apparaîtront ici.</p>
+
+<div id="marcheRevente"></div>
+
+</div>
+
+<button class="btn green"
+onclick="location.href='index.html'">
+⬅ Retour à l'accueil
+</button>
+
+</div>
 
 <script>
-document.getElementById("retourAdmin").onclick = () => {
-  window.location.href = "admin.html";
+document.querySelector(".revendre").onclick=()=>{
+
+const bloc=document.createElement("div");
+
+bloc.className="ticket";
+
+bloc.innerHTML=`
+<h3>🎵 Concert Démo</h3>
+<p>Mis en vente sur le marché officiel.</p>
+<button class="btn green">Acheter ce billet</button>
+`;
+
+document.getElementById("marcheRevente").appendChild(bloc);
+
+alert("Votre billet est maintenant en vente.");
 };
-
-document.getElementById("ajouterAdmin").onclick = () => {
-
-  const nom = document.getElementById("nomAdmin").value.trim();
-  const email = document.getElementById("emailAdmin").value.trim();
-
-  if(!nom || !email){
-    alert("Remplissez tous les champs.");
-    return;
-  }
-
-  const bloc = document.createElement("div");
-  bloc.className = "admin-item";
-
-  bloc.innerHTML = `
-    <div>
-      <strong>${nom}</strong><br>${email}
-    </div>
-    <button class="btn red supprimerAdmin">Supprimer</button>
-  `;
-
-  document.getElementById("listeAdmins").appendChild(bloc);
-
-  document.getElementById("nomAdmin").value="";
-  document.getElementById("emailAdmin").value="";
-  document.getElementById("mdpAdmin").value="";
-};
-
-document.addEventListener("click", e=>{
-  if(e.target.classList.contains("supprimerAdmin")){
-    e.target.parentElement.remove();
-  }
-});
 </script>
 
 </body>
